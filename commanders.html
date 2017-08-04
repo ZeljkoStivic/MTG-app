@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MTG - Commanders</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/custom.css">
+</head>
+<body>
+    <!--  navbar  -->
+    <nav class="navbar navbar-toggleable-md navbar-light fixed-top mb-5">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" href="#"><div class="logo"></div></a>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active mr-4">
+                    <a class="nav-link text-white" href="index.html">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item mr-4">
+                    <a class="nav-link text-white" href="commanders.html">Commanders</a>
+                </li>
+                <li class="nav-item mr-4">
+                    <a class="nav-link disabled text-white" disabled="disabled" href="#">Game</a>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <button class="btn btn-outline-danger LoginColor my-2 my-sm-0 mr-4" type="submit">Login</button>
+            </form>
+        </div>
+    </nav>
+    <!--  /navbar  -->
+    <!-- container  -->
+    <div id="main" class="container pt-4">
+        <!--   game buttons   -->
+        <div class="row">
+            <h1 id="commanders" class="display-4 text-center my-5 pt-5 text-muted">Commanders</h1>
+            <button id="btnNewGame" type="button" class="btn btn-danger">New Game</button>
+            <img id="arrowPlayer" src="img/Double_angle_down_font_awesome.svg.png" alt="pointer to">
+            <button id="btnPlayers" type="button" class="btn btn-danger" data-toggle="modal" data-target="#players">Players</button>
+            <img  id="arrowPick" src="img/Double_angle_down_font_awesome.svg.png" alt="pointer to">
+            <div class="playerPickMainScreen">
+                <div class="playerPickPlayer">
+
+                </div>
+            </div>
+            <div class="playerPickMainScreen">
+                <div class="playerPickColor">
+
+                </div>
+            </div>
+            <!--   /game buttons   -->
+            <!-- commanders  -->
+            <div class="row">
+                <div class="col-md-6 col-lg-4 mb-1">
+                    <div id="commander1" class="card">
+                        <img class="card-img-top img-fluid" src="img/nissa_commander.jpg" alt="Card image cap">
+                        <div class="card-block">
+                            <h4 id="value1" class="card-title">Nissa Revane1</h4>
+                            <p class="card-text">Nissa Revane is an elven planeswalker who wields green magic to muster elves and elementals and amplify their might. She is a member of the Gatewatch.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 mb-1">
+                    <div id="commander2" class="card">
+                        <img class="card-img-top img-fluid" src="img/nissa_commander.jpg" alt="Card image cap">
+                        <div class="card-block">
+                            <h4 id="value2" class="card-title">Nissa Revane2</h4>
+                            <p class="card-text">Nissa Revane is an elven planeswalker who wields green magic to muster elves and elementals and amplify their might. She is a member of the Gatewatch.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 mb-1">
+                    <div id="commander3" class="card">
+                        <img class="card-img-top img-fluid" src="img/nissa_commander.jpg" alt="Card image cap">
+                        <div class="card-block">
+                            <h4 id="value3" class="card-title">Nissa Revane3</h4>
+                            <p class="card-text">Nissa Revane is an elven planeswalker who wields green magic to muster elves and elementals and amplify their might. She is a member of the Gatewatch.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 mb-1">
+                    <div id="commander4" class="card">
+                        <img class="card-img-top img-fluid" src="img/nissa_commander.jpg" alt="Card image cap">
+                        <div class="card-block">
+                            <h4 id="value4" class="card-title">Nissa Revane4</h4>
+                            <p class="card-text">Nissa Revane is an elven planeswalker who wields green magic to muster elves and elementals and amplify their might. She is a member of the Gatewatch.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 mb-1">
+                    <div id="commander5" class="card">
+                        <img class="card-img-top img-fluid" src="img/nissa_commander.jpg" alt="Card image cap">
+                        <div class="card-block">
+                            <h4 id="value5" class="card-title">Nissa Revane5</h4>
+                            <p class="card-text">Nissa Revane is an elven planeswalker who wields green magic to muster elves and elementals and amplify their might. She is a member of the Gatewatch.</p>
+                        </div>
+                    </div>
+                </div>
+                <!--
+                <div class="col-md-6 col-lg-4 mb-1">
+                    <div class="card">
+                        <img class="card-img-top img-fluid" src="img/nissa_commander.jpg" alt="Card image cap">
+                        <div class="card-block">
+                            <h4 class="card-title">Nissa Revane</h4>
+                            <p class="card-text">Nissa Revane is an elven planeswalker who wields green magic to muster elves and elementals and amplify their might. She is a member of the Gatewatch.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 mb-1">
+                    <div class="card">
+                        <img class="card-img-top img-fluid" src="img/nissa_commander.jpg" alt="Card image cap">
+                        <div class="card-block">
+                            <h4 class="card-title">Nissa Revane</h4>
+                            <p class="card-text">Nissa Revane is an elven planeswalker who wields green magic to muster elves and elementals and amplify their might. She is a member of the Gatewatch.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 mb-1">
+                    <div class="card">
+                        <img class="card-img-top img-fluid" src="img/nissa_commander.jpg" alt="Card image cap">
+                        <div class="card-block">
+                            <h4 class="card-title">Nissa Revane</h4>
+                            <p class="card-text">Nissa Revane is an elven planeswalker who wields green magic to muster elves and elementals and amplify their might. She is a member of the Gatewatch.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 mb-1">
+                    <div class="card">
+                        <img class="card-img-top img-fluid" src="img/nissa_commander.jpg" alt="Card image cap">
+                        <div class="card-block">
+                            <h4 class="card-title">Nissa Revane</h4>
+                            <p class="card-text">Nissa Revane is an elven planeswalker who wields green magic to muster elves and elementals and amplify their might. She is a member of the Gatewatch.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 mb-1">
+                    <div class="card">
+                        <img class="card-img-top img-fluid" src="img/nissa_commander.jpg" alt="Card image cap">
+                        <div class="card-block">
+                            <h4 class="card-title">Nissa Revane</h4>
+                            <p class="card-text">Nissa Revane is an elven planeswalker who wields green magic to muster elves and elementals and amplify their might. She is a member of the Gatewatch.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 mb-1">
+                    <div class="card">
+                        <img class="card-img-top img-fluid" src="img/nissa_commander.jpg" alt="Card image cap">
+                        <div class="card-block">
+                            <h4 class="card-title">Nissa Revane</h4>
+                            <p class="card-text">Nissa Revane is an elven planeswalker who wields green magic to muster elves and elementals and amplify their might. She is a member of the Gatewatch.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 mb-1">
+                    <div class="card">
+                        <img class="card-img-top img-fluid" src="img/nissa_commander.jpg" alt="Card image cap">
+                        <div class="card-block">
+                            <h4 class="card-title">Nissa Revane</h4>
+                            <p class="card-text">Nissa Revane is an elven planeswalker who wields green magic to muster elves and elementals and amplify their might. She is a member of the Gatewatch.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 mb-1">
+                    <div class="card">
+                        <img class="card-img-top img-fluid" src="img/nissa_commander.jpg" alt="Card image cap">
+                        <div class="card-block">
+                            <h4 class="card-title">Nissa Revane</h4>
+                            <p class="card-text">Nissa Revane is an elven planeswalker who wields green magic to muster elves and elementals and amplify their might. She is a member of the Gatewatch.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 mb-1">
+                    <div class="card">
+                        <img class="card-img-top img-fluid" src="img/nissa_commander.jpg" alt="Card image cap">
+                        <div class="card-block">
+                            <h4 class="card-title">Nissa Revane</h4>
+                            <p class="card-text">Nissa Revane is an elven planeswalker who wields green magic to muster elves and elementals and amplify their might. She is a member of the Gatewatch.</p>
+                        </div>
+                    </div>
+                </div>
+                -->
+            </div>
+            <!--   /commanders   -->
+        </div>
+    </div>
+    <!-- /container -->
+
+    <!--============================
+              FORM MODAL
+   =============================-->
+    <!-- Form Modal -->
+    <div id="players" class="modal fade" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header bg-info text-white">
+                    <h5 class="modal-title">Creating New Game</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        Game Requires 2-4 players!
+                    </div>
+                    <form>
+                        <!-- Form Modal - PRE LOBBY  -->
+                        <div id="addPlayerModalPanel">
+                           <h5 class="mb-4">Adding Players</h5>
+                           <div class="form-group">
+                               <label for="playerName">Name:</label>
+                              <input type="text" class="form-control" id="playerName">
+                           </div>
+                           <button id="addPlayer" type="submit" class="btn btn-primary">Add player</button>
+                           <div class="form-group my-4">
+                               <label for="playerGrid">Players:</label>
+                               <div class="row">
+                                    <div id="playerGrid" class="col-md-12">
+
+                                    </div>
+                                </div>
+                            </div>
+                            <button id="createLobby" type="submit" class="btn btn-primary">Create Lobby</button>
+                        </div>
+                        <!-- /Form Modal - PRE LOBBY  -->
+                        <!-- Form Modal - LOBBY  -->
+                        <div id="PlayerModalLobby">
+                            <hr class="my-4">
+                            <h5 class="mb-4">Lobby:</h5>
+                            <div class="form-group my-4">
+                                <label for="playerLobby">Selection of Commanders</label>
+                                <div class="row">
+                                    <div id="playerLobby" class="col-md-5">
+
+                                    </div>
+                                    <div id="colorLobby" class="col-md-1">
+
+                                    </div>
+                                    <div id="commanderLobby" class="col-md-4">
+
+                                    </div>
+                                    <div class="col-md-2 reRoll">
+
+                                    </div>
+                                </div>
+                            </div>
+                            <button id="pickCommander" type="submit" class="btn btn-primary">Pick Commander</button>
+                            <button id="randomizeCommander" type="submit" class="btn btn-primary">Random Commander</button>
+                            <button id="btnRandomizeOrder" type="submit" class="btn btn-primary hiddenButton">Randomize play order</button>
+                        </div>
+                        <!-- Form Modal - PLAY ORDER  -->
+                        <div id="divPlayOrder">
+                            <hr class="my-4">
+                            <h5 class="mb-4">Play Order:</h5>
+                            <div class="form-group my-4">
+                                <label for="divOrderNumber">Selection of Commanders</label>
+                                <div class="row">
+                                    <div id="divOrderNumber" class="col-md-1">
+
+                                    </div>
+                                    <div id="divOrderPlayer" class="col-md-5">
+
+                                    </div>
+                                    <div id="divOrderColor" class="col-md-2">
+
+                                    </div>
+                                    <div id="divOrderCommander" class="col-md-4">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /Form Modal - PLAY ORDER  -->
+                        <!-- /Form Modal - LOBBY  -->
+                        <hr class="mb-4">
+                        <button type="submit" id="btnCreateNewGame" class="btn btn-primary btn-lg hiddenButton">Create new game</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>  <!--   /form modal   -->
+    <!--   SCRIPTS   -->
+    <script
+            src="https://code.jquery.com/jquery-3.2.1.js"
+            integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+            crossorigin="anonymous"></script>
+    <script src="https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/commanders.js"></script>
+    <!--   /SCRIPTS   -->
+</body>
+</html>

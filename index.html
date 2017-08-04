@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MTG - Home</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/custom.css">
+</head>
+<body>
+    <!--  navbar  -->
+    <nav class="navbar navbar-toggleable-md navbar-light fixed-top">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" href="#"><div class="logo"></div></a>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active mr-4">
+                    <a class="nav-link text-white" href="index.html">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item mr-4">
+                    <a class="nav-link text-white" href="commanders.html">Commanders</a>
+                </li>
+                <li class="nav-item mr-4">
+                    <a class="nav-link disabled text-white" disabled="disabled" href="#">Game</a>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <button class="btn btn-outline-danger LoginColor my-2 my-sm-0 mr-4" type="submit">Login</button>
+            </form>
+        </div>
+    </nav>
+    <!--  /navbar  -->
+
+    <!-- jumbotron  -->
+    <div class="jumbotron jumbotron-fluid bg-info text-white">
+        <div class="container text-sm-center pt-5">
+            <h1 class="display-2">Deck up!</h1>
+            <p class="lead">And GG prematurely!</p>
+            <div class="btn-group mt-4" role="group" aria-label="Basic example">
+                <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#register">Register Now!</button>
+                <a class="btn btn-secondary btn-lg" href="#rss">See Feed</a>
+            </div>
+        </div>
+    </div>
+    <!--  /jumbotron  -->
+
+    <!-- container  -->
+    <div id="main" class="container pt-4">
+        <!--   rss   -->
+        <div id="rss" class="row">
+                <h3 class="mb-4">This is where Magic happens</h3>
+            <!-- start feedwind code -->
+            <script type="text/javascript" src="https://feed.mikle.com/js/fw-loader.js" data-fw-param="39717/"></script>
+            <!-- end feedwind code -->
+        </div>
+    </div> <!--  /rss   -->
+    <!-- /container  -->
+    <!-- SCRIPTS  -->
+    <script
+            src="https://code.jquery.com/jquery-3.2.1.js"
+            integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+            crossorigin="anonymous"></script>
+    <script src="js/animations.js"></script>
+    <!-- /SCRIPTS  -->
+</body>
+</html>

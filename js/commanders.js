@@ -1,6 +1,5 @@
 /*---------------------------------- VARIABLES----------------------------------*/
 
-var test;
 var players=[];
 var colors=['red', 'blue', 'yellow', 'green', 'black'];
 var commanders=['Nissa Revane1', 'Nissa Revane2', 'Nissa Revane3', 'Nissa Revane4', 'Nissa Revane5'];
@@ -9,6 +8,7 @@ var pickedCommanders=[];
 var gameArr=[];
 var i=0;
 var j=0;
+
 
 /*---------------------------------- BTN FOR CREATING NEW GAME ON COMMANDER MAIN ----------------------------------*/
 $('#btnNewGame').click(function() {
@@ -97,8 +97,11 @@ $('#btnRandomizeOrder').click(function() {
     event.preventDefault();
     shufflePlayers(players, colors, pickedCommanders);
     players=gameArr[0];
+    $.cookie('players', players, { expires: 7, path: '/' });
     colors=gameArr[1];
+    $.cookie('colors', colors, { expires: 7, path: '/' });
     pickedCommanders=gameArr[2];
+    $.cookie('pickedCommanders', pickedCommanders, { expires: 7, path: '/' });
     for(i=0; i<players.length; i++){
         $('#divOrderNumber').append($("<ol></ol>").text((i+1)+'. '));
         $('#divOrderPlayer').append($("<ol></ol>").text(players[i]));
@@ -244,7 +247,7 @@ $('#commander5').click(function() {
 
 /*---------------------------------- BTN IN MODAL THAT STARTS A NEW GAME ON A DIFFERENT PAGE ----------------------------------*/
 $('#btnCreateNewGame').click(function() {
-    window.location.href='game.html?';
+    window.location.href='game.html';
     return false;
 });
 

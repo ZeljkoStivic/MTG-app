@@ -4,6 +4,7 @@ var colors = $.cookie('colors');
 var pickedCommanders = $.cookie('pickedCommanders');
 var hp=[];
 var commanderHp=[];
+var placementArr=[];
 
 players = players.split(',');
 colors = colors.split(',');
@@ -41,33 +42,33 @@ for(j=0; j<players.length; j++){
         if(j==0){
             if(i==0){
             i++;
-                $('.tableRow'+j).append($("<th></th>").text(pickedCommanders[i]));
+                $('.tableRow'+j).append($("<th></th>").text(players[i] + '  ' + pickedCommanders[i]));
             } else {
-                $('.tableRow'+j).append($("<th></th>").text(pickedCommanders[i]));
+                $('.tableRow'+j).append($("<th></th>").text(players[i] + '  ' + pickedCommanders[i]));
             }
         }
         if(j==1){
             if(i==1){
                 i++;
-                $('.tableRow'+j).append($("<th></th>").text(pickedCommanders[i]));
+                $('.tableRow'+j).append($("<th></th>").text(players[i] + '  ' + pickedCommanders[i]));
             } else {
-                $('.tableRow'+j).append($("<th></th>").text(pickedCommanders[i]));
+                $('.tableRow'+j).append($("<th></th>").text(players[i] + '  ' + pickedCommanders[i]));
             }
         }
         if(j==2){
             if(i==2){
                 i++;
-                $('.tableRow'+j).append($("<th></th>").text(pickedCommanders[i]));
+                $('.tableRow'+j).append($("<th></th>").text(players[i] + '  ' + pickedCommanders[i]));
             } else {
-                $('.tableRow'+j).append($("<th></th>").text(pickedCommanders[i]));
+                $('.tableRow'+j).append($("<th></th>").text(players[i] + '  ' + pickedCommanders[i]));
             }
         }
         if(j==3){
             if(i==3){
                 i++;
-                $('.tableRow'+j).append($("<th></th>").text(pickedCommanders[i]));
+                $('.tableRow'+j).append($("<th></th>").text(players[i] + '  ' + pickedCommanders[i]));
             } else {
-                $('.tableRow'+j).append($("<th></th>").text(pickedCommanders[i]));
+                $('.tableRow'+j).append($("<th></th>").text(players[i] + '  ' + pickedCommanders[i]));
             }
         }
 
@@ -197,12 +198,21 @@ for(j=0; j<players.length; j++){
 /*---------------------------------- /TABLE CREATION----------------------------------*/
 
 /*---------------------------------- COMMANDER BUTTONS----------------------------------*/
-/*---------------------------------- COMMANDER1 BUTTONS----------------------------------*/
+
 function dec1PlayerIndexComIndex(name, playerIndex, commanderIndex){
     $('.'+name).click(function() {
         event.preventDefault();
         hp[playerIndex] = hp[playerIndex] - 1;
+        if(hp[playerIndex] <= 0){
+            $('.tableDiv'+playerIndex).css("display", "none");
+            placementArr.unshift(players[playerIndex]);
+        }
         commanderHp[playerIndex][commanderIndex]= commanderHp[playerIndex][commanderIndex] - 1;
+        if(commanderHp[playerIndex][commanderIndex] <= 0){
+            $('.tableDiv'+playerIndex).css("display", "none");
+            placementArr.unshift(players[playerIndex]);
+        }
+
         $('.tbody'+playerIndex).empty();
         $('.tbody'+playerIndex).append($("<tr></tr>").addClass('tableRowBody'+playerIndex));
         $('.tableRowBody'+playerIndex).append($("<th></th>").attr( "scope", "row" ));
@@ -300,7 +310,21 @@ function dec5PlayerIndexComIndex(name, playerIndex, commanderIndex){
     $('.'+name).click(function() {
         event.preventDefault();
         hp[playerIndex] = hp[playerIndex] - 5;
+        if(hp[playerIndex] <= 0){
+            $('.tableDiv'+playerIndex).css("display", "none");
+            placementArr.unshift(players[playerIndex]);
+        }
         commanderHp[playerIndex][commanderIndex]= commanderHp[playerIndex][commanderIndex] - 5;
+        if(commanderHp[playerIndex][commanderIndex] <= 0){
+            $('.tableDiv'+playerIndex).css("display", "none");
+            placementArr.unshift(players[playerIndex]);
+        }
+        if(placementArr.length == players.length){
+            for(i=0; i<placementArr.length; i++){
+                $('#placement').append($("<ol></ol>").text((1+i)+'. Place  '+placementArr[i]));
+            }
+            $('#placementModal').modal('show');
+        }
         $('.tbody'+playerIndex).empty();
         $('.tbody'+playerIndex).append($("<tr></tr>").addClass('tableRowBody'+playerIndex));
         $('.tableRowBody'+playerIndex).append($("<th></th>").attr( "scope", "row" ));
@@ -398,21 +422,43 @@ dec1PlayerIndexComIndex('dec1Player0Com0', 0, 0);
 dec1PlayerIndexComIndex('dec1Player0Com1', 0, 1);
 dec1PlayerIndexComIndex('dec1Player0Com2', 0, 2);
 dec1PlayerIndexComIndex('dec1Player0Com3', 0, 3);
+dec1PlayerIndexComIndex('dec1Player0Com4', 0, 4);
+dec1PlayerIndexComIndex('dec1Player0Com5', 0, 5);
 
 dec1PlayerIndexComIndex('dec1Player1Com0', 1, 0);
 dec1PlayerIndexComIndex('dec1Player1Com1', 1, 1);
 dec1PlayerIndexComIndex('dec1Player1Com2', 1, 2);
 dec1PlayerIndexComIndex('dec1Player1Com3', 1, 3);
+dec1PlayerIndexComIndex('dec1Player1Com4', 1, 4);
+dec1PlayerIndexComIndex('dec1Player1Com5', 1, 5);
 
 dec1PlayerIndexComIndex('dec1Player2Com0', 2, 0);
 dec1PlayerIndexComIndex('dec1Player2Com1', 2, 1);
 dec1PlayerIndexComIndex('dec1Player2Com2', 2, 2);
 dec1PlayerIndexComIndex('dec1Player2Com3', 2, 3);
+dec1PlayerIndexComIndex('dec1Player2Com4', 2, 4);
+dec1PlayerIndexComIndex('dec1Player2Com5', 2, 5);
 
 dec1PlayerIndexComIndex('dec1Player3Com0', 3, 0);
 dec1PlayerIndexComIndex('dec1Player3Com1', 3, 1);
 dec1PlayerIndexComIndex('dec1Player3Com2', 3, 2);
 dec1PlayerIndexComIndex('dec1Player3Com3', 3, 3);
+dec1PlayerIndexComIndex('dec1Player3Com4', 3, 4);
+dec1PlayerIndexComIndex('dec1Player3Com5', 3, 5);
+
+dec1PlayerIndexComIndex('dec1Player4Com0', 4, 0);
+dec1PlayerIndexComIndex('dec1Player4Com1', 4, 1);
+dec1PlayerIndexComIndex('dec1Player4Com2', 4, 2);
+dec1PlayerIndexComIndex('dec1Player4Com3', 4, 3);
+dec1PlayerIndexComIndex('dec1Player4Com4', 4, 4);
+dec1PlayerIndexComIndex('dec1Player4Com5', 4, 5);
+
+dec1PlayerIndexComIndex('dec1Player5Com0', 5, 0);
+dec1PlayerIndexComIndex('dec1Player5Com1', 5, 1);
+dec1PlayerIndexComIndex('dec1Player5Com2', 5, 2);
+dec1PlayerIndexComIndex('dec1Player5Com3', 5, 3);
+dec1PlayerIndexComIndex('dec1Player5Com4', 5, 4);
+dec1PlayerIndexComIndex('dec1Player5Com5', 5, 5);
 
 
 
@@ -420,21 +466,43 @@ inc1PlayerIndexComIndex('inc1Player0Com0', 0, 0);
 inc1PlayerIndexComIndex('inc1Player0Com1', 0, 1);
 inc1PlayerIndexComIndex('inc1Player0Com2', 0, 2);
 inc1PlayerIndexComIndex('inc1Player0Com3', 0, 3);
+inc1PlayerIndexComIndex('inc1Player0Com4', 0, 4);
+inc1PlayerIndexComIndex('inc1Player0Com5', 0, 5);
 
 inc1PlayerIndexComIndex('inc1Player1Com0', 1, 0);
 inc1PlayerIndexComIndex('inc1Player1Com1', 1, 1);
 inc1PlayerIndexComIndex('inc1Player1Com2', 1, 2);
 inc1PlayerIndexComIndex('inc1Player1Com3', 1, 3);
+inc1PlayerIndexComIndex('inc1Player1Com4', 1, 4);
+inc1PlayerIndexComIndex('inc1Player1Com5', 1, 5);
 
 inc1PlayerIndexComIndex('inc1Player2Com0', 2, 0);
 inc1PlayerIndexComIndex('inc1Player2Com1', 2, 1);
 inc1PlayerIndexComIndex('inc1Player2Com2', 2, 2);
 inc1PlayerIndexComIndex('inc1Player2Com3', 2, 3);
+inc1PlayerIndexComIndex('inc1Player2Com4', 2, 4);
+inc1PlayerIndexComIndex('inc1Player2Com5', 2, 5);
 
 inc1PlayerIndexComIndex('inc1Player3Com0', 3, 0);
 inc1PlayerIndexComIndex('inc1Player3Com1', 3, 1);
 inc1PlayerIndexComIndex('inc1Player3Com2', 3, 2);
 inc1PlayerIndexComIndex('inc1Player3Com3', 3, 3);
+inc1PlayerIndexComIndex('inc1Player3Com4', 3, 4);
+inc1PlayerIndexComIndex('inc1Player3Com5', 3, 5);
+
+inc1PlayerIndexComIndex('inc1Player4Com0', 4, 0);
+inc1PlayerIndexComIndex('inc1Player4Com1', 4, 1);
+inc1PlayerIndexComIndex('inc1Player4Com2', 4, 2);
+inc1PlayerIndexComIndex('inc1Player4Com3', 4, 3);
+inc1PlayerIndexComIndex('inc1Player4Com4', 4, 4);
+inc1PlayerIndexComIndex('inc1Player4Com5', 4, 5);
+
+inc1PlayerIndexComIndex('inc1Player5Com0', 5, 0);
+inc1PlayerIndexComIndex('inc1Player5Com1', 5, 1);
+inc1PlayerIndexComIndex('inc1Player5Com2', 5, 2);
+inc1PlayerIndexComIndex('inc1Player5Com3', 5, 3);
+inc1PlayerIndexComIndex('inc1Player5Com4', 5, 4);
+inc1PlayerIndexComIndex('inc1Player5Com5', 5, 5);
 
 
 
@@ -442,21 +510,43 @@ dec5PlayerIndexComIndex('dec5Player0Com0', 0, 0);
 dec5PlayerIndexComIndex('dec5Player0Com1', 0, 1);
 dec5PlayerIndexComIndex('dec5Player0Com2', 0, 2);
 dec5PlayerIndexComIndex('dec5Player0Com3', 0, 3);
+dec5PlayerIndexComIndex('dec5Player0Com4', 0, 4);
+dec5PlayerIndexComIndex('dec5Player0Com5', 0, 5);
 
 dec5PlayerIndexComIndex('dec5Player1Com0', 1, 0);
 dec5PlayerIndexComIndex('dec5Player1Com1', 1, 1);
 dec5PlayerIndexComIndex('dec5Player1Com2', 1, 2);
 dec5PlayerIndexComIndex('dec5Player1Com3', 1, 3);
+dec5PlayerIndexComIndex('dec5Player1Com4', 1, 4);
+dec5PlayerIndexComIndex('dec5Player1Com5', 1, 5);
 
 dec5PlayerIndexComIndex('dec5Player2Com0', 2, 0);
 dec5PlayerIndexComIndex('dec5Player2Com1', 2, 1);
 dec5PlayerIndexComIndex('dec5Player2Com2', 2, 2);
 dec5PlayerIndexComIndex('dec5Player2Com3', 2, 3);
+dec5PlayerIndexComIndex('dec5Player2Com4', 2, 4);
+dec5PlayerIndexComIndex('dec5Player2Com5', 2, 5);
 
 dec5PlayerIndexComIndex('dec5Player3Com0', 3, 0);
 dec5PlayerIndexComIndex('dec5Player3Com1', 3, 1);
 dec5PlayerIndexComIndex('dec5Player3Com2', 3, 2);
 dec5PlayerIndexComIndex('dec5Player3Com3', 3, 3);
+dec5PlayerIndexComIndex('dec5Player3Com4', 3, 4);
+dec5PlayerIndexComIndex('dec5Player3Com5', 3, 5);
+
+dec5PlayerIndexComIndex('dec5Player4Com0', 4, 0);
+dec5PlayerIndexComIndex('dec5Player4Com1', 4, 1);
+dec5PlayerIndexComIndex('dec5Player4Com2', 4, 2);
+dec5PlayerIndexComIndex('dec5Player4Com3', 4, 3);
+dec5PlayerIndexComIndex('dec5Player4Com4', 4, 4);
+dec5PlayerIndexComIndex('dec5Player4Com5', 4, 5);
+
+dec5PlayerIndexComIndex('dec5Player5Com0', 5, 0);
+dec5PlayerIndexComIndex('dec5Player5Com1', 5, 1);
+dec5PlayerIndexComIndex('dec5Player5Com2', 5, 2);
+dec5PlayerIndexComIndex('dec5Player5Com3', 5, 3);
+dec5PlayerIndexComIndex('dec5Player5Com4', 5, 4);
+dec5PlayerIndexComIndex('dec5Player5Com5', 5, 5);
 
 
 
@@ -464,266 +554,44 @@ inc5PlayerIndexComIndex('inc5Player0Com0', 0, 0);
 inc5PlayerIndexComIndex('inc5Player0Com1', 0, 1);
 inc5PlayerIndexComIndex('inc5Player0Com2', 0, 2);
 inc5PlayerIndexComIndex('inc5Player0Com3', 0, 3);
+inc5PlayerIndexComIndex('inc5Player0Com4', 0, 4);
+inc5PlayerIndexComIndex('inc5Player0Com5', 0, 5);
 
 inc5PlayerIndexComIndex('inc5Player1Com0', 1, 0);
 inc5PlayerIndexComIndex('inc5Player1Com1', 1, 1);
 inc5PlayerIndexComIndex('inc5Player1Com2', 1, 2);
 inc5PlayerIndexComIndex('inc5Player1Com3', 1, 3);
+inc5PlayerIndexComIndex('inc5Player1Com4', 1, 4);
+inc5PlayerIndexComIndex('inc5Player1Com5', 1, 5);
 
 inc5PlayerIndexComIndex('inc5Player2Com0', 2, 0);
 inc5PlayerIndexComIndex('inc5Player2Com1', 2, 1);
 inc5PlayerIndexComIndex('inc5Player2Com2', 2, 2);
 inc5PlayerIndexComIndex('inc5Player2Com3', 2, 3);
+inc5PlayerIndexComIndex('inc5Player2Com4', 2, 4);
+inc5PlayerIndexComIndex('inc5Player2Com5', 2, 5);
 
 inc5PlayerIndexComIndex('inc5Player3Com0', 3, 0);
 inc5PlayerIndexComIndex('inc5Player3Com1', 3, 1);
 inc5PlayerIndexComIndex('inc5Player3Com2', 3, 2);
 inc5PlayerIndexComIndex('inc5Player3Com3', 3, 3);
+inc5PlayerIndexComIndex('inc5Player3Com4', 3, 4);
+inc5PlayerIndexComIndex('inc5Player3Com5', 3, 5);
 
-$('.inc1Com0').click(function() {
-    event.preventDefault();
-    hp[0] = hp[0] + 1;
-    if(hp[0]>=30){
-        hp[0]=30;
-    }
-    commanderHp[0][0]= commanderHp[0][0] + 1;
-    if(commanderHp[0][0]>=15){
-        commanderHp[0][0]=15;
-    }
-    row++;
-    $('tbody').append($("<tr></tr>").addClass('tableRow'+row));
-    $('.tableRow'+row).append($("<th></th>").text(row).attr( "scope", "row" ));
-    $('.tableRow'+row).append($("<td></td>").text(hp[0]));
-    for(i=1; i<pickedCommanders.length; i++){
-        $('.tableRow'+row).append($("<td></td>").text(commanderHp[0][i]));
-    }
-});
+inc5PlayerIndexComIndex('inc5Player4Com0', 4, 0);
+inc5PlayerIndexComIndex('inc5Player4Com1', 4, 1);
+inc5PlayerIndexComIndex('inc5Player4Com2', 4, 2);
+inc5PlayerIndexComIndex('inc5Player4Com3', 4, 3);
+inc5PlayerIndexComIndex('inc5Player4Com4', 4, 4);
+inc5PlayerIndexComIndex('inc5Player4Com5', 4, 5);
 
-$('.dec5Com0').click(function() {
-    event.preventDefault();
-    hp[0] = hp[0] - 5;
-    commanderHp[0][0]= commanderHp[0][0] - 5;
-    row++;
-    $('tbody').append($("<tr></tr>").addClass('tableRow'+row));
-    $('.tableRow'+row).append($("<th></th>").text(row).attr( "scope", "row" ));
-    $('.tableRow'+row).append($("<td></td>").text(hp[0]));
-    for(i=1; i<pickedCommanders.length; i++){
-        $('.tableRow'+row).append($("<td></td>").text(commanderHp[0][i]));
-    }
-});
+inc5PlayerIndexComIndex('inc5Player5Com0', 5, 0);
+inc5PlayerIndexComIndex('inc5Player5Com1', 5, 1);
+inc5PlayerIndexComIndex('inc5Player5Com2', 5, 2);
+inc5PlayerIndexComIndex('inc5Player5Com3', 5, 3);
+inc5PlayerIndexComIndex('inc5Player5Com4', 5, 4);
+inc5PlayerIndexComIndex('inc5Player5Com5', 5, 5);
 
-$('.inc5Com0').click(function() {
-    event.preventDefault();
-    hp[0] = hp[0] + 5;
-    if(hp[0]>=30){
-        hp[0]=30;
-    }
-    commanderHp[0][0]= commanderHp[0][0] + 5;
-    if(commanderHp[0][0]>=15){
-        commanderHp[0][0]=15;
-    }
-    row++;
-    $('tbody').append($("<tr></tr>").addClass('tableRow'+row));
-    $('.tableRow'+row).append($("<th></th>").text(row).attr( "scope", "row" ));
-    $('.tableRow'+row).append($("<td></td>").text(hp[0]));
-    for(i=1; i<pickedCommanders.length; i++){
-        $('.tableRow'+row).append($("<td></td>").text(commanderHp[0][i]));
-    }
-});
-/*---------------------------------- COMMANDER2 BUTTONS----------------------------------*/
-$('.dec1Com1').click(function() {
-    event.preventDefault();
-    hp[0] = hp[0] - 1;
-    commanderHp[0][1]= commanderHp[0][1] - 1;
-    row++;
-    $('tbody').append($("<tr></tr>").addClass('tableRow'+row));
-    $('.tableRow'+row).append($("<th></th>").text(row).attr( "scope", "row" ));
-    $('.tableRow'+row).append($("<td></td>").text(hp[0]));
-    for(i=1; i<pickedCommanders.length; i++){
-        $('.tableRow'+row).append($("<td></td>").text(commanderHp[0][i]));
-    }
-});
-
-$('.inc1Com1').click(function() {
-    event.preventDefault();
-    hp[0] = hp[0] + 1;
-    if(hp[0]>=30){
-        hp[0]=30;
-    }
-    commanderHp[0][1]= commanderHp[0][1] + 1;
-    if(commanderHp[0][1]>=15){
-        commanderHp[0][1]=15;
-    }
-    row++;
-    $('tbody').append($("<tr></tr>").addClass('tableRow'+row));
-    $('.tableRow'+row).append($("<th></th>").text(row).attr( "scope", "row" ));
-    $('.tableRow'+row).append($("<td></td>").text(hp[0]));
-    for(i=1; i<pickedCommanders.length; i++){
-        $('.tableRow'+row).append($("<td></td>").text(commanderHp[0][i]));
-    }
-});
-
-$('.dec5Com1').click(function() {
-    event.preventDefault();
-    hp[0] = hp[0] - 5;
-    commanderHp[0][1]= commanderHp[0][1] - 5;
-    row++;
-    $('tbody').append($("<tr></tr>").addClass('tableRow'+row));
-    $('.tableRow'+row).append($("<th></th>").text(row).attr( "scope", "row" ));
-    $('.tableRow'+row).append($("<td></td>").text(hp[0]));
-    for(i=1; i<pickedCommanders.length; i++){
-        $('.tableRow'+row).append($("<td></td>").text(commanderHp[0][i]));
-    }
-});
-
-$('.inc5Com1').click(function() {
-    event.preventDefault();
-    hp[0] = hp[0] + 5;
-    if(hp[0]>=30){
-        hp[0]=30;
-    }
-    commanderHp[0][1]= commanderHp[0][1] + 5;
-    if(commanderHp[0][1]>=15){
-        commanderHp[0][1]=15;
-    }
-    row++;
-    $('tbody').append($("<tr></tr>").addClass('tableRow'+row));
-    $('.tableRow'+row).append($("<th></th>").text(row).attr( "scope", "row" ));
-    $('.tableRow'+row).append($("<td></td>").text(hp[0]));
-    for(i=1; i<pickedCommanders.length; i++){
-        $('.tableRow'+row).append($("<td></td>").text(commanderHp[0][i]));
-    }
-});
-
-/*---------------------------------- COMMANDER3 BUTTONS----------------------------------*/
-$('.dec1Com2').click(function() {
-    event.preventDefault();
-    hp[0] = hp[0] - 1;
-    commanderHp[0][2]= commanderHp[0][2] - 1;
-    row++;
-    $('tbody').append($("<tr></tr>").addClass('tableRow'+row));
-    $('.tableRow'+row).append($("<th></th>").text(row).attr( "scope", "row" ));
-    $('.tableRow'+row).append($("<td></td>").text(hp[0]));
-    for(i=1; i<pickedCommanders.length; i++){
-        $('.tableRow'+row).append($("<td></td>").text(commanderHp[0][i]));
-    }
-});
-
-$('.inc1Com2').click(function() {
-    event.preventDefault();
-    hp[0] = hp[0] + 1;
-    if(hp[0]>=30){
-        hp[0]=30;
-    }
-    commanderHp[0][2]= commanderHp[0][2] + 1;
-    if(commanderHp[0][2]>=15){
-        commanderHp[0][2]=15;
-    }
-    row++;
-    $('tbody').append($("<tr></tr>").addClass('tableRow'+row));
-    $('.tableRow'+row).append($("<th></th>").text(row).attr( "scope", "row" ));
-    $('.tableRow'+row).append($("<td></td>").text(hp[0]));
-    for(i=1; i<pickedCommanders.length; i++){
-        $('.tableRow'+row).append($("<td></td>").text(commanderHp[0][i]));
-    }
-});
-
-$('.dec5Com2').click(function() {
-    event.preventDefault();
-    hp[0] = hp[0] - 5;
-    commanderHp[0][2]= commanderHp[0][2] - 5;
-    row++;
-    $('tbody').append($("<tr></tr>").addClass('tableRow'+row));
-    $('.tableRow'+row).append($("<th></th>").text(row).attr( "scope", "row" ));
-    $('.tableRow'+row).append($("<td></td>").text(hp[0]));
-    for(i=1; i<pickedCommanders.length; i++){
-        $('.tableRow'+row).append($("<td></td>").text(commanderHp[0][i]));
-    }
-});
-
-$('.inc5Com2').click(function() {
-    event.preventDefault();
-    hp[0] = hp[0] + 5;
-    if(hp[0]>=30){
-        hp[0]=30;
-    }
-    commanderHp[0][2]= commanderHp[0][2] + 5;
-    if(commanderHp[0][2]>=15){
-        commanderHp[0][2]=15;
-    }
-    row++;
-    $('tbody').append($("<tr></tr>").addClass('tableRow'+row));
-    $('.tableRow'+row).append($("<th></th>").text(row).attr( "scope", "row" ));
-    $('.tableRow'+row).append($("<td></td>").text(hp[0]));
-    for(i=1; i<pickedCommanders.length; i++){
-        $('.tableRow'+row).append($("<td></td>").text(commanderHp[0][i]));
-    }
-});
-
-/*---------------------------------- COMMANDER4 BUTTONS----------------------------------*/
-$('.dec1Com3').click(function() {
-    event.preventDefault();
-    hp[0] = hp[0] - 1;
-    commanderHp[0][3]= commanderHp[0][3] - 1;
-    row++;
-    $('tbody').append($("<tr></tr>").addClass('tableRow'+row));
-    $('.tableRow'+row).append($("<th></th>").text(row).attr( "scope", "row" ));
-    $('.tableRow'+row).append($("<td></td>").text(hp[0]));
-    for(i=1; i<pickedCommanders.length; i++){
-        $('.tableRow'+row).append($("<td></td>").text(commanderHp[0][i]));
-    }
-});
-
-$('.inc1Com3').click(function() {
-    event.preventDefault();
-    hp[0] = hp[0] + 1;
-    if(hp[0]>=30){
-        hp[0]=30;
-    }
-    commanderHp[0][3]= commanderHp[0][3] + 1;
-    if(commanderHp[0][3]>=15){
-        commanderHp[0][3]=15;
-    }
-    row++;
-    $('tbody').append($("<tr></tr>").addClass('tableRow'+row));
-    $('.tableRow'+row).append($("<th></th>").text(row).attr( "scope", "row" ));
-    $('.tableRow'+row).append($("<td></td>").text(hp[0]));
-    for(i=1; i<pickedCommanders.length; i++){
-        $('.tableRow'+row).append($("<td></td>").text(commanderHp[0][i]));
-    }
-});
-
-$('.dec5Com3').click(function() {
-    event.preventDefault();
-    hp[0] = hp[0] - 5;
-    commanderHp[0][3]= commanderHp[0][3] - 5;
-    row++;
-    $('tbody').append($("<tr></tr>").addClass('tableRow'+row));
-    $('.tableRow'+row).append($("<th></th>").text(row).attr( "scope", "row" ));
-    $('.tableRow'+row).append($("<td></td>").text(hp[0]));
-    for(i=1; i<pickedCommanders.length; i++){
-        $('.tableRow'+row).append($("<td></td>").text(commanderHp[0][i]));
-    }
-});
-
-$('.inc5Com3').click(function() {
-    event.preventDefault();
-    hp[0] = hp[0] + 5;
-    if(hp[0]>=30){
-        hp[0]=30;
-    }
-    commanderHp[0][3]= commanderHp[0][3] + 5;
-    if(commanderHp[0][3]>=15){
-        commanderHp[0][3]=15;
-    }
-    row++;
-    $('tbody').append($("<tr></tr>").addClass('tableRow'+row));
-    $('.tableRow'+row).append($("<th></th>").text(row).attr( "scope", "row" ));
-    $('.tableRow'+row).append($("<td></td>").text(hp[0]));
-    for(i=1; i<pickedCommanders.length; i++){
-        $('.tableRow'+row).append($("<td></td>").text(commanderHp[0][i]));
-    }
-});
 /*---------------------------------- COMMANDER BUTTONS----------------------------------*/
 
 /*---------------------------------- HP BUTTONS----------------------------------*/
@@ -732,6 +600,10 @@ function dec1HpPlayerIndex(name, index){
     $('.'+name).click(function() {
         event.preventDefault();
         hp[index] = hp[index] - 1;
+        if(hp[index] <= 0){
+            $('.tableDiv'+index).css("display", "none");
+            placementArr.unshift(players[index]);
+        }
 
         $('.tbody'+index).empty();
         $('.tbody'+index).append($("<tr></tr>").addClass('tableRowBody'+index));
@@ -826,7 +698,10 @@ function dec5HpPlayerIndex(name, index){
     $('.'+name).click(function() {
         event.preventDefault();
         hp[index] = hp[index] - 5;
-
+        if(hp[index] <= 0){
+            $('.tableDiv'+index).css("display", "none");
+            placementArr.unshift(players[index]);
+        }
         $('.tbody'+index).empty();
         $('.tbody'+index).append($("<tr></tr>").addClass('tableRowBody'+index));
         $('.tableRowBody'+index).append($("<th></th>").attr( "scope", "row" ));
@@ -916,70 +791,36 @@ function inc5HpPlayerIndex(name, index){
     });
 }
 
-
 dec1HpPlayerIndex('dec1HpPlayer0', 0);
 dec1HpPlayerIndex('dec1HpPlayer1', 1);
 dec1HpPlayerIndex('dec1HpPlayer2', 2);
 dec1HpPlayerIndex('dec1HpPlayer3', 3);
+dec1HpPlayerIndex('dec1HpPlayer4', 4);
+dec1HpPlayerIndex('dec1HpPlayer5', 5);
 
 inc1HpPlayerIndex('inc1HpPlayer0', 0);
 inc1HpPlayerIndex('inc1HpPlayer1', 1);
 inc1HpPlayerIndex('inc1HpPlayer2', 2);
 inc1HpPlayerIndex('inc1HpPlayer3', 3);
+inc1HpPlayerIndex('inc1HpPlayer4', 4);
+inc1HpPlayerIndex('inc1HpPlayer5', 5);
 
 dec5HpPlayerIndex('dec5HpPlayer0', 0);
 dec5HpPlayerIndex('dec5HpPlayer1', 1);
 dec5HpPlayerIndex('dec5HpPlayer2', 2);
 dec5HpPlayerIndex('dec5HpPlayer3', 3);
+dec5HpPlayerIndex('dec5HpPlayer4', 4);
+dec5HpPlayerIndex('dec5HpPlayer5', 5);
 
 inc5HpPlayerIndex('inc5HpPlayer0', 0);
 inc5HpPlayerIndex('inc5HpPlayer1', 1);
 inc5HpPlayerIndex('inc5HpPlayer2', 2);
 inc5HpPlayerIndex('inc5HpPlayer3', 3);
+inc5HpPlayerIndex('inc5HpPlayer4', 4);
+inc5HpPlayerIndex('inc5HpPlayer5', 5);
 
 /*---------------------------------- /HP BUTTONS----------------------------------*/
 
-/*
+/*---------------------------------- PLACEMENT MODAL----------------------------------*/
 
-for(j=0; j<players.length; j++){
 
-    $('.table'+j).append($("<tbody></tbody>").addClass('tbody'+j));
-    $('.tbody'+j).append($("<tr></tr>").addClass('tableRow'+row+j));
-    $('.tableRow'+row+j).append($("<th></th>").text(row).attr( "scope", "row" ));
-    $('.tableRow'+row+j).append($("<td></td>").text(hp[j]));
-    for(i=0; i<pickedCommanders.length; i++){
-        if(j==0){
-            if(i==0){
-                i++;
-                $('.tableRow'+row+j).append($("<td></td>").text(commanderHp[j][i]));
-            } else {
-                $('.tableRow'+row+j).append($("<td></td>").text(commanderHp[j][i]));
-            }
-        }
-        if(j==1){
-            if(i==1){
-                i++;
-                $('.tableRow'+row+j).append($("<td></td>").text(commanderHp[j][i]));
-            } else {
-                $('.tableRow'+row+j).append($("<td></td>").text(commanderHp[j][i]));
-            }
-        }
-        if(j==2){
-            if(i==2){
-                i++;
-                $('.tableRow'+row+j).append($("<td></td>").text(commanderHp[j][i]));
-            } else {
-                $('.tableRow'+row+j).append($("<td></td>").text(commanderHp[j][i]));
-            }
-        }
-        if(j==3){
-            if(i==3){
-                i++;
-                $('.tableRow'+row+j).append($("<td></td>").text(commanderHp[j][i]));
-            } else {
-                $('.tableRow'+row+j).append($("<td></td>").text(commanderHp[j][i]));
-            }
-        }
-    }
-
-*/

@@ -1,9 +1,9 @@
 /*---------------------------------- VARIABLES----------------------------------*/
 
 var players=[];
-var colors=['red', 'blue', 'yellow', 'green', 'black'];
-var commanders=['Nissa Revane1', 'Nissa Revane2', 'Nissa Revane3', 'Nissa Revane4', 'Nissa Revane5'];
-var pickedBorder=['firstPickBorder', 'secondPickBorder', 'thirdPickBorder', 'fourthPickBorder', 'fifthPickBorder'];
+var colors=['red', 'blue', 'yellow', 'green', 'black', 'violet'];
+var commanders=['Nissa Revane1', 'Nissa Revane2', 'Nissa Revane3', 'Nissa Revane4', 'Nissa Revane5', 'Nissa Revane6'];
+var pickedBorder=['firstPickBorder', 'secondPickBorder', 'thirdPickBorder', 'fourthPickBorder', 'fifthPickBorder', 'sixthPickBorder'];
 var pickedCommanders=[];
 var gameArr=[];
 var i=0;
@@ -42,6 +42,7 @@ $('#btnNewGame').click(function() {
         $('#commander3').removeClass(pickedBorder[k]);
         $('#commander4').removeClass(pickedBorder[k]);
         $('#commander5').removeClass(pickedBorder[k]);
+        $('#commander6').removeClass(pickedBorder[k]);
     }
 });
 
@@ -112,42 +113,22 @@ $('#btnRandomizeOrder').click(function() {
     $('#btnCreateNewGame').show();
 });
 
-/*---------------------------------- BTNS IN MODAL THAT LETS PLAYER RANDOMLY REROLL COMMANDER IN LOBBY AFTER RANDOMIZE (PROLLY WILL HAVE TO REFACTOR) ----------------------------------*/
+/*---------------------------------- BTNS IN MODAL THAT LETS PLAYER RANDOMLY REROLL COMMANDER IN LOBBY AFTER RANDOMIZE ----------------------------------*/
+function ReRoll(index){
+    $('.reRoll').on('click', '#btnReRoll'+index, function(e) {
+        e.preventDefault();
+        $('#btnReRoll'+index).addClass('disabled').attr("disabled", "disabled");
+        $('#olLobbyCommander'+index).empty();
+        $('#olLobbyCommander'+index).text(randomReRoll(index));
+    });
+}
 
-$('.reRoll').on('click', '#btnReRoll0', function(e) {
-    e.preventDefault();
-    $('#btnReRoll0').addClass('disabled').attr("disabled", "disabled");
-    $('#olLobbyCommander0').empty();
-    $('#olLobbyCommander0').text(randomReRoll(0));
-});
-
-$('.reRoll').on('click', '#btnReRoll1', function(e) {
-    e.preventDefault();
-    $('#btnReRoll1').addClass('disabled').attr("disabled", "disabled");
-    $('#olLobbyCommander1').empty();
-    $('#olLobbyCommander1').text(randomReRoll(1));
-});
-
-$('.reRoll').on('click', '#btnReRoll2', function(e) {
-    e.preventDefault();
-    $('#btnReRoll2').addClass('disabled').attr("disabled", "disabled");
-    $('#olLobbyCommander2').empty();
-    $('#olLobbyCommander2').text(randomReRoll(2));
-});
-
-$('.reRoll').on('click', '#btnReRoll3', function(e) {
-    e.preventDefault();
-    $('#btnReRoll3').addClass('disabled').attr("disabled", "disabled");
-    $('#olLobbyCommander3').empty();
-    $('#olLobbyCommander3').text(randomReRoll(3));
-});
-
-$('.reRoll').on('click', '#btnReRoll4', function(e) {
-    e.preventDefault();
-    $('#btnReRoll4').addClass('disabled').attr("disabled", "disabled");
-    $('#olLobbyCommander4').empty();
-    $('#olLobbyCommander4').text(randomReRoll(4));
-});
+ReRoll(0);
+ReRoll(1);
+ReRoll(2);
+ReRoll(3);
+ReRoll(4);
+ReRoll(5);
 
 /*---------------------------------- BTN IN MODAL THAT LETS PEOPLE PICK COMMANDERS THEMSELVES ----------------------------------*/
 $('#pickCommander').click(function() {
@@ -162,87 +143,33 @@ $('#pickCommander').click(function() {
     $('#pickCommander').hide();
 });
 
-/*---------------------------------- BORDER AND PICKED COMMANDER ARRAY ON CLICK (PROLLY WILL HAVE TO REFACTOR) ----------------------------------*/
-$('#commander1').click(function() {
-    event.preventDefault();
-    $('#commander1').addClass(pickedBorder[j]);
-    pickedCommanders[j]=$('#value1').text();
-    $('#commanderLobby').append($("<ol></ol>").text(pickedCommanders[j]));
-    $('.playerPickPlayer').empty();
-    $('.playerPickColor').removeClass(colors[j]);
-    j++;
-    if(j<players.length){
-        $('.playerPickPlayer').text(players[j]);
-        $('.playerPickColor').addClass(colors[j]);
-    } else {
-        $('#players').modal('show');
-    }
-    $('#btnRandomizeOrder').show();
-});
+/*---------------------------------- BORDER AND PICKED COMMANDER ARRAY ON CLICK ----------------------------------*/
+function pickedCommander(index) {
+    $('#commander'+index).click(function() {
+        event.preventDefault();
+        $('#commander'+index).addClass(pickedBorder[j]);
+        pickedCommanders[j]=$('#value'+index).text();
+        $('#commanderLobby').append($("<ol></ol>").text(pickedCommanders[j]));
+        $('.playerPickPlayer').empty();
+        $('.playerPickColor').removeClass(colors[j]);
+        j++;
+        if(j<players.length){
+            $('.playerPickPlayer').text(players[j]);
+            $('.playerPickColor').addClass(colors[j]);
+        } else {
+            $('#players').modal('show');
+        }
+        $('#btnRandomizeOrder').show();
+    });
+}
 
-$('#commander2').click(function() {
-    event.preventDefault();
-    $('#commander2').addClass(pickedBorder[j]);
-    pickedCommanders[j]=$('#value2').text();
-    $('#commanderLobby').append($("<ol></ol>").text(pickedCommanders[j]));
-    $('.playerPickPlayer').empty();
-    $('.playerPickColor').removeClass(colors[j]);
-    j++;
-    if(j<players.length){
-        $('.playerPickPlayer').text(players[j]);
-        $('.playerPickColor').addClass(colors[j]);
-    } else {
-        $('#players').modal('show');
-    }
-});
+pickedCommander(1);
+pickedCommander(2);
+pickedCommander(3);
+pickedCommander(4);
+pickedCommander(5);
+pickedCommander(6);
 
-$('#commander3').click(function() {
-    event.preventDefault();
-    $('#commander3').addClass(pickedBorder[j]);
-    pickedCommanders[j]=$('#value3').text();
-    $('#commanderLobby').append($("<ol></ol>").text(pickedCommanders[j]));
-    $('.playerPickPlayer').empty();
-    $('.playerPickColor').removeClass(colors[j]);
-    j++;
-    if(j<players.length){
-        $('.playerPickPlayer').text(players[j]);
-        $('.playerPickColor').addClass(colors[j]);
-    } else {
-        $('#players').modal('show');
-    }
-});
-
-$('#commander4').click(function() {
-    event.preventDefault();
-    $('#commander4').addClass(pickedBorder[j]);
-    pickedCommanders[j]=$('#value4').text();
-    $('#commanderLobby').append($("<ol></ol>").text(pickedCommanders[j]));
-    $('.playerPickPlayer').empty();
-    $('.playerPickColor').removeClass(colors[j]);
-    j++;
-    if(j<players.length){
-        $('.playerPickPlayer').text(players[j]);
-        $('.playerPickColor').addClass(colors[j]);
-    } else {
-        $('#players').modal('show');
-    }
-});
-
-$('#commander5').click(function() {
-    event.preventDefault();
-    $('#commander5').addClass(pickedBorder[j]);
-    pickedCommanders[j]=$('#value5').text();
-    $('#commanderLobby').append($("<ol></ol>").text(pickedCommanders[j]));
-    $('.playerPickPlayer').empty();
-    $('.playerPickColor').removeClass(colors[j]);
-    j++;
-    if(j<players.length){
-        $('.playerPickPlayer').text(players[j]);
-        $('.playerPickColor').addClass(colors[j]);
-    } else {
-        $('#players').modal('show');
-    }
-});
 /*---------------------------------- /BORDER AND PICKED COMMANDER ARRAY ON CLICK (PROLLY WILL HAVE TO REFACTOR) ----------------------------------*/
 
 /*---------------------------------- BTN IN MODAL THAT STARTS A NEW GAME ON A DIFFERENT PAGE ----------------------------------*/

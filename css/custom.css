@@ -186,6 +186,13 @@ body {
     margin-bottom: 33px;
 }
 
+.violet {
+    width: 20px;
+    height: 10px;
+    background-color: violet;
+    margin-bottom: 33px;
+}
+
 .firstPickBorder {
     border: solid 3px red;
 }
@@ -204,6 +211,10 @@ body {
 
 .fifthPickBorder {
     border: solid 3px black;
+}
+
+.sixthPickBorder {
+    border: solid 3px violet;
 }
 
 

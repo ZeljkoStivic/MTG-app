@@ -2,7 +2,7 @@
 
 var players=[];
 var colors=['red', 'blue', 'yellow', 'green', 'black', 'violet'];
-var commanders=['Jori En, Ruin Diver', 'Sidisi, Brood Tyrant', 'Yasova Dragonclaw', 'Alesha, Who Smiles at Death', 'Derevi, Empyrial Tactician', 'Prossh, Skyraider of Kher'];
+var commanders=['Jori En Ruin Diver', 'Sidisi Brood Tyrant', 'Yasova Dragonclaw', 'Alesha Who Smiles at Death', 'Derevi Empyrial Tactician', 'Prossh Skyraider of Kher'];
 var pickedBorder=['firstPickBorder', 'secondPickBorder', 'thirdPickBorder', 'fourthPickBorder', 'fifthPickBorder', 'sixthPickBorder'];
 var pickedCommanders=[];
 var gameArr=[];
@@ -38,6 +38,7 @@ $('#btnNewGame').click(function() {
     $('#btnCreateNewGame').hide();
     $('#PlayerModalLobby').hide();
     $('#divPlayOrder').hide();
+    $('#btnRandomizeOrder').hide();
     for(var k=0; k<pickedBorder.length; k++){
         $('#commander1').removeClass(pickedBorder[k]);
         $('#commander2').removeClass(pickedBorder[k]);
@@ -96,27 +97,6 @@ $('#randomizeCommander').click(function() {
     $('#btnRandomizeOrder').show();
 });
 
-/*---------------------------------- BTN IN MODAL THAT RANDOMIZES ORDER  ----------------------------------*/
-$('#btnRandomizeOrder').click(function() {
-    event.preventDefault();
-    shufflePlayers(players, colors, pickedCommanders);
-    players=gameArr[0];
-    $.cookie('players', players, { expires: 7, path: '/' });
-    colors=gameArr[1];
-    $.cookie('colors', colors, { expires: 7, path: '/' });
-    pickedCommanders=gameArr[2];
-    $.cookie('pickedCommanders', pickedCommanders, { expires: 7, path: '/' });
-    for(i=0; i<players.length; i++){
-        $('#divOrderNumber').append($("<ol></ol>").text((i+1)+'. '));
-        $('#divOrderPlayer').append($("<ol></ol>").text(players[i]));
-        $('#divOrderColor').append($("<div></div>").addClass(colors[i]));
-        $('#divOrderCommander').append($("<ol></ol>").text(pickedCommanders[i]));
-    }
-    $('#PlayerModalLobby').hide();
-    $('#divPlayOrder').show();
-    $('#btnCreateNewGame').show();
-});
-
 /*---------------------------------- BTNS IN MODAL THAT LETS PLAYER RANDOMLY REROLL COMMANDER IN LOBBY AFTER RANDOMIZE ----------------------------------*/
 function ReRoll(index){
     $('.reRoll').on('click', '#btnReRoll'+index, function(e) {
@@ -173,6 +153,30 @@ pickedCommander(3);
 pickedCommander(4);
 pickedCommander(5);
 pickedCommander(6);
+
+/*---------------------------------- BTN IN MODAL THAT RANDOMIZES ORDER  ----------------------------------*/
+$('#btnRandomizeOrder').click(function() {
+    event.preventDefault();
+    $.removeCookie('players', { path: '/' });
+    $.removeCookie('colors', { path: '/' });
+    $.removeCookie('pickedCommanders', { path: '/' });
+    shufflePlayers(players, colors, pickedCommanders);
+    players=gameArr[0];
+    $.cookie('players', players, { expires: 7, path: '/' });
+    colors=gameArr[1];
+    $.cookie('colors', colors, { expires: 7, path: '/' });
+    pickedCommanders=gameArr[2];
+    $.cookie('pickedCommanders', pickedCommanders, { expires: 7, path: '/' });
+    for(i=0; i<players.length; i++){
+        $('#divOrderNumber').append($("<ol></ol>").text((i+1)+'. '));
+        $('#divOrderPlayer').append($("<ol></ol>").text(players[i]));
+        $('#divOrderColor').append($("<div></div>").addClass(colors[i]));
+        $('#divOrderCommander').append($("<ol></ol>").text(pickedCommanders[i]));
+    }
+    $('#PlayerModalLobby').hide();
+    $('#divPlayOrder').show();
+    $('#btnCreateNewGame').show();
+});
 
 /*---------------------------------- CUTS TEXT IN COMMANDER CARD IF ITS MORE THAN 250CHARS  ----------------------------------*/
 $('.card-text').each(function() {

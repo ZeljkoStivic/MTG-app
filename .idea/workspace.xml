@@ -2,9 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="aacc078a-2645-414f-905c-58a057863887" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/commanders.html" afterPath="$PROJECT_DIR$/commanders.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/custom.css" afterPath="$PROJECT_DIR$/css/custom.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/commanders.js" afterPath="$PROJECT_DIR$/js/commanders.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -52,8 +49,8 @@
       <file leaf-file-name="commanders.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/commanders.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="394">
-              <caret line="115" column="27" lean-forward="false" selection-start-line="115" selection-start-column="27" selection-end-line="115" selection-end-column="27" />
+            <state relative-caret-position="60">
+              <caret line="4" column="148" lean-forward="true" selection-start-line="4" selection-start-column="148" selection-end-line="4" selection-end-column="148" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -61,11 +58,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="commanders.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="commanders.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/commanders.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="517">
-              <caret line="203" column="41" lean-forward="true" selection-start-line="203" selection-start-column="41" selection-end-line="203" selection-end-column="41" />
+            <state relative-caret-position="1349">
+              <caret line="198" column="38" lean-forward="true" selection-start-line="198" selection-start-column="38" selection-end-line="198" selection-end-column="38" />
               <folding>
                 <element signature="e#8818#8825#1" expanded="true" />
                 <element signature="e#9176#9183#1" expanded="true" />
@@ -74,11 +71,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="game.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="game.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/game.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="5655">
-              <caret line="377" column="12" lean-forward="false" selection-start-line="377" selection-start-column="12" selection-end-line="377" selection-end-column="12" />
+            <state relative-caret-position="225">
+              <caret line="15" column="1" lean-forward="true" selection-start-line="15" selection-start-column="1" selection-end-line="15" selection-end-column="1" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -126,8 +123,8 @@
         <option value="$PROJECT_DIR$/js/game.js" />
         <option value="$PROJECT_DIR$/game.html" />
         <option value="$PROJECT_DIR$/css/custom.css" />
-        <option value="$PROJECT_DIR$/js/commanders.js" />
         <option value="$PROJECT_DIR$/commanders.html" />
+        <option value="$PROJECT_DIR$/js/commanders.js" />
       </list>
     </option>
   </component>
@@ -235,12 +232,12 @@
       <workItem from="1501580388446" duration="35822000" />
       <workItem from="1501744558641" duration="18547000" />
       <workItem from="1501832364686" duration="49381000" />
-      <workItem from="1502109909155" duration="10346000" />
+      <workItem from="1502109909155" duration="11142000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="114096000" />
+    <option name="totallyTimeSpent" value="114892000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
@@ -476,16 +473,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/game.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5655">
-          <caret line="377" column="12" lean-forward="false" selection-start-line="377" selection-start-column="12" selection-end-line="377" selection-end-column="12" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/game.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-90">
@@ -504,23 +491,33 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/commanders.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1349">
+          <caret line="198" column="38" lean-forward="true" selection-start-line="198" selection-start-column="38" selection-end-line="198" selection-end-column="38" />
+          <folding>
+            <element signature="e#8818#8825#1" expanded="true" />
+            <element signature="e#9176#9183#1" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/js/commanders.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="394">
-          <caret line="115" column="27" lean-forward="false" selection-start-line="115" selection-start-column="27" selection-end-line="115" selection-end-column="27" />
+        <state relative-caret-position="60">
+          <caret line="4" column="148" lean-forward="true" selection-start-line="4" selection-start-column="148" selection-end-line="4" selection-end-column="148" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/commanders.html">
+    <entry file="file://$PROJECT_DIR$/js/game.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="517">
-          <caret line="203" column="41" lean-forward="true" selection-start-line="203" selection-start-column="41" selection-end-line="203" selection-end-column="41" />
+        <state relative-caret-position="225">
+          <caret line="15" column="1" lean-forward="true" selection-start-line="15" selection-start-column="1" selection-end-line="15" selection-end-column="1" />
           <folding>
-            <element signature="e#8818#8825#1" expanded="true" />
-            <element signature="e#9176#9183#1" expanded="true" />
+            <element signature="n#!!doc" expanded="true" />
           </folding>
         </state>
       </provider>

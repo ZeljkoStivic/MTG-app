@@ -41,34 +41,72 @@ for(j=0; j<players.length; j++){
     for(i=0; i<pickedCommanders.length; i++){
         if(j==0){
             if(i==0){
-            i++;
-                $('.tableRow'+j).append($("<th></th>").text(players[i] + '  ' + pickedCommanders[i]));
+                i++;
+                if(i<pickedCommanders.length){
+                    $('.tableRow'+j).append($("<th></th>").text(players[i] + ' - ' + pickedCommanders[i]));
+                }
             } else {
-                $('.tableRow'+j).append($("<th></th>").text(players[i] + '  ' + pickedCommanders[i]));
+                $('.tableRow'+j).append($("<th></th>").text(players[i] + ' - ' + pickedCommanders[i]));
             }
         }
         if(j==1){
             if(i==1){
                 i++;
-                $('.tableRow'+j).append($("<th></th>").text(players[i] + '  ' + pickedCommanders[i]));
+                if(i<pickedCommanders.length){
+                    $('.tableRow'+j).append($("<th></th>").text(players[i] + ' - ' + pickedCommanders[i]));
+                }
             } else {
-                $('.tableRow'+j).append($("<th></th>").text(players[i] + '  ' + pickedCommanders[i]));
+                $('.tableRow'+j).append($("<th></th>").text(players[i] + ' - ' + pickedCommanders[i]));
             }
         }
         if(j==2){
             if(i==2){
                 i++;
-                $('.tableRow'+j).append($("<th></th>").text(players[i] + '  ' + pickedCommanders[i]));
+                if(i<pickedCommanders.length){
+                    $('.tableRow'+j).append($("<th></th>").text(players[i] + ' - ' + pickedCommanders[i]));
+                }
             } else {
-                $('.tableRow'+j).append($("<th></th>").text(players[i] + '  ' + pickedCommanders[i]));
+                $('.tableRow'+j).append($("<th></th>").text(players[i] + ' - ' + pickedCommanders[i]));
             }
         }
         if(j==3){
             if(i==3){
                 i++;
-                $('.tableRow'+j).append($("<th></th>").text(players[i] + '  ' + pickedCommanders[i]));
+                if(i<pickedCommanders.length){
+                    $('.tableRow'+j).append($("<th></th>").text(players[i] + ' - ' + pickedCommanders[i]));
+                }
             } else {
-                $('.tableRow'+j).append($("<th></th>").text(players[i] + '  ' + pickedCommanders[i]));
+                $('.tableRow'+j).append($("<th></th>").text(players[i] + ' - ' + pickedCommanders[i]));
+            }
+        }
+        if(j==4){
+            if(i==4){
+                i++;
+                if(i<pickedCommanders.length){
+                    $('.tableRow'+j).append($("<th></th>").text(players[i] + ' - ' + pickedCommanders[i]));
+                }
+            } else {
+                $('.tableRow'+j).append($("<th></th>").text(players[i] + ' - ' + pickedCommanders[i]));
+            }
+        }
+        if(j==5){
+            if(i==5){
+                i++;
+                if(i<pickedCommanders.length){
+                    $('.tableRow'+j).append($("<th></th>").text(players[i] + ' - ' + pickedCommanders[i]));
+                }
+            } else {
+                $('.tableRow'+j).append($("<th></th>").text(players[i] + ' - ' + pickedCommanders[i]));
+            }
+        }
+        if(j==6){
+            if(i==6){
+                i++;
+                if(i<pickedCommanders.length){
+                    $('.tableRow'+j).append($("<th></th>").text(players[i] + ' - ' + pickedCommanders[i]));
+                }
+            } else {
+                $('.tableRow'+j).append($("<th></th>").text(players[i] + ' - ' + pickedCommanders[i]));
             }
         }
 
@@ -81,7 +119,9 @@ for(j=0; j<players.length; j++){
         if(j==0){
             if(i==0){
                 i++;
-                $('.tableRowBody'+j).append($("<td></td>").text(commanderHp[j][i]));
+                if(i<pickedCommanders.length) {
+                    $('.tableRowBody' + j).append($("<td></td>").text(commanderHp[j][i]));
+                }
             } else {
                 $('.tableRowBody'+j).append($("<td></td>").text(commanderHp[j][i]));
             }
@@ -89,7 +129,9 @@ for(j=0; j<players.length; j++){
         if(j==1){
             if(i==1){
                 i++;
-                $('.tableRowBody'+j).append($("<td></td>").text(commanderHp[j][i]));
+                if(i<pickedCommanders.length) {
+                    $('.tableRowBody' + j).append($("<td></td>").text(commanderHp[j][i]));
+                }
             } else {
                 $('.tableRowBody'+j).append($("<td></td>").text(commanderHp[j][i]));
             }
@@ -97,7 +139,9 @@ for(j=0; j<players.length; j++){
         if(j==2){
             if(i==2){
                 i++;
-                $('.tableRowBody'+j).append($("<td></td>").text(commanderHp[j][i]));
+                if(i<pickedCommanders.length) {
+                    $('.tableRowBody' + j).append($("<td></td>").text(commanderHp[j][i]));
+                }
             } else {
                 $('.tableRowBody'+j).append($("<td></td>").text(commanderHp[j][i]));
             }
@@ -105,7 +149,39 @@ for(j=0; j<players.length; j++){
         if(j==3){
             if(i==3){
                 i++;
+                if(i<pickedCommanders.length) {
+                    $('.tableRowBody' + j).append($("<td></td>").text(commanderHp[j][i]));
+                }
+            } else {
                 $('.tableRowBody'+j).append($("<td></td>").text(commanderHp[j][i]));
+            }
+        }
+        if(j==4){
+            if(i==4){
+                i++;
+                if(i<pickedCommanders.length) {
+                    $('.tableRowBody' + j).append($("<td></td>").text(commanderHp[j][i]));
+                }
+            } else {
+                $('.tableRowBody'+j).append($("<td></td>").text(commanderHp[j][i]));
+            }
+        }
+        if(j==5){
+            if(i==5){
+                i++;
+                if(i<pickedCommanders.length) {
+                    $('.tableRowBody' + j).append($("<td></td>").text(commanderHp[j][i]));
+                }
+            } else {
+                $('.tableRowBody'+j).append($("<td></td>").text(commanderHp[j][i]));
+            }
+        }
+        if(j==6){
+            if(i==6){
+                i++;
+                if(i<pickedCommanders.length) {
+                    $('.tableRowBody' + j).append($("<td></td>").text(commanderHp[j][i]));
+                }
             } else {
                 $('.tableRowBody'+j).append($("<td></td>").text(commanderHp[j][i]));
             }
@@ -121,12 +197,14 @@ for(j=0; j<players.length; j++){
         if(j==0){
             if(i==0){
                 i++;
-                $('.tableDiv'+j).append($("<div></div>"));
-                $('.tableDiv'+j).append($("<button></button>").addClass('btn btn-primary btn-sm dec1Player'+j+'Com'+i).text('- 1C'+(i+1)));
-                $('.tableDiv'+j).append($("<button></button>").addClass('btn btn-primary btn-sm inc1Player'+j+'Com'+i).text('+ 1C'+(i+1)));
-                $('.tableDiv'+j).append($("<div></div>"));
-                $('.tableDiv'+j).append($("<button></button>").addClass('btn btn-primary btn-sm dec5Player'+j+'Com'+i).text('- 5C'+(i+1)));
-                $('.tableDiv'+j).append($("<button></button>").addClass('btn btn-primary btn-sm inc5Player'+j+'Com'+i).text('+ 5C'+(i+1)));
+                if(i<pickedCommanders.length) {
+                    $('.tableDiv' + j).append($("<div></div>"));
+                    $('.tableDiv' + j).append($("<button></button>").addClass('btn btn-primary btn-sm dec1Player' + j + 'Com' + i).text('- 1C' + (i + 1)));
+                    $('.tableDiv' + j).append($("<button></button>").addClass('btn btn-primary btn-sm inc1Player' + j + 'Com' + i).text('+ 1C' + (i + 1)));
+                    $('.tableDiv' + j).append($("<div></div>"));
+                    $('.tableDiv' + j).append($("<button></button>").addClass('btn btn-primary btn-sm dec5Player' + j + 'Com' + i).text('- 5C' + (i + 1)));
+                    $('.tableDiv' + j).append($("<button></button>").addClass('btn btn-primary btn-sm inc5Player' + j + 'Com' + i).text('+ 5C' + (i + 1)));
+                }
             } else {
                 $('.tableDiv'+j).append($("<div></div>"));
                 $('.tableDiv'+j).append($("<button></button>").addClass('btn btn-primary btn-sm dec1Player'+j+'Com'+i).text('- 1C'+(i+1)));
@@ -139,12 +217,14 @@ for(j=0; j<players.length; j++){
         if(j==1){
             if(i==1){
                 i++;
-                $('.tableDiv'+j).append($("<div></div>"));
-                $('.tableDiv'+j).append($("<button></button>").addClass('btn btn-primary btn-sm dec1Player'+j+'Com'+i).text('- 1C'+(i+1)));
-                $('.tableDiv'+j).append($("<button></button>").addClass('btn btn-primary btn-sm inc1Player'+j+'Com'+i).text('+ 1C'+(i+1)));
-                $('.tableDiv'+j).append($("<div></div>"));
-                $('.tableDiv'+j).append($("<button></button>").addClass('btn btn-primary btn-sm dec5Player'+j+'Com'+i).text('- 5C'+(i+1)));
-                $('.tableDiv'+j).append($("<button></button>").addClass('btn btn-primary btn-sm inc5Player'+j+'Com'+i).text('+ 5C'+(i+1)));
+                if(i<pickedCommanders.length) {
+                    $('.tableDiv' + j).append($("<div></div>"));
+                    $('.tableDiv' + j).append($("<button></button>").addClass('btn btn-primary btn-sm dec1Player' + j + 'Com' + i).text('- 1C' + (i + 1)));
+                    $('.tableDiv' + j).append($("<button></button>").addClass('btn btn-primary btn-sm inc1Player' + j + 'Com' + i).text('+ 1C' + (i + 1)));
+                    $('.tableDiv' + j).append($("<div></div>"));
+                    $('.tableDiv' + j).append($("<button></button>").addClass('btn btn-primary btn-sm dec5Player' + j + 'Com' + i).text('- 5C' + (i + 1)));
+                    $('.tableDiv' + j).append($("<button></button>").addClass('btn btn-primary btn-sm inc5Player' + j + 'Com' + i).text('+ 5C' + (i + 1)));
+                }
             } else {
                 $('.tableDiv'+j).append($("<div></div>"));
                 $('.tableDiv'+j).append($("<button></button>").addClass('btn btn-primary btn-sm dec1Player'+j+'Com'+i).text('- 1C'+(i+1)));
@@ -157,12 +237,14 @@ for(j=0; j<players.length; j++){
         if(j==2){
             if(i==2){
                 i++;
-                $('.tableDiv'+j).append($("<div></div>"));
-                $('.tableDiv'+j).append($("<button></button>").addClass('btn btn-primary btn-sm dec1Player'+j+'Com'+i).text('- 1C'+(i+1)));
-                $('.tableDiv'+j).append($("<button></button>").addClass('btn btn-primary btn-sm inc1Player'+j+'Com'+i).text('+ 1C'+(i+1)));
-                $('.tableDiv'+j).append($("<div></div>"));
-                $('.tableDiv'+j).append($("<button></button>").addClass('btn btn-primary btn-sm dec5Player'+j+'Com'+i).text('- 5C'+(i+1)));
-                $('.tableDiv'+j).append($("<button></button>").addClass('btn btn-primary btn-sm inc5Player'+j+'Com'+i).text('+ 5C'+(i+1)));
+                if(i<pickedCommanders.length) {
+                    $('.tableDiv' + j).append($("<div></div>"));
+                    $('.tableDiv' + j).append($("<button></button>").addClass('btn btn-primary btn-sm dec1Player' + j + 'Com' + i).text('- 1C' + (i + 1)));
+                    $('.tableDiv' + j).append($("<button></button>").addClass('btn btn-primary btn-sm inc1Player' + j + 'Com' + i).text('+ 1C' + (i + 1)));
+                    $('.tableDiv' + j).append($("<div></div>"));
+                    $('.tableDiv' + j).append($("<button></button>").addClass('btn btn-primary btn-sm dec5Player' + j + 'Com' + i).text('- 5C' + (i + 1)));
+                    $('.tableDiv' + j).append($("<button></button>").addClass('btn btn-primary btn-sm inc5Player' + j + 'Com' + i).text('+ 5C' + (i + 1)));
+                }
             } else {
                 $('.tableDiv'+j).append($("<div></div>"));
                 $('.tableDiv'+j).append($("<button></button>").addClass('btn btn-primary btn-sm dec1Player'+j+'Com'+i).text('- 1C'+(i+1)));
@@ -175,12 +257,74 @@ for(j=0; j<players.length; j++){
         if(j==3){
             if(i==3){
                 i++;
+                if(i<pickedCommanders.length) {
+                    $('.tableDiv' + j).append($("<div></div>"));
+                    $('.tableDiv' + j).append($("<button></button>").addClass('btn btn-primary btn-sm dec1Player' + j + 'Com' + i).text('- 1C' + (i + 1)));
+                    $('.tableDiv' + j).append($("<button></button>").addClass('btn btn-primary btn-sm inc1Player' + j + 'Com' + i).text('+ 1C' + (i + 1)));
+                    $('.tableDiv' + j).append($("<div></div>"));
+                    $('.tableDiv' + j).append($("<button></button>").addClass('btn btn-primary btn-sm dec5Player' + j + 'Com' + i).text('- 5C' + (i + 1)));
+                    $('.tableDiv' + j).append($("<button></button>").addClass('btn btn-primary btn-sm inc5Player' + j + 'Com' + i).text('+ 5C' + (i + 1)));
+                }
+            } else {
                 $('.tableDiv'+j).append($("<div></div>"));
                 $('.tableDiv'+j).append($("<button></button>").addClass('btn btn-primary btn-sm dec1Player'+j+'Com'+i).text('- 1C'+(i+1)));
                 $('.tableDiv'+j).append($("<button></button>").addClass('btn btn-primary btn-sm inc1Player'+j+'Com'+i).text('+ 1C'+(i+1)));
                 $('.tableDiv'+j).append($("<div></div>"));
                 $('.tableDiv'+j).append($("<button></button>").addClass('btn btn-primary btn-sm dec5Player'+j+'Com'+i).text('- 5C'+(i+1)));
                 $('.tableDiv'+j).append($("<button></button>").addClass('btn btn-primary btn-sm inc5Player'+j+'Com'+i).text('+ 5C'+(i+1)));
+            }
+        }
+        if(j==4){
+            if(i==4){
+                i++;
+                if(i<pickedCommanders.length) {
+                    $('.tableDiv' + j).append($("<div></div>"));
+                    $('.tableDiv' + j).append($("<button></button>").addClass('btn btn-primary btn-sm dec1Player' + j + 'Com' + i).text('- 1C' + (i + 1)));
+                    $('.tableDiv' + j).append($("<button></button>").addClass('btn btn-primary btn-sm inc1Player' + j + 'Com' + i).text('+ 1C' + (i + 1)));
+                    $('.tableDiv' + j).append($("<div></div>"));
+                    $('.tableDiv' + j).append($("<button></button>").addClass('btn btn-primary btn-sm dec5Player' + j + 'Com' + i).text('- 5C' + (i + 1)));
+                    $('.tableDiv' + j).append($("<button></button>").addClass('btn btn-primary btn-sm inc5Player' + j + 'Com' + i).text('+ 5C' + (i + 1)));
+                }
+            } else {
+                $('.tableDiv'+j).append($("<div></div>"));
+                $('.tableDiv'+j).append($("<button></button>").addClass('btn btn-primary btn-sm dec1Player'+j+'Com'+i).text('- 1C'+(i+1)));
+                $('.tableDiv'+j).append($("<button></button>").addClass('btn btn-primary btn-sm inc1Player'+j+'Com'+i).text('+ 1C'+(i+1)));
+                $('.tableDiv'+j).append($("<div></div>"));
+                $('.tableDiv'+j).append($("<button></button>").addClass('btn btn-primary btn-sm dec5Player'+j+'Com'+i).text('- 5C'+(i+1)));
+                $('.tableDiv'+j).append($("<button></button>").addClass('btn btn-primary btn-sm inc5Player'+j+'Com'+i).text('+ 5C'+(i+1)));
+            }
+        }
+        if(j==5){
+            if(i==5){
+                i++;
+                if(i<pickedCommanders.length) {
+                    $('.tableDiv' + j).append($("<div></div>"));
+                    $('.tableDiv' + j).append($("<button></button>").addClass('btn btn-primary btn-sm dec1Player' + j + 'Com' + i).text('- 1C' + (i + 1)));
+                    $('.tableDiv' + j).append($("<button></button>").addClass('btn btn-primary btn-sm inc1Player' + j + 'Com' + i).text('+ 1C' + (i + 1)));
+                    $('.tableDiv' + j).append($("<div></div>"));
+                    $('.tableDiv' + j).append($("<button></button>").addClass('btn btn-primary btn-sm dec5Player' + j + 'Com' + i).text('- 5C' + (i + 1)));
+                    $('.tableDiv' + j).append($("<button></button>").addClass('btn btn-primary btn-sm inc5Player' + j + 'Com' + i).text('+ 5C' + (i + 1)));
+                }
+            } else {
+                $('.tableDiv'+j).append($("<div></div>"));
+                $('.tableDiv'+j).append($("<button></button>").addClass('btn btn-primary btn-sm dec1Player'+j+'Com'+i).text('- 1C'+(i+1)));
+                $('.tableDiv'+j).append($("<button></button>").addClass('btn btn-primary btn-sm inc1Player'+j+'Com'+i).text('+ 1C'+(i+1)));
+                $('.tableDiv'+j).append($("<div></div>"));
+                $('.tableDiv'+j).append($("<button></button>").addClass('btn btn-primary btn-sm dec5Player'+j+'Com'+i).text('- 5C'+(i+1)));
+                $('.tableDiv'+j).append($("<button></button>").addClass('btn btn-primary btn-sm inc5Player'+j+'Com'+i).text('+ 5C'+(i+1)));
+            }
+        }
+        if(j==6){
+            if(i==6){
+                i++;
+                if(i<pickedCommanders.length) {
+                    $('.tableDiv' + j).append($("<div></div>"));
+                    $('.tableDiv' + j).append($("<button></button>").addClass('btn btn-primary btn-sm dec1Player' + j + 'Com' + i).text('- 1C' + (i + 1)));
+                    $('.tableDiv' + j).append($("<button></button>").addClass('btn btn-primary btn-sm inc1Player' + j + 'Com' + i).text('+ 1C' + (i + 1)));
+                    $('.tableDiv' + j).append($("<div></div>"));
+                    $('.tableDiv' + j).append($("<button></button>").addClass('btn btn-primary btn-sm dec5Player' + j + 'Com' + i).text('- 5C' + (i + 1)));
+                    $('.tableDiv' + j).append($("<button></button>").addClass('btn btn-primary btn-sm inc5Player' + j + 'Com' + i).text('+ 5C' + (i + 1)));
+                }
             } else {
                 $('.tableDiv'+j).append($("<div></div>"));
                 $('.tableDiv'+j).append($("<button></button>").addClass('btn btn-primary btn-sm dec1Player'+j+'Com'+i).text('- 1C'+(i+1)));
@@ -221,7 +365,9 @@ function dec1PlayerIndexComIndex(name, playerIndex, commanderIndex){
             if(playerIndex==0){
                 if(i==0){
                     i++;
-                    $('.tableRowBody'+playerIndex).append($("<td></td>").text(commanderHp[playerIndex][i]));
+                    if(i<pickedCommanders.length) {
+                        $('.tableRowBody' + playerIndex).append($("<td></td>").text(commanderHp[playerIndex][i]));
+                    }
                 } else {
                     $('.tableRowBody'+playerIndex).append($("<td></td>").text(commanderHp[playerIndex][i]));
                 }
@@ -229,7 +375,9 @@ function dec1PlayerIndexComIndex(name, playerIndex, commanderIndex){
             if(playerIndex==1){
                 if(i==1){
                     i++;
-                    $('.tableRowBody'+playerIndex).append($("<td></td>").text(commanderHp[playerIndex][i]));
+                    if(i<pickedCommanders.length) {
+                        $('.tableRowBody' + playerIndex).append($("<td></td>").text(commanderHp[playerIndex][i]));
+                    }
                 } else {
                     $('.tableRowBody'+playerIndex).append($("<td></td>").text(commanderHp[playerIndex][i]));
                 }
@@ -237,7 +385,9 @@ function dec1PlayerIndexComIndex(name, playerIndex, commanderIndex){
             if(playerIndex==2){
                 if(i==2){
                     i++;
-                    $('.tableRowBody'+playerIndex).append($("<td></td>").text(commanderHp[playerIndex][i]));
+                    if(i<pickedCommanders.length) {
+                        $('.tableRowBody' + playerIndex).append($("<td></td>").text(commanderHp[playerIndex][i]));
+                    }
                 } else {
                     $('.tableRowBody'+playerIndex).append($("<td></td>").text(commanderHp[playerIndex][i]));
                 }
@@ -245,7 +395,39 @@ function dec1PlayerIndexComIndex(name, playerIndex, commanderIndex){
             if(playerIndex==3){
                 if(i==3){
                     i++;
+                    if(i<pickedCommanders.length) {
+                        $('.tableRowBody' + playerIndex).append($("<td></td>").text(commanderHp[playerIndex][i]));
+                    }
+                } else {
                     $('.tableRowBody'+playerIndex).append($("<td></td>").text(commanderHp[playerIndex][i]));
+                }
+            }
+            if(playerIndex==4){
+                if(i==4){
+                    i++;
+                    if(i<pickedCommanders.length) {
+                        $('.tableRowBody' + playerIndex).append($("<td></td>").text(commanderHp[playerIndex][i]));
+                    }
+                } else {
+                    $('.tableRowBody'+playerIndex).append($("<td></td>").text(commanderHp[playerIndex][i]));
+                }
+            }
+            if(playerIndex==5){
+                if(i==5){
+                    i++;
+                    if(i<pickedCommanders.length) {
+                        $('.tableRowBody' + playerIndex).append($("<td></td>").text(commanderHp[playerIndex][i]));
+                    }
+                } else {
+                    $('.tableRowBody'+playerIndex).append($("<td></td>").text(commanderHp[playerIndex][i]));
+                }
+            }
+            if(playerIndex==6){
+                if(i==6){
+                    i++;
+                    if(i<pickedCommanders.length) {
+                        $('.tableRowBody' + playerIndex).append($("<td></td>").text(commanderHp[playerIndex][i]));
+                    }
                 } else {
                     $('.tableRowBody'+playerIndex).append($("<td></td>").text(commanderHp[playerIndex][i]));
                 }
@@ -273,7 +455,9 @@ function inc1PlayerIndexComIndex(name, playerIndex, commanderIndex){
             if(playerIndex==0){
                 if(i==0){
                     i++;
-                    $('.tableRowBody'+playerIndex).append($("<td></td>").text(commanderHp[playerIndex][i]));
+                    if(i<pickedCommanders.length) {
+                        $('.tableRowBody' + playerIndex).append($("<td></td>").text(commanderHp[playerIndex][i]));
+                    }
                 } else {
                     $('.tableRowBody'+playerIndex).append($("<td></td>").text(commanderHp[playerIndex][i]));
                 }
@@ -281,7 +465,9 @@ function inc1PlayerIndexComIndex(name, playerIndex, commanderIndex){
             if(playerIndex==1){
                 if(i==1){
                     i++;
-                    $('.tableRowBody'+playerIndex).append($("<td></td>").text(commanderHp[playerIndex][i]));
+                    if(i<pickedCommanders.length) {
+                        $('.tableRowBody' + playerIndex).append($("<td></td>").text(commanderHp[playerIndex][i]));
+                    }
                 } else {
                     $('.tableRowBody'+playerIndex).append($("<td></td>").text(commanderHp[playerIndex][i]));
                 }
@@ -289,7 +475,9 @@ function inc1PlayerIndexComIndex(name, playerIndex, commanderIndex){
             if(playerIndex==2){
                 if(i==2){
                     i++;
-                    $('.tableRowBody'+playerIndex).append($("<td></td>").text(commanderHp[playerIndex][i]));
+                    if(i<pickedCommanders.length) {
+                        $('.tableRowBody' + playerIndex).append($("<td></td>").text(commanderHp[playerIndex][i]));
+                    }
                 } else {
                     $('.tableRowBody'+playerIndex).append($("<td></td>").text(commanderHp[playerIndex][i]));
                 }
@@ -297,7 +485,39 @@ function inc1PlayerIndexComIndex(name, playerIndex, commanderIndex){
             if(playerIndex==3){
                 if(i==3){
                     i++;
+                    if(i<pickedCommanders.length) {
+                        $('.tableRowBody' + playerIndex).append($("<td></td>").text(commanderHp[playerIndex][i]));
+                    }
+                } else {
                     $('.tableRowBody'+playerIndex).append($("<td></td>").text(commanderHp[playerIndex][i]));
+                }
+            }
+            if(playerIndex==4){
+                if(i==4){
+                    i++;
+                    if(i<pickedCommanders.length) {
+                        $('.tableRowBody' + playerIndex).append($("<td></td>").text(commanderHp[playerIndex][i]));
+                    }
+                } else {
+                    $('.tableRowBody'+playerIndex).append($("<td></td>").text(commanderHp[playerIndex][i]));
+                }
+            }
+            if(playerIndex==5){
+                if(i==5){
+                    i++;
+                    if(i<pickedCommanders.length) {
+                        $('.tableRowBody' + playerIndex).append($("<td></td>").text(commanderHp[playerIndex][i]));
+                    }
+                } else {
+                    $('.tableRowBody'+playerIndex).append($("<td></td>").text(commanderHp[playerIndex][i]));
+                }
+            }
+            if(playerIndex==6){
+                if(i==6){
+                    i++;
+                    if(i<pickedCommanders.length) {
+                        $('.tableRowBody' + playerIndex).append($("<td></td>").text(commanderHp[playerIndex][i]));
+                    }
                 } else {
                     $('.tableRowBody'+playerIndex).append($("<td></td>").text(commanderHp[playerIndex][i]));
                 }
@@ -333,7 +553,9 @@ function dec5PlayerIndexComIndex(name, playerIndex, commanderIndex){
             if(playerIndex==0){
                 if(i==0){
                     i++;
-                    $('.tableRowBody'+playerIndex).append($("<td></td>").text(commanderHp[playerIndex][i]));
+                    if(i<pickedCommanders.length) {
+                        $('.tableRowBody' + playerIndex).append($("<td></td>").text(commanderHp[playerIndex][i]));
+                    }
                 } else {
                     $('.tableRowBody'+playerIndex).append($("<td></td>").text(commanderHp[playerIndex][i]));
                 }
@@ -341,7 +563,9 @@ function dec5PlayerIndexComIndex(name, playerIndex, commanderIndex){
             if(playerIndex==1){
                 if(i==1){
                     i++;
-                    $('.tableRowBody'+playerIndex).append($("<td></td>").text(commanderHp[playerIndex][i]));
+                    if(i<pickedCommanders.length) {
+                        $('.tableRowBody' + playerIndex).append($("<td></td>").text(commanderHp[playerIndex][i]));
+                    }
                 } else {
                     $('.tableRowBody'+playerIndex).append($("<td></td>").text(commanderHp[playerIndex][i]));
                 }
@@ -349,7 +573,9 @@ function dec5PlayerIndexComIndex(name, playerIndex, commanderIndex){
             if(playerIndex==2){
                 if(i==2){
                     i++;
-                    $('.tableRowBody'+playerIndex).append($("<td></td>").text(commanderHp[playerIndex][i]));
+                    if(i<pickedCommanders.length) {
+                        $('.tableRowBody' + playerIndex).append($("<td></td>").text(commanderHp[playerIndex][i]));
+                    }
                 } else {
                     $('.tableRowBody'+playerIndex).append($("<td></td>").text(commanderHp[playerIndex][i]));
                 }
@@ -357,7 +583,39 @@ function dec5PlayerIndexComIndex(name, playerIndex, commanderIndex){
             if(playerIndex==3){
                 if(i==3){
                     i++;
+                    if(i<pickedCommanders.length) {
+                        $('.tableRowBody' + playerIndex).append($("<td></td>").text(commanderHp[playerIndex][i]));
+                    }
+                } else {
                     $('.tableRowBody'+playerIndex).append($("<td></td>").text(commanderHp[playerIndex][i]));
+                }
+            }
+            if(playerIndex==4){
+                if(i==4){
+                    i++;
+                    if(i<pickedCommanders.length) {
+                        $('.tableRowBody' + playerIndex).append($("<td></td>").text(commanderHp[playerIndex][i]));
+                    }
+                } else {
+                    $('.tableRowBody'+playerIndex).append($("<td></td>").text(commanderHp[playerIndex][i]));
+                }
+            }
+            if(playerIndex==5){
+                if(i==5){
+                    i++;
+                    if(i<pickedCommanders.length) {
+                        $('.tableRowBody' + playerIndex).append($("<td></td>").text(commanderHp[playerIndex][i]));
+                    }
+                } else {
+                    $('.tableRowBody'+playerIndex).append($("<td></td>").text(commanderHp[playerIndex][i]));
+                }
+            }
+            if(playerIndex==6){
+                if(i==6){
+                    i++;
+                    if(i<pickedCommanders.length) {
+                        $('.tableRowBody' + playerIndex).append($("<td></td>").text(commanderHp[playerIndex][i]));
+                    }
                 } else {
                     $('.tableRowBody'+playerIndex).append($("<td></td>").text(commanderHp[playerIndex][i]));
                 }
@@ -385,7 +643,9 @@ function inc5PlayerIndexComIndex(name, playerIndex, commanderIndex){
             if(playerIndex==0){
                 if(i==0){
                     i++;
-                    $('.tableRowBody'+playerIndex).append($("<td></td>").text(commanderHp[playerIndex][i]));
+                    if(i<pickedCommanders.length) {
+                        $('.tableRowBody' + playerIndex).append($("<td></td>").text(commanderHp[playerIndex][i]));
+                    }
                 } else {
                     $('.tableRowBody'+playerIndex).append($("<td></td>").text(commanderHp[playerIndex][i]));
                 }
@@ -393,7 +653,9 @@ function inc5PlayerIndexComIndex(name, playerIndex, commanderIndex){
             if(playerIndex==1){
                 if(i==1){
                     i++;
-                    $('.tableRowBody'+playerIndex).append($("<td></td>").text(commanderHp[playerIndex][i]));
+                    if(i<pickedCommanders.length) {
+                        $('.tableRowBody' + playerIndex).append($("<td></td>").text(commanderHp[playerIndex][i]));
+                    }
                 } else {
                     $('.tableRowBody'+playerIndex).append($("<td></td>").text(commanderHp[playerIndex][i]));
                 }
@@ -401,7 +663,9 @@ function inc5PlayerIndexComIndex(name, playerIndex, commanderIndex){
             if(playerIndex==2){
                 if(i==2){
                     i++;
-                    $('.tableRowBody'+playerIndex).append($("<td></td>").text(commanderHp[playerIndex][i]));
+                    if(i<pickedCommanders.length) {
+                        $('.tableRowBody' + playerIndex).append($("<td></td>").text(commanderHp[playerIndex][i]));
+                    }
                 } else {
                     $('.tableRowBody'+playerIndex).append($("<td></td>").text(commanderHp[playerIndex][i]));
                 }
@@ -409,7 +673,39 @@ function inc5PlayerIndexComIndex(name, playerIndex, commanderIndex){
             if(playerIndex==3){
                 if(i==3){
                     i++;
+                    if(i<pickedCommanders.length) {
+                        $('.tableRowBody' + playerIndex).append($("<td></td>").text(commanderHp[playerIndex][i]));
+                    }
+                } else {
                     $('.tableRowBody'+playerIndex).append($("<td></td>").text(commanderHp[playerIndex][i]));
+                }
+            }
+            if(playerIndex==4){
+                if(i==4){
+                    i++;
+                    if(i<pickedCommanders.length) {
+                        $('.tableRowBody' + playerIndex).append($("<td></td>").text(commanderHp[playerIndex][i]));
+                    }
+                } else {
+                    $('.tableRowBody'+playerIndex).append($("<td></td>").text(commanderHp[playerIndex][i]));
+                }
+            }
+            if(playerIndex==5){
+                if(i==5){
+                    i++;
+                    if(i<pickedCommanders.length) {
+                        $('.tableRowBody' + playerIndex).append($("<td></td>").text(commanderHp[playerIndex][i]));
+                    }
+                } else {
+                    $('.tableRowBody'+playerIndex).append($("<td></td>").text(commanderHp[playerIndex][i]));
+                }
+            }
+            if(playerIndex==6){
+                if(i==6){
+                    i++;
+                    if(i<pickedCommanders.length) {
+                        $('.tableRowBody' + playerIndex).append($("<td></td>").text(commanderHp[playerIndex][i]));
+                    }
                 } else {
                     $('.tableRowBody'+playerIndex).append($("<td></td>").text(commanderHp[playerIndex][i]));
                 }
@@ -613,7 +909,9 @@ function dec1HpPlayerIndex(name, index){
             if(index==0){
                 if(i==0){
                     i++;
-                    $('.tableRowBody'+index).append($("<td></td>").text(commanderHp[index][i]));
+                    if(i<pickedCommanders.length) {
+                        $('.tableRowBody' + index).append($("<td></td>").text(commanderHp[index][i]));
+                    }
                 } else {
                     $('.tableRowBody'+index).append($("<td></td>").text(commanderHp[index][i]));
                 }
@@ -621,7 +919,9 @@ function dec1HpPlayerIndex(name, index){
             if(index==1){
                 if(i==1){
                     i++;
-                    $('.tableRowBody'+index).append($("<td></td>").text(commanderHp[index][i]));
+                    if(i<pickedCommanders.length) {
+                        $('.tableRowBody' + index).append($("<td></td>").text(commanderHp[index][i]));
+                    }
                 } else {
                     $('.tableRowBody'+index).append($("<td></td>").text(commanderHp[index][i]));
                 }
@@ -629,7 +929,9 @@ function dec1HpPlayerIndex(name, index){
             if(index==2){
                 if(i==2){
                     i++;
-                    $('.tableRowBody'+index).append($("<td></td>").text(commanderHp[index][i]));
+                    if(i<pickedCommanders.length) {
+                        $('.tableRowBody' + index).append($("<td></td>").text(commanderHp[index][i]));
+                    }
                 } else {
                     $('.tableRowBody'+index).append($("<td></td>").text(commanderHp[index][i]));
                 }
@@ -637,7 +939,39 @@ function dec1HpPlayerIndex(name, index){
             if(index==3){
                 if(i==3){
                     i++;
+                    if(i<pickedCommanders.length) {
+                        $('.tableRowBody' + index).append($("<td></td>").text(commanderHp[index][i]));
+                    }
+                } else {
                     $('.tableRowBody'+index).append($("<td></td>").text(commanderHp[index][i]));
+                }
+            }
+            if(index==4){
+                if(i==4){
+                    i++;
+                    if(i<pickedCommanders.length) {
+                        $('.tableRowBody' + index).append($("<td></td>").text(commanderHp[index][i]));
+                    }
+                } else {
+                    $('.tableRowBody'+index).append($("<td></td>").text(commanderHp[index][i]));
+                }
+            }
+            if(index==5){
+                if(i==5){
+                    i++;
+                    if(i<pickedCommanders.length) {
+                        $('.tableRowBody' + index).append($("<td></td>").text(commanderHp[index][i]));
+                    }
+                } else {
+                    $('.tableRowBody'+index).append($("<td></td>").text(commanderHp[index][i]));
+                }
+            }
+            if(index==6){
+                if(i==6){
+                    i++;
+                    if(i<pickedCommanders.length) {
+                        $('.tableRowBody' + index).append($("<td></td>").text(commanderHp[index][i]));
+                    }
                 } else {
                     $('.tableRowBody'+index).append($("<td></td>").text(commanderHp[index][i]));
                 }
@@ -661,7 +995,9 @@ function inc1HpPlayerIndex(name, index){
             if(index==0){
                 if(i==0){
                     i++;
-                    $('.tableRowBody'+index).append($("<td></td>").text(commanderHp[index][i]));
+                    if(i<pickedCommanders.length) {
+                        $('.tableRowBody' + index).append($("<td></td>").text(commanderHp[index][i]));
+                    }
                 } else {
                     $('.tableRowBody'+index).append($("<td></td>").text(commanderHp[index][i]));
                 }
@@ -669,7 +1005,9 @@ function inc1HpPlayerIndex(name, index){
             if(index==1){
                 if(i==1){
                     i++;
-                    $('.tableRowBody'+index).append($("<td></td>").text(commanderHp[index][i]));
+                    if(i<pickedCommanders.length) {
+                        $('.tableRowBody' + index).append($("<td></td>").text(commanderHp[index][i]));
+                    }
                 } else {
                     $('.tableRowBody'+index).append($("<td></td>").text(commanderHp[index][i]));
                 }
@@ -677,7 +1015,9 @@ function inc1HpPlayerIndex(name, index){
             if(index==2){
                 if(i==2){
                     i++;
-                    $('.tableRowBody'+index).append($("<td></td>").text(commanderHp[index][i]));
+                    if(i<pickedCommanders.length) {
+                        $('.tableRowBody' + index).append($("<td></td>").text(commanderHp[index][i]));
+                    }
                 } else {
                     $('.tableRowBody'+index).append($("<td></td>").text(commanderHp[index][i]));
                 }
@@ -685,7 +1025,39 @@ function inc1HpPlayerIndex(name, index){
             if(index==3){
                 if(i==3){
                     i++;
+                    if(i<pickedCommanders.length) {
+                        $('.tableRowBody' + index).append($("<td></td>").text(commanderHp[index][i]));
+                    }
+                } else {
                     $('.tableRowBody'+index).append($("<td></td>").text(commanderHp[index][i]));
+                }
+            }
+            if(index==4){
+                if(i==4){
+                    i++;
+                    if(i<pickedCommanders.length) {
+                        $('.tableRowBody' + index).append($("<td></td>").text(commanderHp[index][i]));
+                    }
+                } else {
+                    $('.tableRowBody'+index).append($("<td></td>").text(commanderHp[index][i]));
+                }
+            }
+            if(index==5){
+                if(i==5){
+                    i++;
+                    if(i<pickedCommanders.length) {
+                        $('.tableRowBody' + index).append($("<td></td>").text(commanderHp[index][i]));
+                    }
+                } else {
+                    $('.tableRowBody'+index).append($("<td></td>").text(commanderHp[index][i]));
+                }
+            }
+            if(index==6){
+                if(i==6){
+                    i++;
+                    if(i<pickedCommanders.length) {
+                        $('.tableRowBody' + index).append($("<td></td>").text(commanderHp[index][i]));
+                    }
                 } else {
                     $('.tableRowBody'+index).append($("<td></td>").text(commanderHp[index][i]));
                 }
@@ -710,7 +1082,9 @@ function dec5HpPlayerIndex(name, index){
             if(index==0){
                 if(i==0){
                     i++;
-                    $('.tableRowBody'+index).append($("<td></td>").text(commanderHp[index][i]));
+                    if(i<pickedCommanders.length) {
+                        $('.tableRowBody' + index).append($("<td></td>").text(commanderHp[index][i]));
+                    }
                 } else {
                     $('.tableRowBody'+index).append($("<td></td>").text(commanderHp[index][i]));
                 }
@@ -718,7 +1092,9 @@ function dec5HpPlayerIndex(name, index){
             if(index==1){
                 if(i==1){
                     i++;
-                    $('.tableRowBody'+index).append($("<td></td>").text(commanderHp[index][i]));
+                    if(i<pickedCommanders.length) {
+                        $('.tableRowBody' + index).append($("<td></td>").text(commanderHp[index][i]));
+                    }
                 } else {
                     $('.tableRowBody'+index).append($("<td></td>").text(commanderHp[index][i]));
                 }
@@ -726,7 +1102,9 @@ function dec5HpPlayerIndex(name, index){
             if(index==2){
                 if(i==2){
                     i++;
-                    $('.tableRowBody'+index).append($("<td></td>").text(commanderHp[index][i]));
+                    if(i<pickedCommanders.length) {
+                        $('.tableRowBody' + index).append($("<td></td>").text(commanderHp[index][i]));
+                    }
                 } else {
                     $('.tableRowBody'+index).append($("<td></td>").text(commanderHp[index][i]));
                 }
@@ -734,7 +1112,39 @@ function dec5HpPlayerIndex(name, index){
             if(index==3){
                 if(i==3){
                     i++;
+                    if(i<pickedCommanders.length) {
+                        $('.tableRowBody' + index).append($("<td></td>").text(commanderHp[index][i]));
+                    }
+                } else {
                     $('.tableRowBody'+index).append($("<td></td>").text(commanderHp[index][i]));
+                }
+            }
+            if(index==4){
+                if(i==4){
+                    i++;
+                    if(i<pickedCommanders.length) {
+                        $('.tableRowBody' + index).append($("<td></td>").text(commanderHp[index][i]));
+                    }
+                } else {
+                    $('.tableRowBody'+index).append($("<td></td>").text(commanderHp[index][i]));
+                }
+            }
+            if(index==5){
+                if(i==5){
+                    i++;
+                    if(i<pickedCommanders.length) {
+                        $('.tableRowBody' + index).append($("<td></td>").text(commanderHp[index][i]));
+                    }
+                } else {
+                    $('.tableRowBody'+index).append($("<td></td>").text(commanderHp[index][i]));
+                }
+            }
+            if(index==6){
+                if(i==6){
+                    i++;
+                    if(i<pickedCommanders.length) {
+                        $('.tableRowBody' + index).append($("<td></td>").text(commanderHp[index][i]));
+                    }
                 } else {
                     $('.tableRowBody'+index).append($("<td></td>").text(commanderHp[index][i]));
                 }
@@ -758,7 +1168,9 @@ function inc5HpPlayerIndex(name, index){
             if(index==0){
                 if(i==0){
                     i++;
-                    $('.tableRowBody'+index).append($("<td></td>").text(commanderHp[index][i]));
+                    if(i<pickedCommanders.length) {
+                        $('.tableRowBody' + index).append($("<td></td>").text(commanderHp[index][i]));
+                    }
                 } else {
                     $('.tableRowBody'+index).append($("<td></td>").text(commanderHp[index][i]));
                 }
@@ -766,7 +1178,9 @@ function inc5HpPlayerIndex(name, index){
             if(index==1){
                 if(i==1){
                     i++;
-                    $('.tableRowBody'+index).append($("<td></td>").text(commanderHp[index][i]));
+                    if(i<pickedCommanders.length) {
+                        $('.tableRowBody' + index).append($("<td></td>").text(commanderHp[index][i]));
+                    }
                 } else {
                     $('.tableRowBody'+index).append($("<td></td>").text(commanderHp[index][i]));
                 }
@@ -774,7 +1188,9 @@ function inc5HpPlayerIndex(name, index){
             if(index==2){
                 if(i==2){
                     i++;
-                    $('.tableRowBody'+index).append($("<td></td>").text(commanderHp[index][i]));
+                    if(i<pickedCommanders.length) {
+                        $('.tableRowBody' + index).append($("<td></td>").text(commanderHp[index][i]));
+                    }
                 } else {
                     $('.tableRowBody'+index).append($("<td></td>").text(commanderHp[index][i]));
                 }
@@ -782,7 +1198,39 @@ function inc5HpPlayerIndex(name, index){
             if(index==3){
                 if(i==3){
                     i++;
+                    if(i<pickedCommanders.length) {
+                        $('.tableRowBody' + index).append($("<td></td>").text(commanderHp[index][i]));
+                    }
+                } else {
                     $('.tableRowBody'+index).append($("<td></td>").text(commanderHp[index][i]));
+                }
+            }
+            if(index==4){
+                if(i==4){
+                    i++;
+                    if(i<pickedCommanders.length) {
+                        $('.tableRowBody' + index).append($("<td></td>").text(commanderHp[index][i]));
+                    }
+                } else {
+                    $('.tableRowBody'+index).append($("<td></td>").text(commanderHp[index][i]));
+                }
+            }
+            if(index==5){
+                if(i==5){
+                    i++;
+                    if(i<pickedCommanders.length) {
+                        $('.tableRowBody' + index).append($("<td></td>").text(commanderHp[index][i]));
+                    }
+                } else {
+                    $('.tableRowBody'+index).append($("<td></td>").text(commanderHp[index][i]));
+                }
+            }
+            if(index==6){
+                if(i==6){
+                    i++;
+                    if(i<pickedCommanders.length) {
+                        $('.tableRowBody' + index).append($("<td></td>").text(commanderHp[index][i]));
+                    }
                 } else {
                     $('.tableRowBody'+index).append($("<td></td>").text(commanderHp[index][i]));
                 }

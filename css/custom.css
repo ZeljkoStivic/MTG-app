@@ -247,3 +247,14 @@ body {
 .table5 {
     width: 1140px;
 }
+
+.card-img-top {
+    height: 275px;
+}
+
+#players {
+    width: 600px;
+    margin: auto;
+    overflow-y: auto;
+    max-height: 600px;
+}

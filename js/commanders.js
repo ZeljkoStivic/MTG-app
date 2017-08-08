@@ -2,7 +2,7 @@
 
 var players=[];
 var colors=['red', 'blue', 'yellow', 'green', 'black', 'violet'];
-var commanders=['Nissa Revane1', 'Nissa Revane2', 'Nissa Revane3', 'Nissa Revane4', 'Nissa Revane5', 'Nissa Revane6'];
+var commanders=['Jori En, Ruin Diver', 'Sidisi, Brood Tyrant', 'Yasova Dragonclaw', 'Alesha, Who Smiles at Death', 'Derevi, Empyrial Tactician', 'Prossh, Skyraider of Kher'];
 var pickedBorder=['firstPickBorder', 'secondPickBorder', 'thirdPickBorder', 'fourthPickBorder', 'fifthPickBorder', 'sixthPickBorder'];
 var pickedCommanders=[];
 var gameArr=[];
@@ -36,6 +36,8 @@ $('#btnNewGame').click(function() {
     $('#pickCommander').show();
     $('#arrowPick').hide();
     $('#btnCreateNewGame').hide();
+    $('#PlayerModalLobby').hide();
+    $('#divPlayOrder').hide();
     for(var k=0; k<pickedBorder.length; k++){
         $('#commander1').removeClass(pickedBorder[k]);
         $('#commander2').removeClass(pickedBorder[k]);
@@ -74,6 +76,7 @@ $('#createLobby').click(function() {
         $('#colorLobby').find('div').eq(i).attr('id', 'divPlayerColor'+i);
     }
     $('#addPlayerModalPanel').hide();
+    $('#PlayerModalLobby').show();
 });
 
 
@@ -110,6 +113,7 @@ $('#btnRandomizeOrder').click(function() {
         $('#divOrderCommander').append($("<ol></ol>").text(pickedCommanders[i]));
     }
     $('#PlayerModalLobby').hide();
+    $('#divPlayOrder').show();
     $('#btnCreateNewGame').show();
 });
 
@@ -170,7 +174,15 @@ pickedCommander(4);
 pickedCommander(5);
 pickedCommander(6);
 
-/*---------------------------------- /BORDER AND PICKED COMMANDER ARRAY ON CLICK (PROLLY WILL HAVE TO REFACTOR) ----------------------------------*/
+/*---------------------------------- CUTS TEXT IN COMMANDER CARD IF ITS MORE THAN 250CHARS  ----------------------------------*/
+$('.card-text').each(function() {
+    var maxchars = 250;
+    var seperator = '...';
+
+    if ($(this).text().length > (maxchars - seperator.length)) {
+        $(this).text($(this).text().substr(0, maxchars-seperator.length) + seperator);
+    }
+});
 
 /*---------------------------------- BTN IN MODAL THAT STARTS A NEW GAME ON A DIFFERENT PAGE ----------------------------------*/
 $('#btnCreateNewGame').click(function() {
@@ -230,4 +242,5 @@ function randomReRoll(index){
     } while(pickedCommanders.indexOf(commanders[reRollIndex])>0);
     return pickedCommanders[index];
 }
+
 

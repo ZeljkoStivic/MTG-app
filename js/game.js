@@ -31,310 +31,90 @@ for(i=0; i<pickedCommanders.length; i++){
 
 /*---------------------------------- TABLE CREATION----------------------------------*/
 
+function tableCreationGridAndPlayerName(red) {
+    $('#tables').append($("<div></div>").addClass('tableDiv'+red));
+    $('.tableDiv'+red).append($("<table></table>").addClass('table'+red));
+    $('.table'+red).append($("<thead></thead>").addClass('thead'+red));
+    $('.thead'+red).append($("<tr></tr>").addClass('tableRow'+red));
+    $('.tableRow'+red).append($("<th></th>"));
+    $('.tableRow'+red).append($("<th></th>").text(players[red]));
+}
+
+function tableCreatingGrindAndCommanderName() {
+    pickedCommanders.forEach(function(commander, index) {
+        if(j != index){
+            $('.tableRow'+j).append($("<th></th>").text(players[index] + ' - ' + commander));
+        }
+    });
+}
+
+function tableCreationGridAndPlayerHp(red){
+    $('.table'+red).append($("<tbody></tbody>").addClass('tbody'+red));
+    $('.tbody'+red).append($("<tr></tr>").addClass('tableRowBody'+red));
+    $('.tableRowBody'+red).append($("<th></th>").attr( "scope", "row" ));
+    $('.tableRowBody'+red).append($("<td></td>").text(hp[red]));
+}
+
+function tableCreationGridAndCommanderHp(red, commanderIndex){
+    for(tableCIndex=0; tableCIndex<pickedCommanders.length; tableCIndex++){
+        if(red==tableCIndex){
+            if(commanderIndex==tableCIndex){
+                commanderIndex++;
+                if(commanderIndex<pickedCommanders.length){
+                    $('.tableRowBody' + red).append($("<td></td>").text(commanderHp[red][commanderIndex]));
+                }
+            } else {
+                $('.tableRowBody' + red).append($("<td></td>").text(commanderHp[red][commanderIndex]));
+            }
+        }
+    }
+}
+
+function tableCreationPlayerHpButtons(red) {
+    $('.tableDiv'+red).append($("<button></button>").addClass('btn btn-primary btn-sm dec1HpPlayer'+red).text('- 1'));
+    $('.tableDiv'+red).append($("<button></button>").addClass('btn btn-primary btn-sm inc1HpPlayer'+red).text('+ 1'));
+    $('.tableDiv'+red).append($("<div></div>"));
+    $('.tableDiv'+red).append($("<button></button>").addClass('btn btn-primary btn-sm dec5HpPlayer'+red).text('- 5'));
+    $('.tableDiv'+red).append($("<button></button>").addClass('btn btn-primary btn-sm inc5HpPlayer'+red).text('+ 5'));
+}
+
+function tableCreationCommanderHpButtons(red, commanderIndex) {
+    for(tableCIndex=0; tableCIndex<pickedCommanders.length; tableCIndex++){
+        if(red==tableCIndex){
+            if(commanderIndex==tableCIndex){
+                commanderIndex++;
+                if(commanderIndex<pickedCommanders.length) {
+                    $('.tableDiv' + red).append($("<div></div>"));
+                    $('.tableDiv' + red).append($("<button></button>").addClass('btn btn-primary btn-sm dec1Player' + red + 'Com' + commanderIndex).text('- 1C' + (commanderIndex + 1)));
+                    $('.tableDiv' + red).append($("<button></button>").addClass('btn btn-primary btn-sm inc1Player' + red + 'Com' + commanderIndex).text('+ 1C' + (commanderIndex + 1)));
+                    $('.tableDiv' + red).append($("<div></div>"));
+                    $('.tableDiv' + red).append($("<button></button>").addClass('btn btn-primary btn-sm dec5Player' + red + 'Com' + commanderIndex).text('- 5C' + (commanderIndex + 1)));
+                    $('.tableDiv' + red).append($("<button></button>").addClass('btn btn-primary btn-sm inc5Player' + red + 'Com' + commanderIndex).text('+ 5C' + (commanderIndex + 1)));
+                }
+            } else {
+                $('.tableDiv'+red).append($("<div></div>"));
+                $('.tableDiv'+red).append($("<button></button>").addClass('btn btn-primary btn-sm dec1Player'+red+'Com'+commanderIndex).text('- 1C'+(commanderIndex+1)));
+                $('.tableDiv'+red).append($("<button></button>").addClass('btn btn-primary btn-sm inc1Player'+red+'Com'+commanderIndex).text('+ 1C'+(commanderIndex+1)));
+                $('.tableDiv'+red).append($("<div></div>"));
+                $('.tableDiv'+red).append($("<button></button>").addClass('btn btn-primary btn-sm dec5Player'+red+'Com'+commanderIndex).text('- 5C'+(commanderIndex+1)));
+                $('.tableDiv'+red).append($("<button></button>").addClass('btn btn-primary btn-sm inc5Player'+red+'Com'+commanderIndex).text('+ 5C'+(commanderIndex+1)));
+            }
+        }
+    }
+}
+
 for(j=0; j<players.length; j++){
-    $('#tables').append($("<div></div>").addClass('tableDiv'+j));
-    $('.tableDiv'+j).append($("<table></table>").addClass('table'+j));
-    $('.table'+j).append($("<thead></thead>").addClass('thead'+j));
-    $('.thead'+j).append($("<tr></tr>").addClass('tableRow'+j));
-    $('.tableRow'+j).append($("<th></th>"));
-    $('.tableRow'+j).append($("<th></th>").text(players[j]));
-    for(i=0; i<pickedCommanders.length; i++){
-        if(j==0){
-            if(i==0){
-                i++;
-                if(i<pickedCommanders.length){
-                    $('.tableRow'+j).append($("<th></th>").text(players[i] + ' - ' + pickedCommanders[i]));
-                }
-            } else {
-                $('.tableRow'+j).append($("<th></th>").text(players[i] + ' - ' + pickedCommanders[i]));
-            }
-        }
-        if(j==1){
-            if(i==1){
-                i++;
-                if(i<pickedCommanders.length){
-                    $('.tableRow'+j).append($("<th></th>").text(players[i] + ' - ' + pickedCommanders[i]));
-                }
-            } else {
-                $('.tableRow'+j).append($("<th></th>").text(players[i] + ' - ' + pickedCommanders[i]));
-            }
-        }
-        if(j==2){
-            if(i==2){
-                i++;
-                if(i<pickedCommanders.length){
-                    $('.tableRow'+j).append($("<th></th>").text(players[i] + ' - ' + pickedCommanders[i]));
-                }
-            } else {
-                $('.tableRow'+j).append($("<th></th>").text(players[i] + ' - ' + pickedCommanders[i]));
-            }
-        }
-        if(j==3){
-            if(i==3){
-                i++;
-                if(i<pickedCommanders.length){
-                    $('.tableRow'+j).append($("<th></th>").text(players[i] + ' - ' + pickedCommanders[i]));
-                }
-            } else {
-                $('.tableRow'+j).append($("<th></th>").text(players[i] + ' - ' + pickedCommanders[i]));
-            }
-        }
-        if(j==4){
-            if(i==4){
-                i++;
-                if(i<pickedCommanders.length){
-                    $('.tableRow'+j).append($("<th></th>").text(players[i] + ' - ' + pickedCommanders[i]));
-                }
-            } else {
-                $('.tableRow'+j).append($("<th></th>").text(players[i] + ' - ' + pickedCommanders[i]));
-            }
-        }
-        if(j==5){
-            if(i==5){
-                i++;
-                if(i<pickedCommanders.length){
-                    $('.tableRow'+j).append($("<th></th>").text(players[i] + ' - ' + pickedCommanders[i]));
-                }
-            } else {
-                $('.tableRow'+j).append($("<th></th>").text(players[i] + ' - ' + pickedCommanders[i]));
-            }
-        }
-        if(j==6){
-            if(i==6){
-                i++;
-                if(i<pickedCommanders.length){
-                    $('.tableRow'+j).append($("<th></th>").text(players[i] + ' - ' + pickedCommanders[i]));
-                }
-            } else {
-                $('.tableRow'+j).append($("<th></th>").text(players[i] + ' - ' + pickedCommanders[i]));
-            }
-        }
+    tableCreationGridAndPlayerName(j);
+    tableCreatingGrindAndCommanderName();
 
-    }
-    $('.table'+j).append($("<tbody></tbody>").addClass('tbody'+j));
-    $('.tbody'+j).append($("<tr></tr>").addClass('tableRowBody'+j));
-    $('.tableRowBody'+j).append($("<th></th>").attr( "scope", "row" ));
-    $('.tableRowBody'+j).append($("<td></td>").text(hp[j]));
+    tableCreationGridAndPlayerHp(j);
     for(i=0; i<pickedCommanders.length; i++){
-        if(j==0){
-            if(i==0){
-                i++;
-                if(i<pickedCommanders.length) {
-                    $('.tableRowBody' + j).append($("<td></td>").text(commanderHp[j][i]));
-                }
-            } else {
-                $('.tableRowBody'+j).append($("<td></td>").text(commanderHp[j][i]));
-            }
-        }
-        if(j==1){
-            if(i==1){
-                i++;
-                if(i<pickedCommanders.length) {
-                    $('.tableRowBody' + j).append($("<td></td>").text(commanderHp[j][i]));
-                }
-            } else {
-                $('.tableRowBody'+j).append($("<td></td>").text(commanderHp[j][i]));
-            }
-        }
-        if(j==2){
-            if(i==2){
-                i++;
-                if(i<pickedCommanders.length) {
-                    $('.tableRowBody' + j).append($("<td></td>").text(commanderHp[j][i]));
-                }
-            } else {
-                $('.tableRowBody'+j).append($("<td></td>").text(commanderHp[j][i]));
-            }
-        }
-        if(j==3){
-            if(i==3){
-                i++;
-                if(i<pickedCommanders.length) {
-                    $('.tableRowBody' + j).append($("<td></td>").text(commanderHp[j][i]));
-                }
-            } else {
-                $('.tableRowBody'+j).append($("<td></td>").text(commanderHp[j][i]));
-            }
-        }
-        if(j==4){
-            if(i==4){
-                i++;
-                if(i<pickedCommanders.length) {
-                    $('.tableRowBody' + j).append($("<td></td>").text(commanderHp[j][i]));
-                }
-            } else {
-                $('.tableRowBody'+j).append($("<td></td>").text(commanderHp[j][i]));
-            }
-        }
-        if(j==5){
-            if(i==5){
-                i++;
-                if(i<pickedCommanders.length) {
-                    $('.tableRowBody' + j).append($("<td></td>").text(commanderHp[j][i]));
-                }
-            } else {
-                $('.tableRowBody'+j).append($("<td></td>").text(commanderHp[j][i]));
-            }
-        }
-        if(j==6){
-            if(i==6){
-                i++;
-                if(i<pickedCommanders.length) {
-                    $('.tableRowBody' + j).append($("<td></td>").text(commanderHp[j][i]));
-                }
-            } else {
-                $('.tableRowBody'+j).append($("<td></td>").text(commanderHp[j][i]));
-            }
-        }
+        tableCreationGridAndCommanderHp(j,i);
     }
 
-    $('.tableDiv'+j).append($("<button></button>").addClass('btn btn-primary btn-sm dec1HpPlayer'+j).text('- 1'));
-    $('.tableDiv'+j).append($("<button></button>").addClass('btn btn-primary btn-sm inc1HpPlayer'+j).text('+ 1'));
-    $('.tableDiv'+j).append($("<div></div>"));
-    $('.tableDiv'+j).append($("<button></button>").addClass('btn btn-primary btn-sm dec5HpPlayer'+j).text('- 5'));
-    $('.tableDiv'+j).append($("<button></button>").addClass('btn btn-primary btn-sm inc5HpPlayer'+j).text('+ 5'));
+    tableCreationPlayerHpButtons(j);
     for(i=0; i<pickedCommanders.length; i++){
-        if(j==0){
-            if(i==0){
-                i++;
-                if(i<pickedCommanders.length) {
-                    $('.tableDiv' + j).append($("<div></div>"));
-                    $('.tableDiv' + j).append($("<button></button>").addClass('btn btn-primary btn-sm dec1Player' + j + 'Com' + i).text('- 1C' + (i + 1)));
-                    $('.tableDiv' + j).append($("<button></button>").addClass('btn btn-primary btn-sm inc1Player' + j + 'Com' + i).text('+ 1C' + (i + 1)));
-                    $('.tableDiv' + j).append($("<div></div>"));
-                    $('.tableDiv' + j).append($("<button></button>").addClass('btn btn-primary btn-sm dec5Player' + j + 'Com' + i).text('- 5C' + (i + 1)));
-                    $('.tableDiv' + j).append($("<button></button>").addClass('btn btn-primary btn-sm inc5Player' + j + 'Com' + i).text('+ 5C' + (i + 1)));
-                }
-            } else {
-                $('.tableDiv'+j).append($("<div></div>"));
-                $('.tableDiv'+j).append($("<button></button>").addClass('btn btn-primary btn-sm dec1Player'+j+'Com'+i).text('- 1C'+(i+1)));
-                $('.tableDiv'+j).append($("<button></button>").addClass('btn btn-primary btn-sm inc1Player'+j+'Com'+i).text('+ 1C'+(i+1)));
-                $('.tableDiv'+j).append($("<div></div>"));
-                $('.tableDiv'+j).append($("<button></button>").addClass('btn btn-primary btn-sm dec5Player'+j+'Com'+i).text('- 5C'+(i+1)));
-                $('.tableDiv'+j).append($("<button></button>").addClass('btn btn-primary btn-sm inc5Player'+j+'Com'+i).text('+ 5C'+(i+1)));
-            }
-        }
-        if(j==1){
-            if(i==1){
-                i++;
-                if(i<pickedCommanders.length) {
-                    $('.tableDiv' + j).append($("<div></div>"));
-                    $('.tableDiv' + j).append($("<button></button>").addClass('btn btn-primary btn-sm dec1Player' + j + 'Com' + i).text('- 1C' + (i + 1)));
-                    $('.tableDiv' + j).append($("<button></button>").addClass('btn btn-primary btn-sm inc1Player' + j + 'Com' + i).text('+ 1C' + (i + 1)));
-                    $('.tableDiv' + j).append($("<div></div>"));
-                    $('.tableDiv' + j).append($("<button></button>").addClass('btn btn-primary btn-sm dec5Player' + j + 'Com' + i).text('- 5C' + (i + 1)));
-                    $('.tableDiv' + j).append($("<button></button>").addClass('btn btn-primary btn-sm inc5Player' + j + 'Com' + i).text('+ 5C' + (i + 1)));
-                }
-            } else {
-                $('.tableDiv'+j).append($("<div></div>"));
-                $('.tableDiv'+j).append($("<button></button>").addClass('btn btn-primary btn-sm dec1Player'+j+'Com'+i).text('- 1C'+(i+1)));
-                $('.tableDiv'+j).append($("<button></button>").addClass('btn btn-primary btn-sm inc1Player'+j+'Com'+i).text('+ 1C'+(i+1)));
-                $('.tableDiv'+j).append($("<div></div>"));
-                $('.tableDiv'+j).append($("<button></button>").addClass('btn btn-primary btn-sm dec5Player'+j+'Com'+i).text('- 5C'+(i+1)));
-                $('.tableDiv'+j).append($("<button></button>").addClass('btn btn-primary btn-sm inc5Player'+j+'Com'+i).text('+ 5C'+(i+1)));
-            }
-        }
-        if(j==2){
-            if(i==2){
-                i++;
-                if(i<pickedCommanders.length) {
-                    $('.tableDiv' + j).append($("<div></div>"));
-                    $('.tableDiv' + j).append($("<button></button>").addClass('btn btn-primary btn-sm dec1Player' + j + 'Com' + i).text('- 1C' + (i + 1)));
-                    $('.tableDiv' + j).append($("<button></button>").addClass('btn btn-primary btn-sm inc1Player' + j + 'Com' + i).text('+ 1C' + (i + 1)));
-                    $('.tableDiv' + j).append($("<div></div>"));
-                    $('.tableDiv' + j).append($("<button></button>").addClass('btn btn-primary btn-sm dec5Player' + j + 'Com' + i).text('- 5C' + (i + 1)));
-                    $('.tableDiv' + j).append($("<button></button>").addClass('btn btn-primary btn-sm inc5Player' + j + 'Com' + i).text('+ 5C' + (i + 1)));
-                }
-            } else {
-                $('.tableDiv'+j).append($("<div></div>"));
-                $('.tableDiv'+j).append($("<button></button>").addClass('btn btn-primary btn-sm dec1Player'+j+'Com'+i).text('- 1C'+(i+1)));
-                $('.tableDiv'+j).append($("<button></button>").addClass('btn btn-primary btn-sm inc1Player'+j+'Com'+i).text('+ 1C'+(i+1)));
-                $('.tableDiv'+j).append($("<div></div>"));
-                $('.tableDiv'+j).append($("<button></button>").addClass('btn btn-primary btn-sm dec5Player'+j+'Com'+i).text('- 5C'+(i+1)));
-                $('.tableDiv'+j).append($("<button></button>").addClass('btn btn-primary btn-sm inc5Player'+j+'Com'+i).text('+ 5C'+(i+1)));
-            }
-        }
-        if(j==3){
-            if(i==3){
-                i++;
-                if(i<pickedCommanders.length) {
-                    $('.tableDiv' + j).append($("<div></div>"));
-                    $('.tableDiv' + j).append($("<button></button>").addClass('btn btn-primary btn-sm dec1Player' + j + 'Com' + i).text('- 1C' + (i + 1)));
-                    $('.tableDiv' + j).append($("<button></button>").addClass('btn btn-primary btn-sm inc1Player' + j + 'Com' + i).text('+ 1C' + (i + 1)));
-                    $('.tableDiv' + j).append($("<div></div>"));
-                    $('.tableDiv' + j).append($("<button></button>").addClass('btn btn-primary btn-sm dec5Player' + j + 'Com' + i).text('- 5C' + (i + 1)));
-                    $('.tableDiv' + j).append($("<button></button>").addClass('btn btn-primary btn-sm inc5Player' + j + 'Com' + i).text('+ 5C' + (i + 1)));
-                }
-            } else {
-                $('.tableDiv'+j).append($("<div></div>"));
-                $('.tableDiv'+j).append($("<button></button>").addClass('btn btn-primary btn-sm dec1Player'+j+'Com'+i).text('- 1C'+(i+1)));
-                $('.tableDiv'+j).append($("<button></button>").addClass('btn btn-primary btn-sm inc1Player'+j+'Com'+i).text('+ 1C'+(i+1)));
-                $('.tableDiv'+j).append($("<div></div>"));
-                $('.tableDiv'+j).append($("<button></button>").addClass('btn btn-primary btn-sm dec5Player'+j+'Com'+i).text('- 5C'+(i+1)));
-                $('.tableDiv'+j).append($("<button></button>").addClass('btn btn-primary btn-sm inc5Player'+j+'Com'+i).text('+ 5C'+(i+1)));
-            }
-        }
-        if(j==4){
-            if(i==4){
-                i++;
-                if(i<pickedCommanders.length) {
-                    $('.tableDiv' + j).append($("<div></div>"));
-                    $('.tableDiv' + j).append($("<button></button>").addClass('btn btn-primary btn-sm dec1Player' + j + 'Com' + i).text('- 1C' + (i + 1)));
-                    $('.tableDiv' + j).append($("<button></button>").addClass('btn btn-primary btn-sm inc1Player' + j + 'Com' + i).text('+ 1C' + (i + 1)));
-                    $('.tableDiv' + j).append($("<div></div>"));
-                    $('.tableDiv' + j).append($("<button></button>").addClass('btn btn-primary btn-sm dec5Player' + j + 'Com' + i).text('- 5C' + (i + 1)));
-                    $('.tableDiv' + j).append($("<button></button>").addClass('btn btn-primary btn-sm inc5Player' + j + 'Com' + i).text('+ 5C' + (i + 1)));
-                }
-            } else {
-                $('.tableDiv'+j).append($("<div></div>"));
-                $('.tableDiv'+j).append($("<button></button>").addClass('btn btn-primary btn-sm dec1Player'+j+'Com'+i).text('- 1C'+(i+1)));
-                $('.tableDiv'+j).append($("<button></button>").addClass('btn btn-primary btn-sm inc1Player'+j+'Com'+i).text('+ 1C'+(i+1)));
-                $('.tableDiv'+j).append($("<div></div>"));
-                $('.tableDiv'+j).append($("<button></button>").addClass('btn btn-primary btn-sm dec5Player'+j+'Com'+i).text('- 5C'+(i+1)));
-                $('.tableDiv'+j).append($("<button></button>").addClass('btn btn-primary btn-sm inc5Player'+j+'Com'+i).text('+ 5C'+(i+1)));
-            }
-        }
-        if(j==5){
-            if(i==5){
-                i++;
-                if(i<pickedCommanders.length) {
-                    $('.tableDiv' + j).append($("<div></div>"));
-                    $('.tableDiv' + j).append($("<button></button>").addClass('btn btn-primary btn-sm dec1Player' + j + 'Com' + i).text('- 1C' + (i + 1)));
-                    $('.tableDiv' + j).append($("<button></button>").addClass('btn btn-primary btn-sm inc1Player' + j + 'Com' + i).text('+ 1C' + (i + 1)));
-                    $('.tableDiv' + j).append($("<div></div>"));
-                    $('.tableDiv' + j).append($("<button></button>").addClass('btn btn-primary btn-sm dec5Player' + j + 'Com' + i).text('- 5C' + (i + 1)));
-                    $('.tableDiv' + j).append($("<button></button>").addClass('btn btn-primary btn-sm inc5Player' + j + 'Com' + i).text('+ 5C' + (i + 1)));
-                }
-            } else {
-                $('.tableDiv'+j).append($("<div></div>"));
-                $('.tableDiv'+j).append($("<button></button>").addClass('btn btn-primary btn-sm dec1Player'+j+'Com'+i).text('- 1C'+(i+1)));
-                $('.tableDiv'+j).append($("<button></button>").addClass('btn btn-primary btn-sm inc1Player'+j+'Com'+i).text('+ 1C'+(i+1)));
-                $('.tableDiv'+j).append($("<div></div>"));
-                $('.tableDiv'+j).append($("<button></button>").addClass('btn btn-primary btn-sm dec5Player'+j+'Com'+i).text('- 5C'+(i+1)));
-                $('.tableDiv'+j).append($("<button></button>").addClass('btn btn-primary btn-sm inc5Player'+j+'Com'+i).text('+ 5C'+(i+1)));
-            }
-        }
-        if(j==6){
-            if(i==6){
-                i++;
-                if(i<pickedCommanders.length) {
-                    $('.tableDiv' + j).append($("<div></div>"));
-                    $('.tableDiv' + j).append($("<button></button>").addClass('btn btn-primary btn-sm dec1Player' + j + 'Com' + i).text('- 1C' + (i + 1)));
-                    $('.tableDiv' + j).append($("<button></button>").addClass('btn btn-primary btn-sm inc1Player' + j + 'Com' + i).text('+ 1C' + (i + 1)));
-                    $('.tableDiv' + j).append($("<div></div>"));
-                    $('.tableDiv' + j).append($("<button></button>").addClass('btn btn-primary btn-sm dec5Player' + j + 'Com' + i).text('- 5C' + (i + 1)));
-                    $('.tableDiv' + j).append($("<button></button>").addClass('btn btn-primary btn-sm inc5Player' + j + 'Com' + i).text('+ 5C' + (i + 1)));
-                }
-            } else {
-                $('.tableDiv'+j).append($("<div></div>"));
-                $('.tableDiv'+j).append($("<button></button>").addClass('btn btn-primary btn-sm dec1Player'+j+'Com'+i).text('- 1C'+(i+1)));
-                $('.tableDiv'+j).append($("<button></button>").addClass('btn btn-primary btn-sm inc1Player'+j+'Com'+i).text('+ 1C'+(i+1)));
-                $('.tableDiv'+j).append($("<div></div>"));
-                $('.tableDiv'+j).append($("<button></button>").addClass('btn btn-primary btn-sm dec5Player'+j+'Com'+i).text('- 5C'+(i+1)));
-                $('.tableDiv'+j).append($("<button></button>").addClass('btn btn-primary btn-sm inc5Player'+j+'Com'+i).text('+ 5C'+(i+1)));
-            }
-        }
-
+        tableCreationCommanderHpButtons(j,i);
     }
 }
 

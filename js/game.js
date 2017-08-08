@@ -31,93 +31,67 @@ for(i=0; i<pickedCommanders.length; i++){
 
 /*---------------------------------- TABLE CREATION----------------------------------*/
 
-function tableCreationGridAndPlayerName(red) {
-    $('#tables').append($("<div></div>").addClass('tableDiv'+red));
-    $('.tableDiv'+red).append($("<table></table>").addClass('table'+red));
-    $('.table'+red).append($("<thead></thead>").addClass('thead'+red));
-    $('.thead'+red).append($("<tr></tr>").addClass('tableRow'+red));
-    $('.tableRow'+red).append($("<th></th>"));
-    $('.tableRow'+red).append($("<th></th>").text(players[red]));
+function tableCreationGridAndPlayerName() {
+    $('#tables').append($("<div></div>").addClass('tableDiv'+playerIndex));
+    $('.tableDiv'+playerIndex).append($("<table></table>").addClass('table'+playerIndex));
+    $('.table'+playerIndex).append($("<thead></thead>").addClass('thead'+playerIndex));
+    $('.thead'+playerIndex).append($("<tr></tr>").addClass('tableRow'+playerIndex));
+    $('.tableRow'+playerIndex).append($("<th></th>"));
+    $('.tableRow'+playerIndex).append($("<th></th>").text(players[playerIndex]));
 }
 
 function tableCreatingGrindAndCommanderName() {
     pickedCommanders.forEach(function(commander, index) {
-        if(j != index){
-            $('.tableRow'+j).append($("<th></th>").text(players[index] + ' - ' + commander));
+        if(playerIndex != index){
+            $('.tableRow'+playerIndex).append($("<th></th>").text(players[index] + ' - ' + commander));
         }
     });
 }
 
-function tableCreationGridAndPlayerHp(red){
-    $('.table'+red).append($("<tbody></tbody>").addClass('tbody'+red));
-    $('.tbody'+red).append($("<tr></tr>").addClass('tableRowBody'+red));
-    $('.tableRowBody'+red).append($("<th></th>").attr( "scope", "row" ));
-    $('.tableRowBody'+red).append($("<td></td>").text(hp[red]));
+function tableCreationGridAndPlayerHp(){
+    $('.table'+playerIndex).append($("<tbody></tbody>").addClass('tbody'+playerIndex));
+    $('.tbody'+playerIndex).append($("<tr></tr>").addClass('tableRowBody'+playerIndex));
+    $('.tableRowBody'+playerIndex).append($("<th></th>").attr( "scope", "row" ));
+    $('.tableRowBody'+playerIndex).append($("<td></td>").text(hp[playerIndex]));
 }
 
-function tableCreationGridAndCommanderHp(red, commanderIndex){
-    for(tableCIndex=0; tableCIndex<pickedCommanders.length; tableCIndex++){
-        if(red==tableCIndex){
-            if(commanderIndex==tableCIndex){
-                commanderIndex++;
-                if(commanderIndex<pickedCommanders.length){
-                    $('.tableRowBody' + red).append($("<td></td>").text(commanderHp[red][commanderIndex]));
-                }
-            } else {
-                $('.tableRowBody' + red).append($("<td></td>").text(commanderHp[red][commanderIndex]));
-            }
+function tableCreationGridAndCommanderHp() {
+    pickedCommanders.forEach(function(commander, index) {
+        if(playerIndex != index){
+            $('.tableRowBody' + playerIndex).append($("<td></td>").text(commanderHp[playerIndex][index]));
         }
-    }
+    });
 }
 
-function tableCreationPlayerHpButtons(red) {
-    $('.tableDiv'+red).append($("<button></button>").addClass('btn btn-primary btn-sm dec1HpPlayer'+red).text('- 1'));
-    $('.tableDiv'+red).append($("<button></button>").addClass('btn btn-primary btn-sm inc1HpPlayer'+red).text('+ 1'));
-    $('.tableDiv'+red).append($("<div></div>"));
-    $('.tableDiv'+red).append($("<button></button>").addClass('btn btn-primary btn-sm dec5HpPlayer'+red).text('- 5'));
-    $('.tableDiv'+red).append($("<button></button>").addClass('btn btn-primary btn-sm inc5HpPlayer'+red).text('+ 5'));
+function tableCreationPlayerHpButtons() {
+    $('.tableDiv'+playerIndex).append($("<button></button>").addClass('btn btn-primary btn-sm dec1HpPlayer'+playerIndex).text('- 1'));
+    $('.tableDiv'+playerIndex).append($("<button></button>").addClass('btn btn-primary btn-sm inc1HpPlayer'+playerIndex).text('+ 1'));
+    $('.tableDiv'+playerIndex).append($("<div></div>"));
+    $('.tableDiv'+playerIndex).append($("<button></button>").addClass('btn btn-primary btn-sm dec5HpPlayer'+playerIndex).text('- 5'));
+    $('.tableDiv'+playerIndex).append($("<button></button>").addClass('btn btn-primary btn-sm inc5HpPlayer'+playerIndex).text('+ 5'));
 }
 
-function tableCreationCommanderHpButtons(red, commanderIndex) {
-    for(tableCIndex=0; tableCIndex<pickedCommanders.length; tableCIndex++){
-        if(red==tableCIndex){
-            if(commanderIndex==tableCIndex){
-                commanderIndex++;
-                if(commanderIndex<pickedCommanders.length) {
-                    $('.tableDiv' + red).append($("<div></div>"));
-                    $('.tableDiv' + red).append($("<button></button>").addClass('btn btn-primary btn-sm dec1Player' + red + 'Com' + commanderIndex).text('- 1C' + (commanderIndex + 1)));
-                    $('.tableDiv' + red).append($("<button></button>").addClass('btn btn-primary btn-sm inc1Player' + red + 'Com' + commanderIndex).text('+ 1C' + (commanderIndex + 1)));
-                    $('.tableDiv' + red).append($("<div></div>"));
-                    $('.tableDiv' + red).append($("<button></button>").addClass('btn btn-primary btn-sm dec5Player' + red + 'Com' + commanderIndex).text('- 5C' + (commanderIndex + 1)));
-                    $('.tableDiv' + red).append($("<button></button>").addClass('btn btn-primary btn-sm inc5Player' + red + 'Com' + commanderIndex).text('+ 5C' + (commanderIndex + 1)));
-                }
-            } else {
-                $('.tableDiv'+red).append($("<div></div>"));
-                $('.tableDiv'+red).append($("<button></button>").addClass('btn btn-primary btn-sm dec1Player'+red+'Com'+commanderIndex).text('- 1C'+(commanderIndex+1)));
-                $('.tableDiv'+red).append($("<button></button>").addClass('btn btn-primary btn-sm inc1Player'+red+'Com'+commanderIndex).text('+ 1C'+(commanderIndex+1)));
-                $('.tableDiv'+red).append($("<div></div>"));
-                $('.tableDiv'+red).append($("<button></button>").addClass('btn btn-primary btn-sm dec5Player'+red+'Com'+commanderIndex).text('- 5C'+(commanderIndex+1)));
-                $('.tableDiv'+red).append($("<button></button>").addClass('btn btn-primary btn-sm inc5Player'+red+'Com'+commanderIndex).text('+ 5C'+(commanderIndex+1)));
-            }
+function tableCreationCommanderHpButtons() {
+    pickedCommanders.forEach(function(commander, index) {
+        if(playerIndex != index){
+            $('.tableDiv' + playerIndex).append($("<div></div>"));
+            $('.tableDiv' + playerIndex).append($("<button></button>").addClass('btn btn-primary btn-sm dec1Player' + playerIndex + 'Com' + index).text('- 1C' + (index + 1)));
+            $('.tableDiv' + playerIndex).append($("<button></button>").addClass('btn btn-primary btn-sm inc1Player' + playerIndex + 'Com' + index).text('+ 1C' + (index + 1)));
+            $('.tableDiv' + playerIndex).append($("<div></div>"));
+            $('.tableDiv' + playerIndex).append($("<button></button>").addClass('btn btn-primary btn-sm dec5Player' + playerIndex + 'Com' + index).text('- 5C' + (index + 1)));
+            $('.tableDiv' + playerIndex).append($("<button></button>").addClass('btn btn-primary btn-sm inc5Player' + playerIndex + 'Com' + index).text('+ 5C' + (index + 1)));
         }
-    }
+    });
 }
 
-for(j=0; j<players.length; j++){
-    tableCreationGridAndPlayerName(j);
+for(playerIndex=0; playerIndex<players.length; playerIndex++){
+    tableCreationGridAndPlayerName();
     tableCreatingGrindAndCommanderName();
-
-    tableCreationGridAndPlayerHp(j);
-    for(i=0; i<pickedCommanders.length; i++){
-        tableCreationGridAndCommanderHp(j,i);
-    }
-
-    tableCreationPlayerHpButtons(j);
-    for(i=0; i<pickedCommanders.length; i++){
-        tableCreationCommanderHpButtons(j,i);
-    }
+    tableCreationGridAndPlayerHp();
+    tableCreationGridAndCommanderHp();
+    tableCreationPlayerHpButtons();
+    tableCreationCommanderHpButtons();
 }
-
 
 /*---------------------------------- /TABLE CREATION----------------------------------*/
 

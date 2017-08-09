@@ -138,6 +138,9 @@ function inc1PlayerIndexComIndex(name, playerIndex, commanderIndex){
     $('.'+name).click(function() {
         event.preventDefault();
         hp[playerIndex] = hp[playerIndex] + 1;
+        if(hp[playerIndex]>=30){
+            hp[playerIndex]=30;
+        }
         commanderHp[playerIndex][commanderIndex]= commanderHp[playerIndex][commanderIndex] + 1;
         if(commanderHp[playerIndex][commanderIndex]>=15){
             commanderHp[playerIndex][commanderIndex]=15;
@@ -196,6 +199,9 @@ function inc5PlayerIndexComIndex(name, playerIndex, commanderIndex){
     $('.'+name).click(function() {
         event.preventDefault();
         hp[playerIndex] = hp[playerIndex] + 5;
+        if(hp[playerIndex]>=30){
+            hp[playerIndex]=30;
+        }
         commanderHp[playerIndex][commanderIndex]= commanderHp[playerIndex][commanderIndex] + 5;
         if(commanderHp[playerIndex][commanderIndex]>=15){
             commanderHp[playerIndex][commanderIndex]=15;
@@ -226,380 +232,105 @@ for(var playerIndex=0; playerIndex<players.length; playerIndex++){
 
 /*---------------------------------- HP BUTTONS----------------------------------*/
 
-function dec1HpPlayerIndex(name, index){
+function dec1HpPlayerIndex(name, playerIndex){
     $('.'+name).click(function() {
         event.preventDefault();
-        hp[index] = hp[index] - 1;
-        if(hp[index] <= 0){
-            $('.tableDiv'+index).css("display", "none");
-            placementArr.unshift(players[index]);
+        hp[playerIndex] = hp[playerIndex] - 1;
+        if(hp[playerIndex] <= 0){
+            $('.tableDiv'+playerIndex).css("display", "none");
+            placementArr.unshift(players[playerIndex]);
         }
-
-        $('.tbody'+index).empty();
-        $('.tbody'+index).append($("<tr></tr>").addClass('tableRowBody'+index));
-        $('.tableRowBody'+index).append($("<th></th>").attr( "scope", "row" ));
-        $('.tableRowBody'+index).append($("<td></td>").text(hp[index]));
-        for(i=0; i<pickedCommanders.length; i++){
-            if(index==0){
-                if(i==0){
-                    i++;
-                    if(i<pickedCommanders.length) {
-                        $('.tableRowBody' + index).append($("<td></td>").text(commanderHp[index][i]));
-                    }
-                } else {
-                    $('.tableRowBody'+index).append($("<td></td>").text(commanderHp[index][i]));
+        if(placementArr.length == players.length-1){
+            players.forEach(function(player) {
+                if(placementArr.indexOf(player)<0){
+                    placementArr.unshift(player);
                 }
+            });
+            for(i=0; i<placementArr.length; i++){
+                $('#placement').append($("<ol></ol>").text((1+i)+'. Place  '+placementArr[i]));
             }
-            if(index==1){
-                if(i==1){
-                    i++;
-                    if(i<pickedCommanders.length) {
-                        $('.tableRowBody' + index).append($("<td></td>").text(commanderHp[index][i]));
-                    }
-                } else {
-                    $('.tableRowBody'+index).append($("<td></td>").text(commanderHp[index][i]));
-                }
-            }
-            if(index==2){
-                if(i==2){
-                    i++;
-                    if(i<pickedCommanders.length) {
-                        $('.tableRowBody' + index).append($("<td></td>").text(commanderHp[index][i]));
-                    }
-                } else {
-                    $('.tableRowBody'+index).append($("<td></td>").text(commanderHp[index][i]));
-                }
-            }
-            if(index==3){
-                if(i==3){
-                    i++;
-                    if(i<pickedCommanders.length) {
-                        $('.tableRowBody' + index).append($("<td></td>").text(commanderHp[index][i]));
-                    }
-                } else {
-                    $('.tableRowBody'+index).append($("<td></td>").text(commanderHp[index][i]));
-                }
-            }
-            if(index==4){
-                if(i==4){
-                    i++;
-                    if(i<pickedCommanders.length) {
-                        $('.tableRowBody' + index).append($("<td></td>").text(commanderHp[index][i]));
-                    }
-                } else {
-                    $('.tableRowBody'+index).append($("<td></td>").text(commanderHp[index][i]));
-                }
-            }
-            if(index==5){
-                if(i==5){
-                    i++;
-                    if(i<pickedCommanders.length) {
-                        $('.tableRowBody' + index).append($("<td></td>").text(commanderHp[index][i]));
-                    }
-                } else {
-                    $('.tableRowBody'+index).append($("<td></td>").text(commanderHp[index][i]));
-                }
-            }
-            if(index==6){
-                if(i==6){
-                    i++;
-                    if(i<pickedCommanders.length) {
-                        $('.tableRowBody' + index).append($("<td></td>").text(commanderHp[index][i]));
-                    }
-                } else {
-                    $('.tableRowBody'+index).append($("<td></td>").text(commanderHp[index][i]));
-                }
-            }
+            $('#placementModal').modal('show');
         }
+        $('.tbody'+playerIndex).empty();
+        $('.tbody'+playerIndex).append($("<tr></tr>").addClass('tableRowBody'+playerIndex));
+        $('.tableRowBody'+playerIndex).append($("<th></th>").attr( "scope", "row" ));
+        $('.tableRowBody'+playerIndex).append($("<td></td>").text(hp[playerIndex]));
+        pickedCommanders.forEach(function(commander, index) {
+            if(playerIndex != index){
+                $('.tableRowBody' + playerIndex).append($("<td></td>").text(commanderHp[playerIndex][index]));
+            }
+        });
     });
 }
 
-function inc1HpPlayerIndex(name, index){
+function inc1HpPlayerIndex(name, playerIndex){
     $('.'+name).click(function() {
         event.preventDefault();
-        hp[index] = hp[index] + 1;
-        if(hp[index]>=30){
-            hp[index]=30;
-        }
-        $('.tbody'+index).empty();
-        $('.tbody'+index).append($("<tr></tr>").addClass('tableRowBody'+index));
-        $('.tableRowBody'+index).append($("<th></th>").attr( "scope", "row" ));
-        $('.tableRowBody'+index).append($("<td></td>").text(hp[index]));
-        for(i=0; i<pickedCommanders.length; i++){
-            if(index==0){
-                if(i==0){
-                    i++;
-                    if(i<pickedCommanders.length) {
-                        $('.tableRowBody' + index).append($("<td></td>").text(commanderHp[index][i]));
-                    }
-                } else {
-                    $('.tableRowBody'+index).append($("<td></td>").text(commanderHp[index][i]));
-                }
+        hp[playerIndex] = hp[playerIndex] + 1;
+        $('.tbody'+playerIndex).empty();
+        $('.tbody'+playerIndex).append($("<tr></tr>").addClass('tableRowBody'+playerIndex));
+        $('.tableRowBody'+playerIndex).append($("<th></th>").attr( "scope", "row" ));
+        $('.tableRowBody'+playerIndex).append($("<td></td>").text(hp[playerIndex]));
+        pickedCommanders.forEach(function(commander, index) {
+            if(playerIndex != index){
+                $('.tableRowBody' + playerIndex).append($("<td></td>").text(commanderHp[playerIndex][index]));
             }
-            if(index==1){
-                if(i==1){
-                    i++;
-                    if(i<pickedCommanders.length) {
-                        $('.tableRowBody' + index).append($("<td></td>").text(commanderHp[index][i]));
-                    }
-                } else {
-                    $('.tableRowBody'+index).append($("<td></td>").text(commanderHp[index][i]));
-                }
-            }
-            if(index==2){
-                if(i==2){
-                    i++;
-                    if(i<pickedCommanders.length) {
-                        $('.tableRowBody' + index).append($("<td></td>").text(commanderHp[index][i]));
-                    }
-                } else {
-                    $('.tableRowBody'+index).append($("<td></td>").text(commanderHp[index][i]));
-                }
-            }
-            if(index==3){
-                if(i==3){
-                    i++;
-                    if(i<pickedCommanders.length) {
-                        $('.tableRowBody' + index).append($("<td></td>").text(commanderHp[index][i]));
-                    }
-                } else {
-                    $('.tableRowBody'+index).append($("<td></td>").text(commanderHp[index][i]));
-                }
-            }
-            if(index==4){
-                if(i==4){
-                    i++;
-                    if(i<pickedCommanders.length) {
-                        $('.tableRowBody' + index).append($("<td></td>").text(commanderHp[index][i]));
-                    }
-                } else {
-                    $('.tableRowBody'+index).append($("<td></td>").text(commanderHp[index][i]));
-                }
-            }
-            if(index==5){
-                if(i==5){
-                    i++;
-                    if(i<pickedCommanders.length) {
-                        $('.tableRowBody' + index).append($("<td></td>").text(commanderHp[index][i]));
-                    }
-                } else {
-                    $('.tableRowBody'+index).append($("<td></td>").text(commanderHp[index][i]));
-                }
-            }
-            if(index==6){
-                if(i==6){
-                    i++;
-                    if(i<pickedCommanders.length) {
-                        $('.tableRowBody' + index).append($("<td></td>").text(commanderHp[index][i]));
-                    }
-                } else {
-                    $('.tableRowBody'+index).append($("<td></td>").text(commanderHp[index][i]));
-                }
-            }
-        }
+        });
     });
 }
 
-function dec5HpPlayerIndex(name, index){
+function dec5HpPlayerIndex(name, playerIndex){
     $('.'+name).click(function() {
         event.preventDefault();
-        hp[index] = hp[index] - 5;
-        if(hp[index] <= 0){
-            $('.tableDiv'+index).css("display", "none");
-            placementArr.unshift(players[index]);
+        hp[playerIndex] = hp[playerIndex] - 5;
+        if(hp[playerIndex] <= 0){
+            $('.tableDiv'+playerIndex).css("display", "none");
+            placementArr.unshift(players[playerIndex]);
         }
-        $('.tbody'+index).empty();
-        $('.tbody'+index).append($("<tr></tr>").addClass('tableRowBody'+index));
-        $('.tableRowBody'+index).append($("<th></th>").attr( "scope", "row" ));
-        $('.tableRowBody'+index).append($("<td></td>").text(hp[index]));
-        for(i=0; i<pickedCommanders.length; i++){
-            if(index==0){
-                if(i==0){
-                    i++;
-                    if(i<pickedCommanders.length) {
-                        $('.tableRowBody' + index).append($("<td></td>").text(commanderHp[index][i]));
-                    }
-                } else {
-                    $('.tableRowBody'+index).append($("<td></td>").text(commanderHp[index][i]));
+        if(placementArr.length == players.length-1){
+            players.forEach(function(player) {
+                if(placementArr.indexOf(player)<0){
+                    placementArr.unshift(player);
                 }
+            });
+            for(i=0; i<placementArr.length; i++){
+                $('#placement').append($("<ol></ol>").text((1+i)+'. Place  '+placementArr[i]));
             }
-            if(index==1){
-                if(i==1){
-                    i++;
-                    if(i<pickedCommanders.length) {
-                        $('.tableRowBody' + index).append($("<td></td>").text(commanderHp[index][i]));
-                    }
-                } else {
-                    $('.tableRowBody'+index).append($("<td></td>").text(commanderHp[index][i]));
-                }
-            }
-            if(index==2){
-                if(i==2){
-                    i++;
-                    if(i<pickedCommanders.length) {
-                        $('.tableRowBody' + index).append($("<td></td>").text(commanderHp[index][i]));
-                    }
-                } else {
-                    $('.tableRowBody'+index).append($("<td></td>").text(commanderHp[index][i]));
-                }
-            }
-            if(index==3){
-                if(i==3){
-                    i++;
-                    if(i<pickedCommanders.length) {
-                        $('.tableRowBody' + index).append($("<td></td>").text(commanderHp[index][i]));
-                    }
-                } else {
-                    $('.tableRowBody'+index).append($("<td></td>").text(commanderHp[index][i]));
-                }
-            }
-            if(index==4){
-                if(i==4){
-                    i++;
-                    if(i<pickedCommanders.length) {
-                        $('.tableRowBody' + index).append($("<td></td>").text(commanderHp[index][i]));
-                    }
-                } else {
-                    $('.tableRowBody'+index).append($("<td></td>").text(commanderHp[index][i]));
-                }
-            }
-            if(index==5){
-                if(i==5){
-                    i++;
-                    if(i<pickedCommanders.length) {
-                        $('.tableRowBody' + index).append($("<td></td>").text(commanderHp[index][i]));
-                    }
-                } else {
-                    $('.tableRowBody'+index).append($("<td></td>").text(commanderHp[index][i]));
-                }
-            }
-            if(index==6){
-                if(i==6){
-                    i++;
-                    if(i<pickedCommanders.length) {
-                        $('.tableRowBody' + index).append($("<td></td>").text(commanderHp[index][i]));
-                    }
-                } else {
-                    $('.tableRowBody'+index).append($("<td></td>").text(commanderHp[index][i]));
-                }
-            }
+            $('#placementModal').modal('show');
         }
+        $('.tbody'+playerIndex).empty();
+        $('.tbody'+playerIndex).append($("<tr></tr>").addClass('tableRowBody'+playerIndex));
+        $('.tableRowBody'+playerIndex).append($("<th></th>").attr( "scope", "row" ));
+        $('.tableRowBody'+playerIndex).append($("<td></td>").text(hp[playerIndex]));
+        pickedCommanders.forEach(function(commander, index) {
+            if(playerIndex != index){
+                $('.tableRowBody' + playerIndex).append($("<td></td>").text(commanderHp[playerIndex][index]));
+            }
+        });
     });
 }
 
-function inc5HpPlayerIndex(name, index){
+function inc5HpPlayerIndex(name, playerIndex){
     $('.'+name).click(function() {
         event.preventDefault();
-        hp[index] = hp[index] + 5;
-        if(hp[index]>=30){
-            hp[index]=30;
-        }
-        $('.tbody'+index).empty();
-        $('.tbody'+index).append($("<tr></tr>").addClass('tableRowBody'+index));
-        $('.tableRowBody'+index).append($("<th></th>").attr( "scope", "row" ));
-        $('.tableRowBody'+index).append($("<td></td>").text(hp[index]));
-        for(i=0; i<pickedCommanders.length; i++){
-            if(index==0){
-                if(i==0){
-                    i++;
-                    if(i<pickedCommanders.length) {
-                        $('.tableRowBody' + index).append($("<td></td>").text(commanderHp[index][i]));
-                    }
-                } else {
-                    $('.tableRowBody'+index).append($("<td></td>").text(commanderHp[index][i]));
-                }
+        hp[playerIndex] = hp[playerIndex] + 5;
+        $('.tbody'+playerIndex).empty();
+        $('.tbody'+playerIndex).append($("<tr></tr>").addClass('tableRowBody'+playerIndex));
+        $('.tableRowBody'+playerIndex).append($("<th></th>").attr( "scope", "row" ));
+        $('.tableRowBody'+playerIndex).append($("<td></td>").text(hp[playerIndex]));
+        pickedCommanders.forEach(function(commander, index) {
+            if(playerIndex != index){
+                $('.tableRowBody' + playerIndex).append($("<td></td>").text(commanderHp[playerIndex][index]));
             }
-            if(index==1){
-                if(i==1){
-                    i++;
-                    if(i<pickedCommanders.length) {
-                        $('.tableRowBody' + index).append($("<td></td>").text(commanderHp[index][i]));
-                    }
-                } else {
-                    $('.tableRowBody'+index).append($("<td></td>").text(commanderHp[index][i]));
-                }
-            }
-            if(index==2){
-                if(i==2){
-                    i++;
-                    if(i<pickedCommanders.length) {
-                        $('.tableRowBody' + index).append($("<td></td>").text(commanderHp[index][i]));
-                    }
-                } else {
-                    $('.tableRowBody'+index).append($("<td></td>").text(commanderHp[index][i]));
-                }
-            }
-            if(index==3){
-                if(i==3){
-                    i++;
-                    if(i<pickedCommanders.length) {
-                        $('.tableRowBody' + index).append($("<td></td>").text(commanderHp[index][i]));
-                    }
-                } else {
-                    $('.tableRowBody'+index).append($("<td></td>").text(commanderHp[index][i]));
-                }
-            }
-            if(index==4){
-                if(i==4){
-                    i++;
-                    if(i<pickedCommanders.length) {
-                        $('.tableRowBody' + index).append($("<td></td>").text(commanderHp[index][i]));
-                    }
-                } else {
-                    $('.tableRowBody'+index).append($("<td></td>").text(commanderHp[index][i]));
-                }
-            }
-            if(index==5){
-                if(i==5){
-                    i++;
-                    if(i<pickedCommanders.length) {
-                        $('.tableRowBody' + index).append($("<td></td>").text(commanderHp[index][i]));
-                    }
-                } else {
-                    $('.tableRowBody'+index).append($("<td></td>").text(commanderHp[index][i]));
-                }
-            }
-            if(index==6){
-                if(i==6){
-                    i++;
-                    if(i<pickedCommanders.length) {
-                        $('.tableRowBody' + index).append($("<td></td>").text(commanderHp[index][i]));
-                    }
-                } else {
-                    $('.tableRowBody'+index).append($("<td></td>").text(commanderHp[index][i]));
-                }
-            }
-        }
+        });
     });
 }
-
-dec1HpPlayerIndex('dec1HpPlayer0', 0);
-dec1HpPlayerIndex('dec1HpPlayer1', 1);
-dec1HpPlayerIndex('dec1HpPlayer2', 2);
-dec1HpPlayerIndex('dec1HpPlayer3', 3);
-dec1HpPlayerIndex('dec1HpPlayer4', 4);
-dec1HpPlayerIndex('dec1HpPlayer5', 5);
-
-inc1HpPlayerIndex('inc1HpPlayer0', 0);
-inc1HpPlayerIndex('inc1HpPlayer1', 1);
-inc1HpPlayerIndex('inc1HpPlayer2', 2);
-inc1HpPlayerIndex('inc1HpPlayer3', 3);
-inc1HpPlayerIndex('inc1HpPlayer4', 4);
-inc1HpPlayerIndex('inc1HpPlayer5', 5);
-
-dec5HpPlayerIndex('dec5HpPlayer0', 0);
-dec5HpPlayerIndex('dec5HpPlayer1', 1);
-dec5HpPlayerIndex('dec5HpPlayer2', 2);
-dec5HpPlayerIndex('dec5HpPlayer3', 3);
-dec5HpPlayerIndex('dec5HpPlayer4', 4);
-dec5HpPlayerIndex('dec5HpPlayer5', 5);
-
-inc5HpPlayerIndex('inc5HpPlayer0', 0);
-inc5HpPlayerIndex('inc5HpPlayer1', 1);
-inc5HpPlayerIndex('inc5HpPlayer2', 2);
-inc5HpPlayerIndex('inc5HpPlayer3', 3);
-inc5HpPlayerIndex('inc5HpPlayer4', 4);
-inc5HpPlayerIndex('inc5HpPlayer5', 5);
+for(var playerIndex=0; playerIndex<players.length; playerIndex++){
+    dec1HpPlayerIndex('dec1HpPlayer'+playerIndex, playerIndex);
+    inc1HpPlayerIndex('inc1HpPlayer'+playerIndex, playerIndex);
+    dec5HpPlayerIndex('dec5HpPlayer'+playerIndex, playerIndex);
+    inc5HpPlayerIndex('inc5HpPlayer'+playerIndex, playerIndex);
+}
 
 /*---------------------------------- /HP BUTTONS----------------------------------*/
 

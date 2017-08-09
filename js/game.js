@@ -5,12 +5,12 @@ var pickedCommanders = $.cookie('pickedCommanders');
 var hp=[];
 var commanderHp=[];
 var placementArr=[];
+var hashLog={};
+var step=1;
 
-//if($.cookie('players') == undefined ){
-//    players=window.playersFromCommander;
-//} else {
-    players = players.split(',');
-//}
+//console.log(Object.keys(hashLog).length);
+
+players = players.split(',');
 colors = colors.split(',');
 colors.length=players.length;
 pickedCommanders = pickedCommanders.split(',');
@@ -113,6 +113,11 @@ function dec1PlayerIndexComIndex(name, playerIndex, commanderIndex){
             $('.tableDiv'+playerIndex).css("display", "none");
             placementArr.unshift(players[playerIndex]);
         }
+
+        hashLog['playerLog'+step]='Player '+players[playerIndex]+' took 1 HP dmg '+'and has '+hp[playerIndex]+'HP left';
+        hashLog['commanderLog'+step]='Player '+players[playerIndex]+' took 1 commander dmg form '+pickedCommanders[commanderIndex];
+        step++;
+
         if(placementArr.length == players.length-1){
             players.forEach(function(player) {
                 if(placementArr.indexOf(player)<0){
@@ -148,6 +153,11 @@ function inc1PlayerIndexComIndex(name, playerIndex, commanderIndex){
         if(commanderHp[playerIndex][commanderIndex]>=15){
             commanderHp[playerIndex][commanderIndex]=15;
         }
+
+        hashLog['playerLog'+step]='Player '+players[playerIndex]+' gained 1 HP '+'and has '+hp[playerIndex]+'HP left';
+        hashLog['commanderLog'+step]='Player '+players[playerIndex]+' gained 1 commander HP form '+pickedCommanders[commanderIndex];
+        step++;
+
         $('.tbody'+playerIndex).empty();
         $('.tbody'+playerIndex).append($("<tr></tr>").addClass('tableRowBody'+playerIndex));
         $('.tableRowBody'+playerIndex).append($("<th></th>").attr( "scope", "row" ));
@@ -185,6 +195,11 @@ function dec5PlayerIndexComIndex(name, playerIndex, commanderIndex){
             }
             $('#placementModal').modal('show');
         }
+
+        hashLog['playerLog'+step]='Player '+players[playerIndex]+' took 5 HP dmg '+'and has '+hp[playerIndex]+'HP left';
+        hashLog['commanderLog'+step]='Player '+players[playerIndex]+' took 5 commander dmg form '+pickedCommanders[commanderIndex];
+        step++;
+
         $('.tbody'+playerIndex).empty();
         $('.tbody'+playerIndex).append($("<tr></tr>").addClass('tableRowBody'+playerIndex));
         $('.tableRowBody'+playerIndex).append($("<th></th>").attr( "scope", "row" ));
@@ -209,6 +224,11 @@ function inc5PlayerIndexComIndex(name, playerIndex, commanderIndex){
         if(commanderHp[playerIndex][commanderIndex]>=15){
             commanderHp[playerIndex][commanderIndex]=15;
         }
+
+        hashLog['playerLog'+step]='Player '+players[playerIndex]+' gained 5 HP '+'and has '+hp[playerIndex]+'HP left';
+        hashLog['commanderLog'+step]='Player '+players[playerIndex]+' gained 5 commander HP form '+pickedCommanders[commanderIndex];
+        step++;
+
         $('.tbody'+playerIndex).empty();
         $('.tbody'+playerIndex).append($("<tr></tr>").addClass('tableRowBody'+playerIndex));
         $('.tableRowBody'+playerIndex).append($("<th></th>").attr( "scope", "row" ));
@@ -254,6 +274,11 @@ function dec1HpPlayerIndex(name, playerIndex){
             }
             $('#placementModal').modal('show');
         }
+
+        hashLog['playerLog'+step]='Player '+players[playerIndex]+' took 1 HP dmg '+'and has '+hp[playerIndex]+'HP left';
+        hashLog['commanderLog'+step]='Player '+players[playerIndex]+' was not attacked by a commander this turn';
+        step++;
+
         $('.tbody'+playerIndex).empty();
         $('.tbody'+playerIndex).append($("<tr></tr>").addClass('tableRowBody'+playerIndex));
         $('.tableRowBody'+playerIndex).append($("<th></th>").attr( "scope", "row" ));
@@ -270,6 +295,11 @@ function inc1HpPlayerIndex(name, playerIndex){
     $('.'+name).click(function() {
         event.preventDefault();
         hp[playerIndex] = hp[playerIndex] + 1;
+
+        hashLog['playerLog'+step]='Player '+players[playerIndex]+' gained 1 HP '+'and has '+hp[playerIndex]+'HP left';
+        hashLog['commanderLog'+step]='Player '+players[playerIndex]+' was not attacked by a commander this turn';
+        step++;
+
         $('.tbody'+playerIndex).empty();
         $('.tbody'+playerIndex).append($("<tr></tr>").addClass('tableRowBody'+playerIndex));
         $('.tableRowBody'+playerIndex).append($("<th></th>").attr( "scope", "row" ));
@@ -301,6 +331,11 @@ function dec5HpPlayerIndex(name, playerIndex){
             }
             $('#placementModal').modal('show');
         }
+
+        hashLog['playerLog'+step]='Player '+players[playerIndex]+' took 5 HP dmg '+'and has '+hp[playerIndex]+'HP left';
+        hashLog['commanderLog'+step]='Player '+players[playerIndex]+' was not attacked by a commander this turn';
+        step++;
+
         $('.tbody'+playerIndex).empty();
         $('.tbody'+playerIndex).append($("<tr></tr>").addClass('tableRowBody'+playerIndex));
         $('.tableRowBody'+playerIndex).append($("<th></th>").attr( "scope", "row" ));
@@ -317,6 +352,11 @@ function inc5HpPlayerIndex(name, playerIndex){
     $('.'+name).click(function() {
         event.preventDefault();
         hp[playerIndex] = hp[playerIndex] + 5;
+
+        hashLog['playerLog'+step]='Player '+players[playerIndex]+' gained 5 HP '+'and has '+hp[playerIndex]+'HP left';
+        hashLog['commanderLog'+step]='Player '+players[playerIndex]+' was not attacked by a commander this turn';
+        step++;
+
         $('.tbody'+playerIndex).empty();
         $('.tbody'+playerIndex).append($("<tr></tr>").addClass('tableRowBody'+playerIndex));
         $('.tableRowBody'+playerIndex).append($("<th></th>").attr( "scope", "row" ));
@@ -336,6 +376,8 @@ for(var playerIndex=0; playerIndex<players.length; playerIndex++){
 }
 
 /*---------------------------------- /HP BUTTONS----------------------------------*/
+
+/*---------------------------------- UNDO BUTTONS----------------------------------*/
 
 
 

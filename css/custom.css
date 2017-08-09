@@ -267,3 +267,7 @@ body {
 .spearator {
     margin-right: 50px !important;
 }
+
+#undo {
+    margin-top: 25px;
+}

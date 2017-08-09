@@ -6,8 +6,8 @@ var commanders=['Jori En Ruin Diver', 'Sidisi Brood Tyrant', 'Yasova Dragonclaw'
 var pickedBorder=['firstPickBorder', 'secondPickBorder', 'thirdPickBorder', 'fourthPickBorder', 'fifthPickBorder', 'sixthPickBorder'];
 var pickedCommanders=[];
 var gameArr=[];
-var i=0;
-var j=0;
+var playerIndex=0;
+var playerBorderIndex=0;
 
 
 /*---------------------------------- BTN FOR CREATING NEW GAME ON COMMANDER MAIN ----------------------------------*/
@@ -15,8 +15,8 @@ $('#btnNewGame').click(function() {
     players=[];
     pickedCommanders=[];
     gameArr=[];
-    i=0;
-    j=0;
+    playerIndex=0;
+    playerBorderIndex=0;
     $('#arrowPlayer').fadeIn( 400 );
     $('#btnPlayers').fadeIn( 400 );
     $('#playerGrid').empty();
@@ -39,14 +39,9 @@ $('#btnNewGame').click(function() {
     $('#PlayerModalLobby').hide();
     $('#divPlayOrder').hide();
     $('#btnRandomizeOrder').hide();
-    for(var k=0; k<pickedBorder.length; k++){
-        $('#commander1').removeClass(pickedBorder[k]);
-        $('#commander2').removeClass(pickedBorder[k]);
-        $('#commander3').removeClass(pickedBorder[k]);
-        $('#commander4').removeClass(pickedBorder[k]);
-        $('#commander5').removeClass(pickedBorder[k]);
-        $('#commander6').removeClass(pickedBorder[k]);
-    }
+    pickedBorder.forEach(function(border, borderIndex) {
+        $('#commander'+(borderIndex+1)).removeClass(border);
+    });
 });
 
 /*---------------------------------- REMOVES GREEN COLOR FROM PLAYERS BUTTON ON COMMANDER MAIN ----------------------------------*/
@@ -58,10 +53,10 @@ $('#btnPlayers').click(function() {
 /*---------------------------------- BTN IN MODAL THAT ADDS A PLAYER TO THE POOL BEFORE CREATING A LOBBY ON MODAL ----------------------------------*/
 $('#addPlayer').click(function() {
     event.preventDefault();
-    players[i]=$('#playerName').val();
+    players[playerIndex]=$('#playerName').val();
     if($('#playerName').val() != '') {
-        $('#playerGrid').append($("<ol></ol>").text(players[i]));
-        i++;
+        $('#playerGrid').append($("<ol></ol>").text(players[playerIndex]));
+        playerIndex++;
         $('#playerName').val('');
         $('#playerName').focus();
     }
@@ -71,10 +66,10 @@ $('#addPlayer').click(function() {
 $('#createLobby').click(function() {
     event.preventDefault();
     shuffle(players);
-    for(i=0; i<players.length; i++){
-        $('#playerLobby').append($("<ol></ol>").text(players[i]));
-        $('#colorLobby').append($("<div></div>").addClass(colors[i]));
-        $('#colorLobby').find('div').eq(i).attr('id', 'divPlayerColor'+i);
+    for(var playerIndex=0; playerIndex<players.length; playerIndex++){
+        $('#playerLobby').append($("<ol></ol>").text(players[playerIndex]));
+        $('#colorLobby').append($("<div></div>").addClass(colors[playerIndex]));
+        $('#colorLobby').find('div').eq(playerIndex).attr('id', 'divPlayerColor'+playerIndex);
     }
     $('#addPlayerModalPanel').hide();
     $('#PlayerModalLobby').show();
@@ -86,15 +81,18 @@ $('#randomizeCommander').click(function() {
     event.preventDefault();
     $('#pickCommander').hide();
     shuffle(commanders);
-    for(i=0, j=0; i<players.length; i++, j++){
-        $('#commanderLobby').append($("<ol></ol>").text(commanders[i]));
-        $('#commanderLobby').find('ol').eq(i).attr('id', 'olLobbyCommander'+i);
-        pickedCommanders[j]=commanders[i];
+    for(var commanderIndex=0, pickedCommanderIndex=0; commanderIndex<players.length; commanderIndex++, pickedCommanderIndex++){
+        $('#commanderLobby').append($("<ol></ol>").text(commanders[commanderIndex]));
+        $('#commanderLobby').find('ol').eq(commanderIndex).attr('id', 'olLobbyCommander'+commanderIndex);
+        pickedCommanders[pickedCommanderIndex]=commanders[commanderIndex];
         $('.reRoll').append($("<button></button>").addClass('btn btn-primary btn-sm').text("ReRoll"));
-        $('.reRoll').find('button').eq(i).attr('id', 'btnReRoll'+i);
+        $('.reRoll').find('button').eq(commanderIndex).attr('id', 'btnReRoll'+commanderIndex);
     }
     $('#randomizeCommander').hide();
     $('#btnRandomizeOrder').show();
+    players.forEach(function(player, Index) {
+        ReRoll(Index);
+    });
 });
 
 /*---------------------------------- BTNS IN MODAL THAT LETS PLAYER RANDOMLY REROLL COMMANDER IN LOBBY AFTER RANDOMIZE ----------------------------------*/
@@ -107,13 +105,6 @@ function ReRoll(index){
     });
 }
 
-ReRoll(0);
-ReRoll(1);
-ReRoll(2);
-ReRoll(3);
-ReRoll(4);
-ReRoll(5);
-
 /*---------------------------------- BTN IN MODAL THAT LETS PEOPLE PICK COMMANDERS THEMSELVES ----------------------------------*/
 $('#pickCommander').click(function() {
     event.preventDefault();
@@ -125,34 +116,30 @@ $('#pickCommander').click(function() {
     $('.playerPickMainScreen').css('display', 'inline-block');
     $('#randomizeCommander').hide();
     $('#pickCommander').hide();
+    players.forEach(function(player, Index) {
+        pickedCommander(Index+1);
+    });
 });
 
 /*---------------------------------- BORDER AND PICKED COMMANDER ARRAY ON CLICK ----------------------------------*/
 function pickedCommander(index) {
     $('#commander'+index).click(function() {
         event.preventDefault();
-        $('#commander'+index).addClass(pickedBorder[j]);
-        pickedCommanders[j]=$('#value'+index).text();
-        $('#commanderLobby').append($("<ol></ol>").text(pickedCommanders[j]));
+        $('#commander'+index).addClass(pickedBorder[playerBorderIndex]);
+        pickedCommanders[playerBorderIndex]=$('#value'+index).text();
+        $('#commanderLobby').append($("<ol></ol>").text(pickedCommanders[playerBorderIndex]));
         $('.playerPickPlayer').empty();
-        $('.playerPickColor').removeClass(colors[j]);
-        j++;
-        if(j<players.length){
-            $('.playerPickPlayer').text(players[j]);
-            $('.playerPickColor').addClass(colors[j]);
+        $('.playerPickColor').removeClass(colors[playerBorderIndex]);
+        playerBorderIndex++;
+        if(playerBorderIndex<players.length){
+            $('.playerPickPlayer').text(players[playerBorderIndex]);
+            $('.playerPickColor').addClass(colors[playerBorderIndex]);
         } else {
             $('#players').modal('show');
         }
         $('#btnRandomizeOrder').show();
     });
 }
-
-pickedCommander(1);
-pickedCommander(2);
-pickedCommander(3);
-pickedCommander(4);
-pickedCommander(5);
-pickedCommander(6);
 
 /*---------------------------------- BTN IN MODAL THAT RANDOMIZES ORDER  ----------------------------------*/
 $('#btnRandomizeOrder').click(function() {
@@ -167,11 +154,11 @@ $('#btnRandomizeOrder').click(function() {
     $.cookie('colors', colors, { expires: 7, path: '/' });
     pickedCommanders=gameArr[2];
     $.cookie('pickedCommanders', pickedCommanders, { expires: 7, path: '/' });
-    for(i=0; i<players.length; i++){
-        $('#divOrderNumber').append($("<ol></ol>").text((i+1)+'. '));
-        $('#divOrderPlayer').append($("<ol></ol>").text(players[i]));
-        $('#divOrderColor').append($("<div></div>").addClass(colors[i]));
-        $('#divOrderCommander').append($("<ol></ol>").text(pickedCommanders[i]));
+    for(var playerIndex=0; playerIndex<players.length; playerIndex++){
+        $('#divOrderNumber').append($("<ol></ol>").text((playerIndex+1)+'. '));
+        $('#divOrderPlayer').append($("<ol></ol>").text(players[playerIndex]));
+        $('#divOrderColor').append($("<div></div>").addClass(colors[playerIndex]));
+        $('#divOrderCommander').append($("<ol></ol>").text(pickedCommanders[playerIndex]));
     }
     $('#PlayerModalLobby').hide();
     $('#divPlayOrder').show();

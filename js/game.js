@@ -6,24 +6,28 @@ var hp=[];
 var commanderHp=[];
 var placementArr=[];
 
-players = players.split(',');
+//if($.cookie('players') == undefined ){
+//    players=window.players;
+//} else {
+    players = players.split(',');
+//}
 colors = colors.split(',');
 colors.length=players.length;
 pickedCommanders = pickedCommanders.split(',');
 
-for(i=0; i<pickedCommanders.length; i++){
-    hp[i]=30;
+for(var playerIndex=0; playerIndex<players.length; playerIndex++){
+    hp[playerIndex]=30;
 }
 
-for(i=0; i<pickedCommanders.length; i++){
-    for(j=0; j<pickedCommanders.length; j++){
-        commanderHp[i]=[];
+for(var playerIndex=0; playerIndex<players.length; playerIndex++){
+    for(var commanderIndex=0; commanderIndex<pickedCommanders.length; commanderIndex++){
+        commanderHp[playerIndex]=[];
     }
 }
 
-for(i=0; i<pickedCommanders.length; i++){
-    for(j=0; j<pickedCommanders.length; j++){
-        commanderHp[i][j]=15;
+for(var playerIndex=0; playerIndex<players.length; playerIndex++){
+    for(var commanderIndex=0; commanderIndex<pickedCommanders.length; commanderIndex++){
+        commanderHp[playerIndex][commanderIndex]=15;
     }
 }
 
@@ -116,8 +120,8 @@ function dec1PlayerIndexComIndex(name, playerIndex, commanderIndex){
                     placementArr.unshift(player);
                 }
             });
-            for(i=0; i<placementArr.length; i++){
-                $('#placement').append($("<ol></ol>").text((1+i)+'. Place  '+placementArr[i]));
+            for(placementArrIndex=0; placementArrIndex<placementArr.length; placementArrIndex++){
+                $('#placement').append($("<ol></ol>").text((1+placementArrIndex)+'. Place  '+placementArr[placementArrIndex]));
             }
             $('#placementModal').modal('show');
         }
@@ -177,8 +181,8 @@ function dec5PlayerIndexComIndex(name, playerIndex, commanderIndex){
                     placementArr.unshift(player);
                 }
             });
-            for(i=0; i<placementArr.length; i++){
-                $('#placement').append($("<ol></ol>").text((1+i)+'. Place  '+placementArr[i]));
+            for(placementArrIndex=0; placementArrIndex<placementArr.length; placementArrIndex++){
+                $('#placement').append($("<ol></ol>").text((1+placementArrIndex)+'. Place  '+placementArr[placementArrIndex]));
             }
             $('#placementModal').modal('show');
         }
@@ -246,8 +250,8 @@ function dec1HpPlayerIndex(name, playerIndex){
                     placementArr.unshift(player);
                 }
             });
-            for(i=0; i<placementArr.length; i++){
-                $('#placement').append($("<ol></ol>").text((1+i)+'. Place  '+placementArr[i]));
+            for(placementArrIndex=0; placementArrIndex<placementArr.length; placementArrIndex++){
+                $('#placement').append($("<ol></ol>").text((1+placementArrIndex)+'. Place  '+placementArr[placementArrIndex]));
             }
             $('#placementModal').modal('show');
         }
@@ -293,8 +297,8 @@ function dec5HpPlayerIndex(name, playerIndex){
                     placementArr.unshift(player);
                 }
             });
-            for(i=0; i<placementArr.length; i++){
-                $('#placement').append($("<ol></ol>").text((1+i)+'. Place  '+placementArr[i]));
+            for(placementArrIndex=0; placementArrIndex<placementArr.length; placementArrIndex++){
+                $('#placement').append($("<ol></ol>").text((1+placementArrIndex)+'. Place  '+placementArr[placementArrIndex]));
             }
             $('#placementModal').modal('show');
         }
@@ -334,6 +338,5 @@ for(var playerIndex=0; playerIndex<players.length; playerIndex++){
 
 /*---------------------------------- /HP BUTTONS----------------------------------*/
 
-/*---------------------------------- PLACEMENT MODAL----------------------------------*/
 
 

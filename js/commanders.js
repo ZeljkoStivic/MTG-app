@@ -116,7 +116,7 @@ $('#pickCommander').click(function() {
     $('.playerPickMainScreen').css('display', 'inline-block');
     $('#randomizeCommander').hide();
     $('#pickCommander').hide();
-    players.forEach(function(player, Index) {
+    commanders.forEach(function(commander, Index) {
         pickedCommander(Index+1);
     });
 });
@@ -126,7 +126,7 @@ function pickedCommander(index) {
     $('#commander'+index).click(function() {
         event.preventDefault();
         $('#commander'+index).addClass(pickedBorder[playerBorderIndex]);
-        pickedCommanders[playerBorderIndex]=$('#value'+index).text();
+        pickedCommanders[playerBorderIndex]=commanders[index-1];
         $('#commanderLobby').append($("<ol></ol>").text(pickedCommanders[playerBorderIndex]));
         $('.playerPickPlayer').empty();
         $('.playerPickColor').removeClass(colors[playerBorderIndex]);
@@ -189,10 +189,10 @@ function shuffle(array) {
     var tempVrijednost;
     var randomBroj;
 
-    for (var i = 0; i < array.length; i++) {
+    for (var index = 0; index < array.length; index++) {
         randomBroj = Math.floor(Math.random() * ((array.length - 1) - 0 + 1)) + 0;
-        tempVrijednost = array[i];
-        array[i] = array[randomBroj];
+        tempVrijednost = array[index];
+        array[index] = array[randomBroj];
         array[randomBroj] = tempVrijednost;
     }
     return array;
@@ -206,14 +206,14 @@ function shufflePlayers(array1, array2, array3) {
     var tempVrijednost3;
     var randomBroj;
 
-    for (var i = 0; i < array1.length; i++) {
+    for (var index = 0; index < array1.length; index++) {
         randomBroj = Math.floor(Math.random() * ((array1.length - 1) - 0 + 1)) + 0;
-        tempVrijednost1 = array1[i];
-        tempVrijednost2 = array2[i];
-        tempVrijednost3 = array3[i];
-        array1[i] = array1[randomBroj];
-        array2[i] = array2[randomBroj];
-        array3[i] = array3[randomBroj];
+        tempVrijednost1 = array1[index];
+        tempVrijednost2 = array2[index];
+        tempVrijednost3 = array3[index];
+        array1[index] = array1[randomBroj];
+        array2[index] = array2[randomBroj];
+        array3[index] = array3[randomBroj];
         array1[randomBroj] = tempVrijednost1;
         array2[randomBroj] = tempVrijednost2;
         array3[randomBroj] = tempVrijednost3;

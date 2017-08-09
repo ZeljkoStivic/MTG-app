@@ -113,7 +113,7 @@ function dec1PlayerIndexComIndex(name, playerIndex, commanderIndex){
         }
 
         hashLog['playerLog'+step]='Player '+players[playerIndex]+' took 1 HP dmg '+'and has '+hp[playerIndex]+'HP left';
-        hashLog['OperatorNumberPlayerCommanderLog'+step]=['-',1,players[playerIndex],hp[playerIndex], pickedCommanders[commanderIndex], commanderHp[playerIndex][commanderIndex]];
+        hashLog['OperatorNumberPlayerCommanderLog'+step]=['-',1,playerIndex,hp[playerIndex], commanderIndex, commanderHp[playerIndex][commanderIndex]];
         hashLog['commanderLog'+step]='Player '+players[playerIndex]+' took 1 commander dmg form '+pickedCommanders[commanderIndex];
         step++;
 
@@ -154,7 +154,7 @@ function inc1PlayerIndexComIndex(name, playerIndex, commanderIndex){
         }
 
         hashLog['playerLog'+step]='Player '+players[playerIndex]+' gained 1 HP '+'and has '+hp[playerIndex]+'HP left';
-        hashLog['OperatorNumberPlayerCommanderLog'+step]=['+',1,players[playerIndex],hp[playerIndex], pickedCommanders[commanderIndex], commanderHp[playerIndex][commanderIndex]];
+        hashLog['OperatorNumberPlayerCommanderLog'+step]=['+',1,playerIndex,hp[playerIndex], commanderIndex, commanderHp[playerIndex][commanderIndex]];
         hashLog['commanderLog'+step]='Player '+players[playerIndex]+' gained 1 commander HP form '+pickedCommanders[commanderIndex];
         step++;
 
@@ -197,7 +197,7 @@ function dec5PlayerIndexComIndex(name, playerIndex, commanderIndex){
         }
 
         hashLog['playerLog'+step]='Player '+players[playerIndex]+' took 5 HP dmg '+'and has '+hp[playerIndex]+'HP left';
-        hashLog['OperatorNumberPlayerCommanderLog'+step]=['-',5,players[playerIndex],hp[playerIndex], pickedCommanders[commanderIndex], commanderHp[playerIndex][commanderIndex]];
+        hashLog['OperatorNumberPlayerCommanderLog'+step]=['-',5,playerIndex,hp[playerIndex], commanderIndex, commanderHp[playerIndex][commanderIndex]];
         hashLog['commanderLog'+step]='Player '+players[playerIndex]+' took 5 commander dmg form '+pickedCommanders[commanderIndex];
         step++;
 
@@ -227,7 +227,7 @@ function inc5PlayerIndexComIndex(name, playerIndex, commanderIndex){
         }
 
         hashLog['playerLog'+step]='Player '+players[playerIndex]+' gained 5 HP '+'and has '+hp[playerIndex]+'HP left';
-        hashLog['OperatorNumberPlayerCommanderLog'+step]=['+',5,players[playerIndex],hp[playerIndex], pickedCommanders[commanderIndex], commanderHp[playerIndex][commanderIndex]];
+        hashLog['OperatorNumberPlayerCommanderLog'+step]=['+',5,playerIndex,hp[playerIndex], commanderIndex, commanderHp[playerIndex][commanderIndex]];
         hashLog['commanderLog'+step]='Player '+players[playerIndex]+' gained 5 commander HP form '+pickedCommanders[commanderIndex];
         step++;
 
@@ -278,7 +278,7 @@ function dec1HpPlayerIndex(name, playerIndex){
         }
 
         hashLog['playerLog'+step]='Player '+players[playerIndex]+' took 1 HP dmg '+'and has '+hp[playerIndex]+'HP left';
-        hashLog['OperatorNumberPlayerCommanderLog'+step]=['-',1,players[playerIndex],hp[playerIndex]];
+        hashLog['OperatorNumberPlayerCommanderLog'+step]=['-',1,playerIndex,hp[playerIndex]];
         hashLog['commanderLog'+step]='Player '+players[playerIndex]+' was not attacked by a commander this turn';
         step++;
 
@@ -300,7 +300,7 @@ function inc1HpPlayerIndex(name, playerIndex){
         hp[playerIndex] = hp[playerIndex] + 1;
 
         hashLog['playerLog'+step]='Player '+players[playerIndex]+' gained 1 HP '+'and has '+hp[playerIndex]+'HP left';
-        hashLog['OperatorNumberPlayerCommanderLog'+step]=['+',1,players[playerIndex],hp[playerIndex]];
+        hashLog['OperatorNumberPlayerCommanderLog'+step]=['+',1,playerIndex,hp[playerIndex]];
         hashLog['commanderLog'+step]='Player '+players[playerIndex]+' was not attacked by a commander this turn';
         step++;
 
@@ -337,7 +337,7 @@ function dec5HpPlayerIndex(name, playerIndex){
         }
 
         hashLog['playerLog'+step]='Player '+players[playerIndex]+' took 5 HP dmg '+'and has '+hp[playerIndex]+'HP left';
-        hashLog['OperatorNumberPlayerCommanderLog'+step]=['-',5,players[playerIndex],hp[playerIndex]];
+        hashLog['OperatorNumberPlayerCommanderLog'+step]=['-',5,playerIndex,hp[playerIndex]];
         hashLog['commanderLog'+step]='Player '+players[playerIndex]+' was not attacked by a commander this turn';
         step++;
 
@@ -359,7 +359,7 @@ function inc5HpPlayerIndex(name, playerIndex){
         hp[playerIndex] = hp[playerIndex] + 5;
 
         hashLog['playerLog'+step]='Player '+players[playerIndex]+' gained 5 HP '+'and has '+hp[playerIndex]+'HP left';
-        hashLog['OperatorNumberPlayerCommanderLog'+step]=['+',5,players[playerIndex],hp[playerIndex]];
+        hashLog['OperatorNumberPlayerCommanderLog'+step]=['+',5,playerIndex,hp[playerIndex]];
         hashLog['commanderLog'+step]='Player '+players[playerIndex]+' was not attacked by a commander this turn';
         step++;
 
@@ -385,7 +385,6 @@ for(var playerIndex=0; playerIndex<players.length; playerIndex++){
 
 /*---------------------------------- COMBAT LOG BUTTON----------------------------------*/
 function combatLogWrite(){
-    //console.log(Object.keys(hashLog).length);
     for(log=1; log<=step; log++){
         $('#divCombatLog').append($("<p></p>").text(hashLog['playerLog'+log]));
         $('#divCombatLog').append($("<p></p>").text(hashLog['commanderLog'+log]));
@@ -400,3 +399,109 @@ $('#btnCombatLog').click(function() {
 
 /*---------------------------------- UNDO BUTTON----------------------------------*/
 
+$('#btnUndo').click(function() {
+    event.preventDefault();
+    function hashOperatorPlayerPlus(number) {
+        hp[hashLog['OperatorNumberPlayerCommanderLog' + logStep][2]] += number;
+        $('.tbody'+hashLog['OperatorNumberPlayerCommanderLog' + logStep][2]).empty();
+        $('.tbody'+hashLog['OperatorNumberPlayerCommanderLog' + logStep][2]).append($("<tr></tr>").addClass('tableRowBody'+hashLog['OperatorNumberPlayerCommanderLog' + logStep][2]));
+        $('.tableRowBody'+hashLog['OperatorNumberPlayerCommanderLog' + logStep][2]).append($("<th></th>").attr( "scope", "row" ));
+        $('.tableRowBody'+hashLog['OperatorNumberPlayerCommanderLog' + logStep][2]).append($("<td></td>").text(hp[hashLog['OperatorNumberPlayerCommanderLog' + logStep][2]]));
+        pickedCommanders.forEach(function(commander, index) {
+            if(hashLog['OperatorNumberPlayerCommanderLog' + logStep][2] != index){
+                console.log(hashLog['OperatorNumberPlayerCommanderLog' + logStep][2]);
+                $('.tableRowBody' + hashLog['OperatorNumberPlayerCommanderLog' + logStep][2]).append($("<td></td>").text(commanderHp[hashLog['OperatorNumberPlayerCommanderLog' + logStep][2]][index]));
+            }
+        });
+        delete hashLog["OperatorNumberPlayerCommanderLog" + logStep];
+        delete hashLog["playerLog" + logStep];
+        delete hashLog["commanderLog" + logStep];
+    }
+
+    function hashOperatorPlayerMinus(number) {
+        hp[hashLog['OperatorNumberPlayerCommanderLog' + logStep][2]] -= number;
+        $('.tbody'+hashLog['OperatorNumberPlayerCommanderLog' + logStep][2]).empty();
+        $('.tbody'+hashLog['OperatorNumberPlayerCommanderLog' + logStep][2]).append($("<tr></tr>").addClass('tableRowBody'+hashLog['OperatorNumberPlayerCommanderLog' + logStep][2]));
+        $('.tableRowBody'+hashLog['OperatorNumberPlayerCommanderLog' + logStep][2]).append($("<th></th>").attr( "scope", "row" ));
+        $('.tableRowBody'+hashLog['OperatorNumberPlayerCommanderLog' + logStep][2]).append($("<td></td>").text(hp[hashLog['OperatorNumberPlayerCommanderLog' + logStep][2]]));
+        pickedCommanders.forEach(function(commander, index) {
+            if(hashLog['OperatorNumberPlayerCommanderLog' + logStep][2] != index){
+                console.log(hashLog['OperatorNumberPlayerCommanderLog' + logStep][2]);
+                $('.tableRowBody' + hashLog['OperatorNumberPlayerCommanderLog' + logStep][2]).append($("<td></td>").text(commanderHp[hashLog['OperatorNumberPlayerCommanderLog' + logStep][2]][index]));
+            }
+        });
+        delete hashLog["OperatorNumberPlayerCommanderLog" + logStep];
+        delete hashLog["playerLog" + logStep];
+        delete hashLog["commanderLog" + logStep];
+    }
+
+    function hashOperatorPlayerCommanderPlus(number) {
+        hp[hashLog['OperatorNumberPlayerCommanderLog' + logStep][2]] += number;
+        commanderHp[hashLog['OperatorNumberPlayerCommanderLog' + logStep][2]][hashLog['OperatorNumberPlayerCommanderLog' + logStep][4]] += number;
+        $('.tbody'+hashLog['OperatorNumberPlayerCommanderLog' + logStep][2]).empty();
+        $('.tbody'+hashLog['OperatorNumberPlayerCommanderLog' + logStep][2]).append($("<tr></tr>").addClass('tableRowBody'+hashLog['OperatorNumberPlayerCommanderLog' + logStep][2]));
+        $('.tableRowBody'+hashLog['OperatorNumberPlayerCommanderLog' + logStep][2]).append($("<th></th>").attr( "scope", "row" ));
+        $('.tableRowBody'+hashLog['OperatorNumberPlayerCommanderLog' + logStep][2]).append($("<td></td>").text(hp[hashLog['OperatorNumberPlayerCommanderLog' + logStep][2]]));
+        pickedCommanders.forEach(function(commander, index) {
+            if(hashLog['OperatorNumberPlayerCommanderLog' + logStep][2] != index){
+                console.log(hashLog['OperatorNumberPlayerCommanderLog' + logStep][2]);
+                $('.tableRowBody' + hashLog['OperatorNumberPlayerCommanderLog' + logStep][2]).append($("<td></td>").text(commanderHp[hashLog['OperatorNumberPlayerCommanderLog' + logStep][2]][index]));
+            }
+        });
+        delete hashLog["OperatorNumberPlayerCommanderLog" + logStep];
+        delete hashLog["playerLog" + logStep];
+        delete hashLog["commanderLog" + logStep];
+    }
+
+    function hashOperatorPlayerCommanderMinus(number) {
+        hp[hashLog['OperatorNumberPlayerCommanderLog' + logStep][2]] -= number;
+        commanderHp[hashLog['OperatorNumberPlayerCommanderLog' + logStep][2]][hashLog['OperatorNumberPlayerCommanderLog' + logStep][4]] -= number;
+        $('.tbody'+hashLog['OperatorNumberPlayerCommanderLog' + logStep][2]).empty();
+        $('.tbody'+hashLog['OperatorNumberPlayerCommanderLog' + logStep][2]).append($("<tr></tr>").addClass('tableRowBody'+hashLog['OperatorNumberPlayerCommanderLog' + logStep][2]));
+        $('.tableRowBody'+hashLog['OperatorNumberPlayerCommanderLog' + logStep][2]).append($("<th></th>").attr( "scope", "row" ));
+        $('.tableRowBody'+hashLog['OperatorNumberPlayerCommanderLog' + logStep][2]).append($("<td></td>").text(hp[hashLog['OperatorNumberPlayerCommanderLog' + logStep][2]]));
+        pickedCommanders.forEach(function(commander, index) {
+            if(hashLog['OperatorNumberPlayerCommanderLog' + logStep][2] != index){
+                console.log(hashLog['OperatorNumberPlayerCommanderLog' + logStep][2]);
+                $('.tableRowBody' + hashLog['OperatorNumberPlayerCommanderLog' + logStep][2]).append($("<td></td>").text(commanderHp[hashLog['OperatorNumberPlayerCommanderLog' + logStep][2]][index]));
+            }
+        });
+        delete hashLog["OperatorNumberPlayerCommanderLog" + logStep];
+        delete hashLog["playerLog" + logStep];
+        delete hashLog["commanderLog" + logStep];
+    }
+
+    var logStep=Object.keys(hashLog).length/3;
+    console.log(logStep);
+    if(Object.keys(hashLog['OperatorNumberPlayerCommanderLog'+logStep]).length == 4){
+        if(hashLog['OperatorNumberPlayerCommanderLog'+logStep][0] == '-') {
+            if(hashLog['OperatorNumberPlayerCommanderLog'+logStep][1] == 1){
+                hashOperatorPlayerPlus(1);
+            } else if (hashLog['OperatorNumberPlayerCommanderLog'+logStep][1] == 5){
+                hashOperatorPlayerPlus(5);
+            }
+        } else if(hashLog['OperatorNumberPlayerCommanderLog'+logStep][0] == '+') {
+            if(hashLog['OperatorNumberPlayerCommanderLog'+logStep][1] == 1){
+                hashOperatorPlayerMinus(1);
+            } else if (hashLog['OperatorNumberPlayerCommanderLog'+logStep][1] == 5){
+                hashOperatorPlayerMinus(5);
+            }
+        }
+    } else if (Object.keys(hashLog['OperatorNumberPlayerCommanderLog'+logStep]).length == 6){
+        if(hashLog['OperatorNumberPlayerCommanderLog'+logStep][0] == '-') {
+            if(hashLog['OperatorNumberPlayerCommanderLog'+logStep][1] == 1){
+                hashOperatorPlayerCommanderPlus(1);
+            } else if (hashLog['OperatorNumberPlayerCommanderLog'+logStep][1] == 5){
+                hashOperatorPlayerCommanderPlus(5);
+            }
+        } else if(hashLog['OperatorNumberPlayerCommanderLog'+logStep][0] == '+') {
+            if(hashLog['OperatorNumberPlayerCommanderLog'+logStep][1] == 1){
+                hashOperatorPlayerCommanderMinus(1);
+            } else if (hashLog['OperatorNumberPlayerCommanderLog'+logStep][1] == 5){
+                hashOperatorPlayerCommanderMinus(5);
+            }
+        }
+    }
+    logStep--;
+    step--;
+});

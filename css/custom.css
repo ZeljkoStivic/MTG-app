@@ -258,3 +258,12 @@ body {
     overflow-y: auto;
     max-height: 800px;
 }
+
+.btn-success {
+   margin-left: 5px !important;
+   margin-top: 5px !important;
+}
+
+.spearator {
+    margin-right: 50px !important;
+}

@@ -9,7 +9,6 @@ var gameArr=[];
 var playerIndex=0;
 var playerBorderIndex=0;
 
-
 /*---------------------------------- BTN FOR CREATING NEW GAME ON COMMANDER MAIN ----------------------------------*/
 $('#btnNewGame').click(function() {
     players=[];

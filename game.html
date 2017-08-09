@@ -38,19 +38,20 @@
 
         </div>
         <!--  table  -->
-        <button id="undo" type="button" class="btn btn-danger">Undo</button>
+        <button id="btnUndo" type="button" class="btn btn-danger">Undo</button>
+        <button id="btnCombatLog" type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalCombatLog">Combat Log</button>
     </div>
 </div>
 
 <!--============================
-              FORM MODAL
+       FORM MODAL - PLACEMENT
    =============================-->
 <!-- Form Modal -->
 <div id="placementModal" class="modal fade" role="dialog">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header bg-info text-white">
-                <h5 class="modal-title">Creating New Game</h5>
+                <h5 class="modal-title">Placement</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -59,6 +60,30 @@
                 <h5 class="mb-4">GAME OVER!</h5>
                 <label for="placement">Placement:</label>
                 <div id="placement">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>  <!--   /form modal   -->
+
+
+<!--============================
+       FORM MODAL - COMBAT LOG
+   =============================-->
+<!-- Form Modal -->
+<div id="modalCombatLog" class="modal fade" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-info text-white">
+                <h5 class="modal-title">Combat Log</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <h5 class="mb-4">Combat Log</h5>
+                <div id="divCombatLog">
 
                 </div>
             </div>

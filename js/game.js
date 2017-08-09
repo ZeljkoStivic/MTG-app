@@ -8,8 +8,6 @@ var placementArr=[];
 var hashLog={};
 var step=1;
 
-//console.log(Object.keys(hashLog).length);
-
 players = players.split(',');
 colors = colors.split(',');
 colors.length=players.length;
@@ -115,6 +113,7 @@ function dec1PlayerIndexComIndex(name, playerIndex, commanderIndex){
         }
 
         hashLog['playerLog'+step]='Player '+players[playerIndex]+' took 1 HP dmg '+'and has '+hp[playerIndex]+'HP left';
+        hashLog['OperatorNumberPlayerCommanderLog'+step]=['-',1,players[playerIndex],hp[playerIndex], pickedCommanders[commanderIndex], commanderHp[playerIndex][commanderIndex]];
         hashLog['commanderLog'+step]='Player '+players[playerIndex]+' took 1 commander dmg form '+pickedCommanders[commanderIndex];
         step++;
 
@@ -155,6 +154,7 @@ function inc1PlayerIndexComIndex(name, playerIndex, commanderIndex){
         }
 
         hashLog['playerLog'+step]='Player '+players[playerIndex]+' gained 1 HP '+'and has '+hp[playerIndex]+'HP left';
+        hashLog['OperatorNumberPlayerCommanderLog'+step]=['+',1,players[playerIndex],hp[playerIndex], pickedCommanders[commanderIndex], commanderHp[playerIndex][commanderIndex]];
         hashLog['commanderLog'+step]='Player '+players[playerIndex]+' gained 1 commander HP form '+pickedCommanders[commanderIndex];
         step++;
 
@@ -197,6 +197,7 @@ function dec5PlayerIndexComIndex(name, playerIndex, commanderIndex){
         }
 
         hashLog['playerLog'+step]='Player '+players[playerIndex]+' took 5 HP dmg '+'and has '+hp[playerIndex]+'HP left';
+        hashLog['OperatorNumberPlayerCommanderLog'+step]=['-',5,players[playerIndex],hp[playerIndex], pickedCommanders[commanderIndex], commanderHp[playerIndex][commanderIndex]];
         hashLog['commanderLog'+step]='Player '+players[playerIndex]+' took 5 commander dmg form '+pickedCommanders[commanderIndex];
         step++;
 
@@ -226,6 +227,7 @@ function inc5PlayerIndexComIndex(name, playerIndex, commanderIndex){
         }
 
         hashLog['playerLog'+step]='Player '+players[playerIndex]+' gained 5 HP '+'and has '+hp[playerIndex]+'HP left';
+        hashLog['OperatorNumberPlayerCommanderLog'+step]=['+',5,players[playerIndex],hp[playerIndex], pickedCommanders[commanderIndex], commanderHp[playerIndex][commanderIndex]];
         hashLog['commanderLog'+step]='Player '+players[playerIndex]+' gained 5 commander HP form '+pickedCommanders[commanderIndex];
         step++;
 
@@ -276,6 +278,7 @@ function dec1HpPlayerIndex(name, playerIndex){
         }
 
         hashLog['playerLog'+step]='Player '+players[playerIndex]+' took 1 HP dmg '+'and has '+hp[playerIndex]+'HP left';
+        hashLog['OperatorNumberPlayerCommanderLog'+step]=['-',1,players[playerIndex],hp[playerIndex]];
         hashLog['commanderLog'+step]='Player '+players[playerIndex]+' was not attacked by a commander this turn';
         step++;
 
@@ -297,6 +300,7 @@ function inc1HpPlayerIndex(name, playerIndex){
         hp[playerIndex] = hp[playerIndex] + 1;
 
         hashLog['playerLog'+step]='Player '+players[playerIndex]+' gained 1 HP '+'and has '+hp[playerIndex]+'HP left';
+        hashLog['OperatorNumberPlayerCommanderLog'+step]=['+',1,players[playerIndex],hp[playerIndex]];
         hashLog['commanderLog'+step]='Player '+players[playerIndex]+' was not attacked by a commander this turn';
         step++;
 
@@ -333,6 +337,7 @@ function dec5HpPlayerIndex(name, playerIndex){
         }
 
         hashLog['playerLog'+step]='Player '+players[playerIndex]+' took 5 HP dmg '+'and has '+hp[playerIndex]+'HP left';
+        hashLog['OperatorNumberPlayerCommanderLog'+step]=['-',5,players[playerIndex],hp[playerIndex]];
         hashLog['commanderLog'+step]='Player '+players[playerIndex]+' was not attacked by a commander this turn';
         step++;
 
@@ -354,6 +359,7 @@ function inc5HpPlayerIndex(name, playerIndex){
         hp[playerIndex] = hp[playerIndex] + 5;
 
         hashLog['playerLog'+step]='Player '+players[playerIndex]+' gained 5 HP '+'and has '+hp[playerIndex]+'HP left';
+        hashLog['OperatorNumberPlayerCommanderLog'+step]=['+',5,players[playerIndex],hp[playerIndex]];
         hashLog['commanderLog'+step]='Player '+players[playerIndex]+' was not attacked by a commander this turn';
         step++;
 
@@ -377,7 +383,20 @@ for(var playerIndex=0; playerIndex<players.length; playerIndex++){
 
 /*---------------------------------- /HP BUTTONS----------------------------------*/
 
-/*---------------------------------- UNDO BUTTONS----------------------------------*/
+/*---------------------------------- COMBAT LOG BUTTON----------------------------------*/
+function combatLogWrite(){
+    //console.log(Object.keys(hashLog).length);
+    for(log=1; log<=step; log++){
+        $('#divCombatLog').append($("<p></p>").text(hashLog['playerLog'+log]));
+        $('#divCombatLog').append($("<p></p>").text(hashLog['commanderLog'+log]));
+        $('#divCombatLog').append($("</br>"));
+    }
+}
 
+$('#btnCombatLog').click(function() {
+    $('#divCombatLog').empty();
+    combatLogWrite();
+});
 
+/*---------------------------------- UNDO BUTTON----------------------------------*/
 

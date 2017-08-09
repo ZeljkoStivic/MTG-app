@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="aacc078a-2645-414f-905c-58a057863887" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/custom.css" afterPath="$PROJECT_DIR$/css/custom.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/game.html" afterPath="$PROJECT_DIR$/game.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/game.js" afterPath="$PROJECT_DIR$/js/game.js" />
     </list>
@@ -42,8 +41,8 @@
       <file leaf-file-name="commanders.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/commanders.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="280">
-              <caret line="150" column="4" lean-forward="true" selection-start-line="150" selection-start-column="4" selection-end-line="150" selection-end-column="4" />
+            <state relative-caret-position="315">
+              <caret line="21" column="30" lean-forward="true" selection-start-line="21" selection-start-column="30" selection-end-line="21" selection-end-column="30" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -67,8 +66,8 @@
       <file leaf-file-name="game.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/game.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="331">
-              <caret line="116" column="84" lean-forward="true" selection-start-line="116" selection-start-column="84" selection-end-line="116" selection-end-column="84" />
+            <state relative-caret-position="463">
+              <caret line="361" column="63" lean-forward="false" selection-start-line="361" selection-start-column="63" selection-end-line="361" selection-end-column="63" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
@@ -76,13 +75,24 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="jquery.cookie.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/jquery.cookie.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="game.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/game.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="437">
-              <caret line="40" column="76" lean-forward="false" selection-start-line="40" selection-start-column="76" selection-end-line="40" selection-end-column="76" />
+            <state relative-caret-position="149">
+              <caret line="41" column="131" lean-forward="false" selection-start-line="41" selection-start-column="131" selection-end-line="41" selection-end-column="131" />
               <folding>
-                <element signature="e#2389#2396#1" expanded="true" />
+                <element signature="e#2530#2537#1" expanded="true" />
+                <element signature="e#3389#3396#1" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -91,8 +101,8 @@
       <file leaf-file-name="custom.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/css/custom.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="620">
-              <caret line="271" column="18" lean-forward="false" selection-start-line="271" selection-start-column="18" selection-end-line="271" selection-end-column="18" />
+            <state relative-caret-position="628">
+              <caret line="271" column="21" lean-forward="false" selection-start-line="271" selection-start-column="21" selection-end-line="271" selection-end-column="21" />
               <folding />
             </state>
           </provider>
@@ -125,8 +135,8 @@
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/commanders.html" />
         <option value="$PROJECT_DIR$/js/commanders.js" />
-        <option value="$PROJECT_DIR$/game.html" />
         <option value="$PROJECT_DIR$/css/custom.css" />
+        <option value="$PROJECT_DIR$/game.html" />
         <option value="$PROJECT_DIR$/js/game.js" />
       </list>
     </option>
@@ -246,12 +256,12 @@
       <workItem from="1501832364686" duration="49381000" />
       <workItem from="1502109909155" duration="29437000" />
       <workItem from="1502230122799" duration="333000" />
-      <workItem from="1502261052785" duration="18065000" />
+      <workItem from="1502261052785" duration="21676000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="151585000" />
+    <option name="totallyTimeSpent" value="155196000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1280" height="800" extended-state="0" />
@@ -363,7 +373,8 @@
         <state relative-caret-position="540">
           <caret line="36" column="20" lean-forward="true" selection-start-line="36" selection-start-column="20" selection-end-line="36" selection-end-column="20" />
           <folding>
-            <element signature="e#2389#2396#1" expanded="true" />
+            <element signature="e#2530#2537#1" expanded="true" />
+            <element signature="e#3389#3396#1" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -428,7 +439,8 @@
         <state relative-caret-position="540">
           <caret line="36" column="20" lean-forward="true" selection-start-line="36" selection-start-column="20" selection-end-line="36" selection-end-column="20" />
           <folding>
-            <element signature="e#2389#2396#1" expanded="true" />
+            <element signature="e#2530#2537#1" expanded="true" />
+            <element signature="e#3389#3396#1" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -493,7 +505,8 @@
         <state relative-caret-position="555">
           <caret line="37" column="0" lean-forward="false" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="0" />
           <folding>
-            <element signature="e#2389#2396#1" expanded="true" />
+            <element signature="e#2530#2537#1" expanded="true" />
+            <element signature="e#3389#3396#1" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -598,13 +611,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/jquery.cookie.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="636">
@@ -621,16 +627,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/commanders.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="280">
-          <caret line="150" column="4" lean-forward="true" selection-start-line="150" selection-start-column="4" selection-end-line="150" selection-end-column="4" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/commanders.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="205">
@@ -644,26 +640,45 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/css/custom.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="620">
-          <caret line="271" column="18" lean-forward="false" selection-start-line="271" selection-start-column="18" selection-end-line="271" selection-end-column="18" />
+        <state relative-caret-position="628">
+          <caret line="271" column="21" lean-forward="false" selection-start-line="271" selection-start-column="21" selection-end-line="271" selection-end-column="21" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/commanders.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="21" column="30" lean-forward="true" selection-start-line="21" selection-start-column="30" selection-end-line="21" selection-end-column="30" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/game.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="437">
-          <caret line="40" column="76" lean-forward="false" selection-start-line="40" selection-start-column="76" selection-end-line="40" selection-end-column="76" />
+        <state relative-caret-position="149">
+          <caret line="41" column="131" lean-forward="false" selection-start-line="41" selection-start-column="131" selection-end-line="41" selection-end-column="131" />
           <folding>
-            <element signature="e#2389#2396#1" expanded="true" />
+            <element signature="e#2530#2537#1" expanded="true" />
+            <element signature="e#3389#3396#1" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/jquery.cookie.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/game.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="331">
-          <caret line="116" column="84" lean-forward="true" selection-start-line="116" selection-start-column="84" selection-end-line="116" selection-end-column="84" />
+        <state relative-caret-position="463">
+          <caret line="361" column="63" lean-forward="false" selection-start-line="361" selection-start-column="63" selection-end-line="361" selection-end-column="63" />
           <folding>
             <element signature="n#!!doc" expanded="true" />
           </folding>

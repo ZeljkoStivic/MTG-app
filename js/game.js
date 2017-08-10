@@ -66,24 +66,14 @@ function tableCreationGridAndCommanderHp() {
 }
 
 function tableCreationHpButtons() {
-
-    $('.tableDiv'+playerIndex).append($("<button></button>").addClass('btn btn-success btn-sm dec1HpPlayer'+playerIndex).text('- 1'));
-    $('.tableDiv'+playerIndex).append($("<button></button>").addClass('btn btn-success btn-sm spearator inc1HpPlayer'+playerIndex).text('+ 1'));
+    $('.tbody'+playerIndex).append($("<tr></tr>").addClass('tableRowBtn'+playerIndex));
+    $('.tableRowBtn'+playerIndex).append($("<th></th>").attr( "scope", "row" ));
+    $('.tableRowBtn'+playerIndex).append($("<td></td>").append($("<button></button>").addClass('btn btn-success btn-sm dec1HpPlayer'+playerIndex).text('- 1')).append($("<button></button>").addClass('btn btn-success btn-sm spearator inc1HpPlayer'+playerIndex).text('+ 1')).append($("<div></div>")).append($("<button></button>").addClass('btn btn-success btn-sm dec5HpPlayer'+playerIndex).text('- 5')).append($("<button></button>").addClass('btn btn-success btn-sm spearator inc5HpPlayer'+playerIndex).text('+ 5')));
     pickedCommanders.forEach(function(commander, index) {
         if(playerIndex != index) {
-            $('.tableDiv' + playerIndex).append($("<button></button>").addClass('btn btn-success btn-sm dec1Player' + playerIndex + 'Com' + index).text('- 1C' + (index + 1)));
-            $('.tableDiv' + playerIndex).append($("<button></button>").addClass('btn btn-success btn-sm spearator inc1Player' + playerIndex + 'Com' + index).text('+ 1C' + (index + 1)));
+            $('.tableRowBtn' + playerIndex).append($("<td></td>").append($("<button></button>").addClass('btn btn-success btn-sm dec1Player' + playerIndex + 'Com' + index).text('- 1C' + (index + 1))).append($("<button></button>").addClass('btn btn-success btn-sm spearator inc1Player' + playerIndex + 'Com' + index).text('+ 1C' + (index + 1))).append($("<div></div>")).append($("<button></button>").addClass('btn btn-success btn-sm dec5Player' + playerIndex + 'Com' + index).text('- 5C' + (index + 1))).append($("<button></button>").addClass('btn btn-success btn-sm spearator inc5Player' + playerIndex + 'Com' + index).text('+ 5C' + (index + 1))));
         }
     });
-    $('.tableDiv'+playerIndex).append($("<div></div>"));
-    $('.tableDiv'+playerIndex).append($("<button></button>").addClass('btn btn-success btn-sm dec5HpPlayer'+playerIndex).text('- 5'));
-    $('.tableDiv'+playerIndex).append($("<button></button>").addClass('btn btn-success btn-sm spearator inc5HpPlayer'+playerIndex).text('+ 5'));
-        pickedCommanders.forEach(function(commander, index) {
-            if(playerIndex != index){
-                $('.tableDiv' + playerIndex).append($("<button></button>").addClass('btn btn-success btn-sm dec5Player' + playerIndex + 'Com' + index).text('- 5C' + (index + 1)));
-                $('.tableDiv' + playerIndex).append($("<button></button>").addClass('btn btn-success btn-sm spearator inc5Player' + playerIndex + 'Com' + index).text('+ 5C' + (index + 1)));
-            }
-        });
 }
 
 for(var playerIndex=0; playerIndex<players.length; playerIndex++){
@@ -130,11 +120,9 @@ function dec1PlayerIndexComIndex(name, playerIndex, commanderIndex){
             }
             $('#placementModal').modal('show');
         }
-        $('.tbody'+playerIndex).empty();
-        $('.tbody'+playerIndex).append($("<tr></tr>").addClass('tableRowBody'+playerIndex));
+        $('.tableRowBody'+playerIndex).empty();
         $('.tableRowBody'+playerIndex).append($("<th></th>").attr( "scope", "row" ));
         $('.tableRowBody'+playerIndex).append($("<td></td>").text(hp[playerIndex]));
-
         pickedCommanders.forEach(function(commander, index) {
             if(playerIndex != index){
                 $('.tableRowBody' + playerIndex).append($("<td></td>").text(commanderHp[playerIndex][index]));
@@ -161,8 +149,7 @@ function inc1PlayerIndexComIndex(name, playerIndex, commanderIndex){
         $('#btnUndo').removeClass('disabled').removeAttr("disabled", "disabled");
         step++;
 
-        $('.tbody'+playerIndex).empty();
-        $('.tbody'+playerIndex).append($("<tr></tr>").addClass('tableRowBody'+playerIndex));
+        $('.tableRowBody'+playerIndex).empty();
         $('.tableRowBody'+playerIndex).append($("<th></th>").attr( "scope", "row" ));
         $('.tableRowBody'+playerIndex).append($("<td></td>").text(hp[playerIndex]));
 
@@ -206,8 +193,7 @@ function dec5PlayerIndexComIndex(name, playerIndex, commanderIndex){
         $('#btnUndo').removeClass('disabled').removeAttr("disabled", "disabled");
         step++;
 
-        $('.tbody'+playerIndex).empty();
-        $('.tbody'+playerIndex).append($("<tr></tr>").addClass('tableRowBody'+playerIndex));
+        $('.tableRowBody'+playerIndex).empty();
         $('.tableRowBody'+playerIndex).append($("<th></th>").attr( "scope", "row" ));
         $('.tableRowBody'+playerIndex).append($("<td></td>").text(hp[playerIndex]));
 
@@ -237,8 +223,7 @@ function inc5PlayerIndexComIndex(name, playerIndex, commanderIndex){
         $('#btnUndo').removeClass('disabled').removeAttr("disabled", "disabled");
         step++;
 
-        $('.tbody'+playerIndex).empty();
-        $('.tbody'+playerIndex).append($("<tr></tr>").addClass('tableRowBody'+playerIndex));
+        $('.tableRowBody'+playerIndex).empty();
         $('.tableRowBody'+playerIndex).append($("<th></th>").attr( "scope", "row" ));
         $('.tableRowBody'+playerIndex).append($("<td></td>").text(hp[playerIndex]));
 
@@ -290,8 +275,7 @@ function dec1HpPlayerIndex(name, playerIndex){
         $('#btnUndo').removeClass('disabled').removeAttr("disabled", "disabled");
         step++;
 
-        $('.tbody'+playerIndex).empty();
-        $('.tbody'+playerIndex).append($("<tr></tr>").addClass('tableRowBody'+playerIndex));
+        $('.tableRowBody'+playerIndex).empty();
         $('.tableRowBody'+playerIndex).append($("<th></th>").attr( "scope", "row" ));
         $('.tableRowBody'+playerIndex).append($("<td></td>").text(hp[playerIndex]));
         pickedCommanders.forEach(function(commander, index) {
@@ -313,8 +297,7 @@ function inc1HpPlayerIndex(name, playerIndex){
         $('#btnUndo').removeClass('disabled').removeAttr("disabled", "disabled");
         step++;
 
-        $('.tbody'+playerIndex).empty();
-        $('.tbody'+playerIndex).append($("<tr></tr>").addClass('tableRowBody'+playerIndex));
+        $('.tableRowBody'+playerIndex).empty();
         $('.tableRowBody'+playerIndex).append($("<th></th>").attr( "scope", "row" ));
         $('.tableRowBody'+playerIndex).append($("<td></td>").text(hp[playerIndex]));
         pickedCommanders.forEach(function(commander, index) {
@@ -352,8 +335,7 @@ function dec5HpPlayerIndex(name, playerIndex){
         $('#btnUndo').removeClass('disabled').removeAttr("disabled", "disabled");
         step++;
 
-        $('.tbody'+playerIndex).empty();
-        $('.tbody'+playerIndex).append($("<tr></tr>").addClass('tableRowBody'+playerIndex));
+        $('.tableRowBody'+playerIndex).empty();
         $('.tableRowBody'+playerIndex).append($("<th></th>").attr( "scope", "row" ));
         $('.tableRowBody'+playerIndex).append($("<td></td>").text(hp[playerIndex]));
         pickedCommanders.forEach(function(commander, index) {
@@ -375,8 +357,7 @@ function inc5HpPlayerIndex(name, playerIndex){
         $('#btnUndo').removeClass('disabled').removeAttr("disabled", "disabled");
         step++;
 
-        $('.tbody'+playerIndex).empty();
-        $('.tbody'+playerIndex).append($("<tr></tr>").addClass('tableRowBody'+playerIndex));
+        $('.tableRowBody'+playerIndex).empty();
         $('.tableRowBody'+playerIndex).append($("<th></th>").attr( "scope", "row" ));
         $('.tableRowBody'+playerIndex).append($("<td></td>").text(hp[playerIndex]));
         pickedCommanders.forEach(function(commander, index) {
@@ -424,8 +405,7 @@ $('#btnUndo').click(function() {
             placementArr.shift();
         }
         hp[hashLog['OperatorNumberPlayerCommanderLog' + logStep][2]] += number;
-        $('.tbody'+hashLog['OperatorNumberPlayerCommanderLog' + logStep][2]).empty();
-        $('.tbody'+hashLog['OperatorNumberPlayerCommanderLog' + logStep][2]).append($("<tr></tr>").addClass('tableRowBody'+hashLog['OperatorNumberPlayerCommanderLog' + logStep][2]));
+        $('.tableRowBody'+hashLog['OperatorNumberPlayerCommanderLog' + logStep][2]).empty();
         $('.tableRowBody'+hashLog['OperatorNumberPlayerCommanderLog' + logStep][2]).append($("<th></th>").attr( "scope", "row" ));
         $('.tableRowBody'+hashLog['OperatorNumberPlayerCommanderLog' + logStep][2]).append($("<td></td>").text(hp[hashLog['OperatorNumberPlayerCommanderLog' + logStep][2]]));
         pickedCommanders.forEach(function(commander, index) {
@@ -448,8 +428,7 @@ $('#btnUndo').click(function() {
             placementArr.shift();
         }
         hp[hashLog['OperatorNumberPlayerCommanderLog' + logStep][2]] -= number;
-        $('.tbody'+hashLog['OperatorNumberPlayerCommanderLog' + logStep][2]).empty();
-        $('.tbody'+hashLog['OperatorNumberPlayerCommanderLog' + logStep][2]).append($("<tr></tr>").addClass('tableRowBody'+hashLog['OperatorNumberPlayerCommanderLog' + logStep][2]));
+        $('.tableRowBody'+hashLog['OperatorNumberPlayerCommanderLog' + logStep][2]).empty();
         $('.tableRowBody'+hashLog['OperatorNumberPlayerCommanderLog' + logStep][2]).append($("<th></th>").attr( "scope", "row" ));
         $('.tableRowBody'+hashLog['OperatorNumberPlayerCommanderLog' + logStep][2]).append($("<td></td>").text(hp[hashLog['OperatorNumberPlayerCommanderLog' + logStep][2]]));
         pickedCommanders.forEach(function(commander, index) {
@@ -477,8 +456,7 @@ $('#btnUndo').click(function() {
         }
         hp[hashLog['OperatorNumberPlayerCommanderLog' + logStep][2]] += number;
         commanderHp[hashLog['OperatorNumberPlayerCommanderLog' + logStep][2]][hashLog['OperatorNumberPlayerCommanderLog' + logStep][4]] += number;
-        $('.tbody'+hashLog['OperatorNumberPlayerCommanderLog' + logStep][2]).empty();
-        $('.tbody'+hashLog['OperatorNumberPlayerCommanderLog' + logStep][2]).append($("<tr></tr>").addClass('tableRowBody'+hashLog['OperatorNumberPlayerCommanderLog' + logStep][2]));
+        $('.tableRowBody'+hashLog['OperatorNumberPlayerCommanderLog' + logStep][2]).empty();
         $('.tableRowBody'+hashLog['OperatorNumberPlayerCommanderLog' + logStep][2]).append($("<th></th>").attr( "scope", "row" ));
         $('.tableRowBody'+hashLog['OperatorNumberPlayerCommanderLog' + logStep][2]).append($("<td></td>").text(hp[hashLog['OperatorNumberPlayerCommanderLog' + logStep][2]]));
         pickedCommanders.forEach(function(commander, index) {
@@ -506,8 +484,7 @@ $('#btnUndo').click(function() {
         }
         hp[hashLog['OperatorNumberPlayerCommanderLog' + logStep][2]] -= number;
         commanderHp[hashLog['OperatorNumberPlayerCommanderLog' + logStep][2]][hashLog['OperatorNumberPlayerCommanderLog' + logStep][4]] -= number;
-        $('.tbody'+hashLog['OperatorNumberPlayerCommanderLog' + logStep][2]).empty();
-        $('.tbody'+hashLog['OperatorNumberPlayerCommanderLog' + logStep][2]).append($("<tr></tr>").addClass('tableRowBody'+hashLog['OperatorNumberPlayerCommanderLog' + logStep][2]));
+        $('.tableRowBody'+hashLog['OperatorNumberPlayerCommanderLog' + logStep][2]).empty();
         $('.tableRowBody'+hashLog['OperatorNumberPlayerCommanderLog' + logStep][2]).append($("<th></th>").attr( "scope", "row" ));
         $('.tableRowBody'+hashLog['OperatorNumberPlayerCommanderLog' + logStep][2]).append($("<td></td>").text(hp[hashLog['OperatorNumberPlayerCommanderLog' + logStep][2]]));
         pickedCommanders.forEach(function(commander, index) {

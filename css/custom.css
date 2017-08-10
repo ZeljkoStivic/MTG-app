@@ -231,21 +231,27 @@ body {
 
 .table0 {
     width: 1140px;
+    background-color: white;
 }
 .table1 {
     width: 1140px;
+    background-color: white;
 }
 .table2 {
     width: 1140px;
+    background-color: white;
 }
 .table3 {
     width: 1140px;
+    background-color: white;
 }
 .table4 {
     width: 1140px;
+    background-color: white;
 }
 .table5 {
     width: 1140px;
+    background-color: white;
 }
 
 .card-img-top {
@@ -270,4 +276,9 @@ body {
 
 #undo {
     margin-top: 25px;
+}
+
+.btnUndo, .btnCombatLog {
+    margin-top: 12.5px;
+    margin-right: 10px;
 }

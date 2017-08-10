@@ -115,6 +115,7 @@ function dec1PlayerIndexComIndex(name, playerIndex, commanderIndex){
         hashLog['playerLog'+step]='Player '+players[playerIndex]+' took 1 HP dmg '+'and has '+hp[playerIndex]+'HP left';
         hashLog['OperatorNumberPlayerCommanderLog'+step]=['-',1,playerIndex,hp[playerIndex], commanderIndex, commanderHp[playerIndex][commanderIndex]];
         hashLog['commanderLog'+step]='Player '+players[playerIndex]+' took 1 commander dmg form '+pickedCommanders[commanderIndex];
+        $('#btnUndo').removeClass('disabled').removeAttr("disabled", "disabled");
         step++;
 
         if(placementArr.length == players.length-1){
@@ -156,6 +157,7 @@ function inc1PlayerIndexComIndex(name, playerIndex, commanderIndex){
         hashLog['playerLog'+step]='Player '+players[playerIndex]+' gained 1 HP '+'and has '+hp[playerIndex]+'HP left';
         hashLog['OperatorNumberPlayerCommanderLog'+step]=['+',1,playerIndex,hp[playerIndex], commanderIndex, commanderHp[playerIndex][commanderIndex]];
         hashLog['commanderLog'+step]='Player '+players[playerIndex]+' gained 1 commander HP form '+pickedCommanders[commanderIndex];
+        $('#btnUndo').removeClass('disabled').removeAttr("disabled", "disabled");
         step++;
 
         $('.tbody'+playerIndex).empty();
@@ -199,6 +201,7 @@ function dec5PlayerIndexComIndex(name, playerIndex, commanderIndex){
         hashLog['playerLog'+step]='Player '+players[playerIndex]+' took 5 HP dmg '+'and has '+hp[playerIndex]+'HP left';
         hashLog['OperatorNumberPlayerCommanderLog'+step]=['-',5,playerIndex,hp[playerIndex], commanderIndex, commanderHp[playerIndex][commanderIndex]];
         hashLog['commanderLog'+step]='Player '+players[playerIndex]+' took 5 commander dmg form '+pickedCommanders[commanderIndex];
+        $('#btnUndo').removeClass('disabled').removeAttr("disabled", "disabled");
         step++;
 
         $('.tbody'+playerIndex).empty();
@@ -229,6 +232,7 @@ function inc5PlayerIndexComIndex(name, playerIndex, commanderIndex){
         hashLog['playerLog'+step]='Player '+players[playerIndex]+' gained 5 HP '+'and has '+hp[playerIndex]+'HP left';
         hashLog['OperatorNumberPlayerCommanderLog'+step]=['+',5,playerIndex,hp[playerIndex], commanderIndex, commanderHp[playerIndex][commanderIndex]];
         hashLog['commanderLog'+step]='Player '+players[playerIndex]+' gained 5 commander HP form '+pickedCommanders[commanderIndex];
+        $('#btnUndo').removeClass('disabled').removeAttr("disabled", "disabled");
         step++;
 
         $('.tbody'+playerIndex).empty();
@@ -280,6 +284,7 @@ function dec1HpPlayerIndex(name, playerIndex){
         hashLog['playerLog'+step]='Player '+players[playerIndex]+' took 1 HP dmg '+'and has '+hp[playerIndex]+'HP left';
         hashLog['OperatorNumberPlayerCommanderLog'+step]=['-',1,playerIndex,hp[playerIndex]];
         hashLog['commanderLog'+step]='Player '+players[playerIndex]+' was not attacked by a commander this turn';
+        $('#btnUndo').removeClass('disabled').removeAttr("disabled", "disabled");
         step++;
 
         $('.tbody'+playerIndex).empty();
@@ -302,6 +307,7 @@ function inc1HpPlayerIndex(name, playerIndex){
         hashLog['playerLog'+step]='Player '+players[playerIndex]+' gained 1 HP '+'and has '+hp[playerIndex]+'HP left';
         hashLog['OperatorNumberPlayerCommanderLog'+step]=['+',1,playerIndex,hp[playerIndex]];
         hashLog['commanderLog'+step]='Player '+players[playerIndex]+' was not attacked by a commander this turn';
+        $('#btnUndo').removeClass('disabled').removeAttr("disabled", "disabled");
         step++;
 
         $('.tbody'+playerIndex).empty();
@@ -339,6 +345,7 @@ function dec5HpPlayerIndex(name, playerIndex){
         hashLog['playerLog'+step]='Player '+players[playerIndex]+' took 5 HP dmg '+'and has '+hp[playerIndex]+'HP left';
         hashLog['OperatorNumberPlayerCommanderLog'+step]=['-',5,playerIndex,hp[playerIndex]];
         hashLog['commanderLog'+step]='Player '+players[playerIndex]+' was not attacked by a commander this turn';
+        $('#btnUndo').removeClass('disabled').removeAttr("disabled", "disabled");
         step++;
 
         $('.tbody'+playerIndex).empty();
@@ -361,6 +368,7 @@ function inc5HpPlayerIndex(name, playerIndex){
         hashLog['playerLog'+step]='Player '+players[playerIndex]+' gained 5 HP '+'and has '+hp[playerIndex]+'HP left';
         hashLog['OperatorNumberPlayerCommanderLog'+step]=['+',5,playerIndex,hp[playerIndex]];
         hashLog['commanderLog'+step]='Player '+players[playerIndex]+' was not attacked by a commander this turn';
+        $('#btnUndo').removeClass('disabled').removeAttr("disabled", "disabled");
         step++;
 
         $('.tbody'+playerIndex).empty();
@@ -372,6 +380,7 @@ function inc5HpPlayerIndex(name, playerIndex){
                 $('.tableRowBody' + playerIndex).append($("<td></td>").text(commanderHp[playerIndex][index]));
             }
         });
+
     });
 }
 for(var playerIndex=0; playerIndex<players.length; playerIndex++){
@@ -398,10 +407,22 @@ $('#btnCombatLog').click(function() {
 });
 
 /*---------------------------------- UNDO BUTTON----------------------------------*/
+/*
+if(Object.keys(hashLog).length == 0){
+    $('#btnUndo').addClass('disabled').attr("disabled", "disabled");
+} else {
+    $('#btnUndo').removeClass('disabled').removeAttr("disabled", "disabled");
+}
+*/
 
+$('#btnUndo').addClass('disabled').attr("disabled", "disabled");
 $('#btnUndo').click(function() {
     event.preventDefault();
     function hashOperatorPlayerPlus(number) {
+        if(hp[hashLog['OperatorNumberPlayerCommanderLog' + logStep][2]] <= 0){
+            $('.tableDiv'+hashLog['OperatorNumberPlayerCommanderLog' + logStep][2]).show();
+            placementArr.shift();
+        }
         hp[hashLog['OperatorNumberPlayerCommanderLog' + logStep][2]] += number;
         $('.tbody'+hashLog['OperatorNumberPlayerCommanderLog' + logStep][2]).empty();
         $('.tbody'+hashLog['OperatorNumberPlayerCommanderLog' + logStep][2]).append($("<tr></tr>").addClass('tableRowBody'+hashLog['OperatorNumberPlayerCommanderLog' + logStep][2]));
@@ -419,6 +440,10 @@ $('#btnUndo').click(function() {
     }
 
     function hashOperatorPlayerMinus(number) {
+        if(hp[hashLog['OperatorNumberPlayerCommanderLog' + logStep][2]] <= 0){
+            $('.tableDiv'+hashLog['OperatorNumberPlayerCommanderLog' + logStep][2]).show();
+            placementArr.shift();
+        }
         hp[hashLog['OperatorNumberPlayerCommanderLog' + logStep][2]] -= number;
         $('.tbody'+hashLog['OperatorNumberPlayerCommanderLog' + logStep][2]).empty();
         $('.tbody'+hashLog['OperatorNumberPlayerCommanderLog' + logStep][2]).append($("<tr></tr>").addClass('tableRowBody'+hashLog['OperatorNumberPlayerCommanderLog' + logStep][2]));
@@ -436,6 +461,14 @@ $('#btnUndo').click(function() {
     }
 
     function hashOperatorPlayerCommanderPlus(number) {
+        if(hp[hashLog['OperatorNumberPlayerCommanderLog' + logStep][2]] <= 0){
+            $('.tableDiv'+hashLog['OperatorNumberPlayerCommanderLog' + logStep][2]).show();
+            placementArr.shift();
+        }
+        if(commanderHp[hashLog['OperatorNumberPlayerCommanderLog' + logStep][2]][hashLog['OperatorNumberPlayerCommanderLog' + logStep][4]] <= 0){
+            $('.tableDiv'+hashLog['OperatorNumberPlayerCommanderLog' + logStep][2]).show();
+            placementArr.shift();
+        }
         hp[hashLog['OperatorNumberPlayerCommanderLog' + logStep][2]] += number;
         commanderHp[hashLog['OperatorNumberPlayerCommanderLog' + logStep][2]][hashLog['OperatorNumberPlayerCommanderLog' + logStep][4]] += number;
         $('.tbody'+hashLog['OperatorNumberPlayerCommanderLog' + logStep][2]).empty();
@@ -454,6 +487,14 @@ $('#btnUndo').click(function() {
     }
 
     function hashOperatorPlayerCommanderMinus(number) {
+        if(hp[hashLog['OperatorNumberPlayerCommanderLog' + logStep][2]] <= 0){
+            $('.tableDiv'+hashLog['OperatorNumberPlayerCommanderLog' + logStep][2]).show();
+            placementArr.shift();
+        }
+        if(commanderHp[hashLog['OperatorNumberPlayerCommanderLog' + logStep][2]][hashLog['OperatorNumberPlayerCommanderLog' + logStep][4]] <= 0){
+            $('.tableDiv'+hashLog['OperatorNumberPlayerCommanderLog' + logStep][2]).show();
+            placementArr.shift();
+        }
         hp[hashLog['OperatorNumberPlayerCommanderLog' + logStep][2]] -= number;
         commanderHp[hashLog['OperatorNumberPlayerCommanderLog' + logStep][2]][hashLog['OperatorNumberPlayerCommanderLog' + logStep][4]] -= number;
         $('.tbody'+hashLog['OperatorNumberPlayerCommanderLog' + logStep][2]).empty();
@@ -504,4 +545,9 @@ $('#btnUndo').click(function() {
     }
     logStep--;
     step--;
+    if(Object.keys(hashLog).length == 0){
+        $('#btnUndo').addClass('disabled').attr("disabled", "disabled");
+    } else {
+        $('#btnUndo').removeClass('disabled').removeAttr("disabled", "disabled");
+    }
 });

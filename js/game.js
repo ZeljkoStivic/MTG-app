@@ -124,6 +124,7 @@ function dec1PlayerIndexComIndex(name, playerIndex, commanderIndex){
                     placementArr.unshift(player);
                 }
             });
+            $('#placement').empty();
             for(placementArrIndex=0; placementArrIndex<placementArr.length; placementArrIndex++){
                 $('#placement').append($("<ol></ol>").text((1+placementArrIndex)+'. Place  '+placementArr[placementArrIndex]));
             }
@@ -192,6 +193,7 @@ function dec5PlayerIndexComIndex(name, playerIndex, commanderIndex){
                     placementArr.unshift(player);
                 }
             });
+            $('#placement').empty();
             for(placementArrIndex=0; placementArrIndex<placementArr.length; placementArrIndex++){
                 $('#placement').append($("<ol></ol>").text((1+placementArrIndex)+'. Place  '+placementArr[placementArrIndex]));
             }
@@ -275,6 +277,7 @@ function dec1HpPlayerIndex(name, playerIndex){
                     placementArr.unshift(player);
                 }
             });
+            $('#placement').empty();
             for(placementArrIndex=0; placementArrIndex<placementArr.length; placementArrIndex++){
                 $('#placement').append($("<ol></ol>").text((1+placementArrIndex)+'. Place  '+placementArr[placementArrIndex]));
             }
@@ -336,6 +339,7 @@ function dec5HpPlayerIndex(name, playerIndex){
                     placementArr.unshift(player);
                 }
             });
+            $('#placement').empty();
             for(placementArrIndex=0; placementArrIndex<placementArr.length; placementArrIndex++){
                 $('#placement').append($("<ol></ol>").text((1+placementArrIndex)+'. Place  '+placementArr[placementArrIndex]));
             }
@@ -407,18 +411,14 @@ $('#btnCombatLog').click(function() {
 });
 
 /*---------------------------------- UNDO BUTTON----------------------------------*/
-/*
-if(Object.keys(hashLog).length == 0){
-    $('#btnUndo').addClass('disabled').attr("disabled", "disabled");
-} else {
-    $('#btnUndo').removeClass('disabled').removeAttr("disabled", "disabled");
-}
-*/
 
 $('#btnUndo').addClass('disabled').attr("disabled", "disabled");
 $('#btnUndo').click(function() {
     event.preventDefault();
     function hashOperatorPlayerPlus(number) {
+        if(placementArr.length == players.length-1) {
+            placementArr.shift();
+        }
         if(hp[hashLog['OperatorNumberPlayerCommanderLog' + logStep][2]] <= 0){
             $('.tableDiv'+hashLog['OperatorNumberPlayerCommanderLog' + logStep][2]).show();
             placementArr.shift();
@@ -440,6 +440,9 @@ $('#btnUndo').click(function() {
     }
 
     function hashOperatorPlayerMinus(number) {
+        if(placementArr.length == players.length-1) {
+            placementArr.shift();
+        }
         if(hp[hashLog['OperatorNumberPlayerCommanderLog' + logStep][2]] <= 0){
             $('.tableDiv'+hashLog['OperatorNumberPlayerCommanderLog' + logStep][2]).show();
             placementArr.shift();
@@ -461,6 +464,9 @@ $('#btnUndo').click(function() {
     }
 
     function hashOperatorPlayerCommanderPlus(number) {
+        if(placementArr.length == players.length-1) {
+            placementArr.shift();
+        }
         if(hp[hashLog['OperatorNumberPlayerCommanderLog' + logStep][2]] <= 0){
             $('.tableDiv'+hashLog['OperatorNumberPlayerCommanderLog' + logStep][2]).show();
             placementArr.shift();
@@ -487,6 +493,9 @@ $('#btnUndo').click(function() {
     }
 
     function hashOperatorPlayerCommanderMinus(number) {
+        if(placementArr.length == players.length-1) {
+            placementArr.shift();
+        }
         if(hp[hashLog['OperatorNumberPlayerCommanderLog' + logStep][2]] <= 0){
             $('.tableDiv'+hashLog['OperatorNumberPlayerCommanderLog' + logStep][2]).show();
             placementArr.shift();

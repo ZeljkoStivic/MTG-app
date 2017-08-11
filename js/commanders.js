@@ -52,8 +52,8 @@ $('#btnPlayers').click(function() {
 /*---------------------------------- BTN IN MODAL THAT ADDS A PLAYER TO THE POOL BEFORE CREATING A LOBBY ON MODAL ----------------------------------*/
 $('#addPlayer').click(function() {
     event.preventDefault();
-    players[playerIndex]=$('#playerName').val();
     if($('#playerName').val() != '') {
+        players[playerIndex]=$('#playerName').val();
         $('#playerGrid').append($("<ol></ol>").text(players[playerIndex]));
         playerIndex++;
         $('#playerName').val('');
@@ -223,13 +223,10 @@ function shufflePlayers(array1, array2, array3) {
 
 //FUNCTION THAT LETS INDIVIDUAL PLAYERS REROLL A COMMANDER
 function randomReRoll(index){
-    pickedCommanders[index]='';
-    do{
-        var reRollIndex = Math.floor(Math.random() * ((commanders.length - 1) - 0 + 1)) + 0;
-        if(pickedCommanders.indexOf(commanders[reRollIndex])<0){
-            pickedCommanders[index]=commanders[reRollIndex];
-        }
-    } while(pickedCommanders.indexOf(commanders[reRollIndex])>0);
+    var reRollIndex = Math.floor(Math.random() * ((commanders.length - 1) - 0 + 1)) + 0;
+    if(pickedCommanders.indexOf(commanders[reRollIndex])<0) {
+        pickedCommanders[index] = commanders[reRollIndex];
+    } 
     return pickedCommanders[index];
 }
 

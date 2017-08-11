@@ -35,7 +35,7 @@ for(var playerIndex=0; playerIndex<players.length; playerIndex++){
 
 function tableCreationGridAndPlayerName() {
     $('#tables').append($("<div></div>").addClass('tableDiv'+playerIndex));
-    $('.tableDiv'+playerIndex).append($("<table></table>").addClass('table'+playerIndex).attr("border", "1"));
+    $('.tableDiv'+playerIndex).append($("<table></table>").addClass('bottomBorderClass table'+playerIndex));
     $('.table'+playerIndex).append($("<thead></thead>").addClass('thead'+playerIndex));
     $('.thead'+playerIndex).append($("<tr></tr>").addClass('tableRow'+playerIndex));
     $('.tableRow'+playerIndex).append($("<th></th>"));
@@ -52,7 +52,7 @@ function tableCreatingGrindAndCommanderName() {
 
 function tableCreationGridAndPlayerHp(){
     $('.table'+playerIndex).append($("<tbody></tbody>").addClass('tbody'+playerIndex));
-    $('.tbody'+playerIndex).append($("<tr></tr>").addClass('tableRowBody'+playerIndex));
+    $('.tbody'+playerIndex).append($("<tr></tr>").addClass('tableRowBodyFontFamilyAndSize tableRowBody'+playerIndex));
     $('.tableRowBody'+playerIndex).append($("<th></th>").attr( "scope", "row" ));
     $('.tableRowBody'+playerIndex).append($("<td></td>").text(hp[playerIndex]));
 }
@@ -71,7 +71,7 @@ function tableCreationHpButtons() {
     $('.tableRowBtn'+playerIndex).append($("<td></td>").append($("<button></button>").addClass('btn btn-success btn-sm dec1HpPlayer'+playerIndex).text('- 1')).append($("<button></button>").addClass('btn btn-success btn-sm spearator inc1HpPlayer'+playerIndex).text('+ 1')).append($("<div></div>")).append($("<button></button>").addClass('btn btn-success btn-sm dec5HpPlayer'+playerIndex).text('- 5')).append($("<button></button>").addClass('btn btn-success btn-sm spearator inc5HpPlayer'+playerIndex).text('+ 5')));
     pickedCommanders.forEach(function(commander, index) {
         if(playerIndex != index) {
-            $('.tableRowBtn' + playerIndex).append($("<td></td>").append($("<button></button>").addClass('btn btn-success btn-sm dec1Player' + playerIndex + 'Com' + index).text('- 1C' + (index + 1))).append($("<button></button>").addClass('btn btn-success btn-sm spearator inc1Player' + playerIndex + 'Com' + index).text('+ 1C' + (index + 1))).append($("<div></div>")).append($("<button></button>").addClass('btn btn-success btn-sm dec5Player' + playerIndex + 'Com' + index).text('- 5C' + (index + 1))).append($("<button></button>").addClass('btn btn-success btn-sm spearator inc5Player' + playerIndex + 'Com' + index).text('+ 5C' + (index + 1))));
+            $('.tableRowBtn' + playerIndex).append($("<td></td>").append($("<button></button>").addClass('btn btn-success btn-sm dec1Player' + playerIndex + 'Com' + index).text('- 1')).append($("<button></button>").addClass('btn btn-success btn-sm spearator inc1Player' + playerIndex + 'Com' + index).text('+ 1')).append($("<div></div>")).append($("<button></button>").addClass('btn btn-success btn-sm dec5Player' + playerIndex + 'Com' + index).text('- 5')).append($("<button></button>").addClass('btn btn-success btn-sm spearator inc5Player' + playerIndex + 'Com' + index).text('+ 5')));
         }
     });
 }
@@ -84,6 +84,9 @@ for(var playerIndex=0; playerIndex<players.length; playerIndex++){
     tableCreationHpButtons();
 }
 
+$('.table'+(players.length-1)).removeClass('bottomBorderClass');
+
+
 /*---------------------------------- /TABLE CREATION----------------------------------*/
 
 /*---------------------------------- COMMANDER BUTTONS----------------------------------*/
@@ -92,12 +95,11 @@ function dec1PlayerIndexComIndex(name, playerIndex, commanderIndex){
     $('.'+name).click(function() {
         event.preventDefault();
         hp[playerIndex] = hp[playerIndex] - 1;
+        commanderHp[playerIndex][commanderIndex]= commanderHp[playerIndex][commanderIndex] - 1;
         if(hp[playerIndex] <= 0){
             $('.tableDiv'+playerIndex).css("display", "none");
             placementArr.unshift(players[playerIndex]);
-        }
-        commanderHp[playerIndex][commanderIndex]= commanderHp[playerIndex][commanderIndex] - 1;
-        if(commanderHp[playerIndex][commanderIndex] <= 0){
+        } else if(commanderHp[playerIndex][commanderIndex] <= 0){
             $('.tableDiv'+playerIndex).css("display", "none");
             placementArr.unshift(players[playerIndex]);
         }
@@ -165,15 +167,15 @@ function dec5PlayerIndexComIndex(name, playerIndex, commanderIndex){
     $('.'+name).click(function() {
         event.preventDefault();
         hp[playerIndex] = hp[playerIndex] - 5;
+        commanderHp[playerIndex][commanderIndex]= commanderHp[playerIndex][commanderIndex] - 5;
         if(hp[playerIndex] <= 0){
             $('.tableDiv'+playerIndex).css("display", "none");
             placementArr.unshift(players[playerIndex]);
-        }
-        commanderHp[playerIndex][commanderIndex]= commanderHp[playerIndex][commanderIndex] - 5;
-        if(commanderHp[playerIndex][commanderIndex] <= 0){
+        } else if(commanderHp[playerIndex][commanderIndex] <= 0){
             $('.tableDiv'+playerIndex).css("display", "none");
             placementArr.unshift(players[playerIndex]);
         }
+
         if(placementArr.length == players.length-1){
             players.forEach(function(player) {
                 if(placementArr.indexOf(player)<0){
@@ -397,7 +399,7 @@ $('#btnUndo').addClass('disabled').attr("disabled", "disabled");
 $('#btnUndo').click(function() {
     event.preventDefault();
     function hashOperatorPlayerPlus(number) {
-        if(placementArr.length == players.length-1) {
+        if(placementArr.length == players.length) {
             placementArr.shift();
         }
         if(hp[hashLog['OperatorNumberPlayerCommanderLog' + logStep][2]] <= 0){
@@ -410,7 +412,6 @@ $('#btnUndo').click(function() {
         $('.tableRowBody'+hashLog['OperatorNumberPlayerCommanderLog' + logStep][2]).append($("<td></td>").text(hp[hashLog['OperatorNumberPlayerCommanderLog' + logStep][2]]));
         pickedCommanders.forEach(function(commander, index) {
             if(hashLog['OperatorNumberPlayerCommanderLog' + logStep][2] != index){
-                console.log(hashLog['OperatorNumberPlayerCommanderLog' + logStep][2]);
                 $('.tableRowBody' + hashLog['OperatorNumberPlayerCommanderLog' + logStep][2]).append($("<td></td>").text(commanderHp[hashLog['OperatorNumberPlayerCommanderLog' + logStep][2]][index]));
             }
         });
@@ -420,7 +421,7 @@ $('#btnUndo').click(function() {
     }
 
     function hashOperatorPlayerMinus(number) {
-        if(placementArr.length == players.length-1) {
+        if(placementArr.length == players.length) {
             placementArr.shift();
         }
         if(hp[hashLog['OperatorNumberPlayerCommanderLog' + logStep][2]] <= 0){
@@ -433,7 +434,6 @@ $('#btnUndo').click(function() {
         $('.tableRowBody'+hashLog['OperatorNumberPlayerCommanderLog' + logStep][2]).append($("<td></td>").text(hp[hashLog['OperatorNumberPlayerCommanderLog' + logStep][2]]));
         pickedCommanders.forEach(function(commander, index) {
             if(hashLog['OperatorNumberPlayerCommanderLog' + logStep][2] != index){
-                console.log(hashLog['OperatorNumberPlayerCommanderLog' + logStep][2]);
                 $('.tableRowBody' + hashLog['OperatorNumberPlayerCommanderLog' + logStep][2]).append($("<td></td>").text(commanderHp[hashLog['OperatorNumberPlayerCommanderLog' + logStep][2]][index]));
             }
         });
@@ -443,7 +443,7 @@ $('#btnUndo').click(function() {
     }
 
     function hashOperatorPlayerCommanderPlus(number) {
-        if(placementArr.length == players.length-1) {
+        if(placementArr.length == players.length) {
             placementArr.shift();
         }
         if(hp[hashLog['OperatorNumberPlayerCommanderLog' + logStep][2]] <= 0){
@@ -461,7 +461,6 @@ $('#btnUndo').click(function() {
         $('.tableRowBody'+hashLog['OperatorNumberPlayerCommanderLog' + logStep][2]).append($("<td></td>").text(hp[hashLog['OperatorNumberPlayerCommanderLog' + logStep][2]]));
         pickedCommanders.forEach(function(commander, index) {
             if(hashLog['OperatorNumberPlayerCommanderLog' + logStep][2] != index){
-                console.log(hashLog['OperatorNumberPlayerCommanderLog' + logStep][2]);
                 $('.tableRowBody' + hashLog['OperatorNumberPlayerCommanderLog' + logStep][2]).append($("<td></td>").text(commanderHp[hashLog['OperatorNumberPlayerCommanderLog' + logStep][2]][index]));
             }
         });
@@ -471,7 +470,7 @@ $('#btnUndo').click(function() {
     }
 
     function hashOperatorPlayerCommanderMinus(number) {
-        if(placementArr.length == players.length-1) {
+        if(placementArr.length == players.length) {
             placementArr.shift();
         }
         if(hp[hashLog['OperatorNumberPlayerCommanderLog' + logStep][2]] <= 0){
@@ -489,7 +488,6 @@ $('#btnUndo').click(function() {
         $('.tableRowBody'+hashLog['OperatorNumberPlayerCommanderLog' + logStep][2]).append($("<td></td>").text(hp[hashLog['OperatorNumberPlayerCommanderLog' + logStep][2]]));
         pickedCommanders.forEach(function(commander, index) {
             if(hashLog['OperatorNumberPlayerCommanderLog' + logStep][2] != index){
-                console.log(hashLog['OperatorNumberPlayerCommanderLog' + logStep][2]);
                 $('.tableRowBody' + hashLog['OperatorNumberPlayerCommanderLog' + logStep][2]).append($("<td></td>").text(commanderHp[hashLog['OperatorNumberPlayerCommanderLog' + logStep][2]][index]));
             }
         });
@@ -499,7 +497,6 @@ $('#btnUndo').click(function() {
     }
 
     var logStep=Object.keys(hashLog).length/3;
-    console.log(logStep);
     if(Object.keys(hashLog['OperatorNumberPlayerCommanderLog'+logStep]).length == 4){
         if(hashLog['OperatorNumberPlayerCommanderLog'+logStep][0] == '-') {
             if(hashLog['OperatorNumberPlayerCommanderLog'+logStep][1] == 1){

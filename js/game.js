@@ -143,13 +143,7 @@ function inc1PlayerIndexComIndex(name, playerIndex, commanderIndex){
     $('.'+name).click(function() {
         event.preventDefault();
         hp[playerIndex] = hp[playerIndex] + 1;
-        if(hp[playerIndex]>=30){
-            hp[playerIndex]=30;
-        }
         commanderHp[playerIndex][commanderIndex]= commanderHp[playerIndex][commanderIndex] + 1;
-        if(commanderHp[playerIndex][commanderIndex]>=15){
-            commanderHp[playerIndex][commanderIndex]=15;
-        }
 
         hashLog['playerLog'+step]='Player '+players[playerIndex]+' gained 1 HP '+'and has '+hp[playerIndex]+'HP left';
         hashLog['OperatorNumberPlayerCommanderLog'+step]=['+',1,playerIndex,hp[playerIndex], commanderIndex, commanderHp[playerIndex][commanderIndex]];
@@ -218,13 +212,7 @@ function inc5PlayerIndexComIndex(name, playerIndex, commanderIndex){
     $('.'+name).click(function() {
         event.preventDefault();
         hp[playerIndex] = hp[playerIndex] + 5;
-        if(hp[playerIndex]>=30){
-            hp[playerIndex]=30;
-        }
         commanderHp[playerIndex][commanderIndex]= commanderHp[playerIndex][commanderIndex] + 5;
-        if(commanderHp[playerIndex][commanderIndex]>=15){
-            commanderHp[playerIndex][commanderIndex]=15;
-        }
 
         hashLog['playerLog'+step]='Player '+players[playerIndex]+' gained 5 HP '+'and has '+hp[playerIndex]+'HP left';
         hashLog['OperatorNumberPlayerCommanderLog'+step]=['+',5,playerIndex,hp[playerIndex], commanderIndex, commanderHp[playerIndex][commanderIndex]];

@@ -226,7 +226,7 @@ function randomReRoll(index){
     var reRollIndex = Math.floor(Math.random() * ((commanders.length - 1) - 0 + 1)) + 0;
     if(pickedCommanders.indexOf(commanders[reRollIndex])<0) {
         pickedCommanders[index] = commanders[reRollIndex];
-    } 
+    }
     return pickedCommanders[index];
 }
 

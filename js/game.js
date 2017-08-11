@@ -29,6 +29,11 @@ for(var playerIndex=0; playerIndex<players.length; playerIndex++){
     }
 }
 
+//Najbitnija funkcionalnost!
+function gg(playerIndex) {
+    alert(players[playerIndex]+' je popušio kurčinu!');
+}
+
 /*---------------------------------- /VARIABLES----------------------------------*/
 
 /*---------------------------------- TABLE CREATION----------------------------------*/
@@ -102,6 +107,7 @@ function dec1PlayerIndexComIndex(name, playerIndex, commanderIndex){
         } else if(commanderHp[playerIndex][commanderIndex] <= 0){
             $('.tableDiv'+playerIndex).css("display", "none");
             placementArr.unshift(players[playerIndex]);
+            gg(playerIndex);
         }
 
         hashLog['playerLog'+step]='Player '+players[playerIndex]+' took 1 HP dmg '+'and has '+hp[playerIndex]+'HP left';
@@ -174,6 +180,7 @@ function dec5PlayerIndexComIndex(name, playerIndex, commanderIndex){
         } else if(commanderHp[playerIndex][commanderIndex] <= 0){
             $('.tableDiv'+playerIndex).css("display", "none");
             placementArr.unshift(players[playerIndex]);
+            gg(playerIndex);
         }
 
         if(placementArr.length == players.length-1){
@@ -257,6 +264,7 @@ function dec1HpPlayerIndex(name, playerIndex){
         if(hp[playerIndex] <= 0){
             $('.tableDiv'+playerIndex).css("display", "none");
             placementArr.unshift(players[playerIndex]);
+            gg(playerIndex);
         }
         if(placementArr.length == players.length-1){
             players.forEach(function(player) {
@@ -317,6 +325,7 @@ function dec5HpPlayerIndex(name, playerIndex){
         if(hp[playerIndex] <= 0){
             $('.tableDiv'+playerIndex).css("display", "none");
             placementArr.unshift(players[playerIndex]);
+            gg(playerIndex);
         }
         if(placementArr.length == players.length-1){
             players.forEach(function(player) {
